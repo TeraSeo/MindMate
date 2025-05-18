@@ -134,5 +134,17 @@
     "logoutMessage": "Möchten Sie sich wirklich abmelden?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "Benachrichtigungen erforderlich",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "Bitte aktivieren Sie Benachrichtigungen in den Geräteeinstellungen, um wichtige Updates zu erhalten.",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

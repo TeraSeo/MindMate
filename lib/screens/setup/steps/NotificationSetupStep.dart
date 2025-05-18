@@ -1,195 +1,253 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ai_chatter/constants/BoxSize.dart';
+import 'package:ai_chatter/constants/FontSize.dart';
+import 'package:ai_chatter/services/NotificationService.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class NotificationSetupStep extends StatelessWidget {
-  final VoidCallback onComplete;
-  final VoidCallback onPrevious;
-  final Function(bool) onUpdateData;
-  final bool initialValue;
+class NotificationSetupStep extends StatefulWidget {
+  final Function(Map<String, bool>) onNotificationPreferencesChanged;
+  final VoidCallback onNext;
+  final VoidCallback onBack;
+  final Map<String, bool>? initialPreferences;
 
   const NotificationSetupStep({
     super.key,
-    required this.onComplete,
-    required this.onPrevious,
-    required this.onUpdateData,
-    required this.initialValue,
+    required this.onNotificationPreferencesChanged,
+    required this.onNext,
+    required this.onBack,
+    this.initialPreferences,
   });
+
+  @override
+  State<NotificationSetupStep> createState() => _NotificationSetupStepState();
+}
+
+class _NotificationSetupStepState extends State<NotificationSetupStep> {
+  bool _pushNotificationsEnabled = false;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initialPreferences != null) {
+      _pushNotificationsEnabled = widget.initialPreferences!.values.any((enabled) => enabled);
+    }
+  }
+
+  void _updatePreferences() {
+    widget.onNotificationPreferencesChanged({
+      'newMessages': _pushNotificationsEnabled,
+      'appUpdates': _pushNotificationsEnabled,
+      'announcements': _pushNotificationsEnabled,
+    });
+  }
+
+  Future<void> _togglePushNotifications(bool value) async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      if (value) {
+        final notificationService = NotificationService();
+        await notificationService.initialize();
+        
+        PermissionStatus? permissionStatus;
+        try {
+          permissionStatus = await Permission.notification.status;
+        } catch (e) {
+          print('Error checking permission status: $e');
+          permissionStatus = PermissionStatus.denied;
+        }
+        
+        if (permissionStatus.isDenied) {
+          PermissionStatus? result;
+          try {
+            result = await Permission.notification.request();
+          } catch (e) {
+            print('Error requesting permission: $e');
+            result = PermissionStatus.denied;
+          }
+          
+          if (result?.isGranted == true) {
+            setState(() {
+              _pushNotificationsEnabled = true;
+            });
+            _updatePreferences();
+          } else {
+            if (mounted) {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text(AppLocalizations.of(context)!.notificationsRequired),
+                  content: Text(AppLocalizations.of(context)!.notificationsRequiredMessage),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text(AppLocalizations.of(context)!.ok),
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                        await openAppSettings();
+                      },
+                      child: const Text('Open Settings'),
+                    ),
+                  ],
+                ),
+              );
+            }
+          }
+        } else if (permissionStatus.isGranted) {
+          setState(() {
+            _pushNotificationsEnabled = true;
+          });
+          _updatePreferences();
+        }
+      } else {
+        setState(() {
+          _pushNotificationsEnabled = false;
+        });
+        _updatePreferences();
+      }
+    } catch (e) {
+      print('Error in _togglePushNotifications: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Failed to toggle notifications. Please try again.'),
+          ),
+        );
+      }
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final size = MediaQuery.of(context).size;
+    final isSmallScreen = size.width < 600;
 
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.notificationStepTitle,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            l10n.notificationStepDescription,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.grey[600],
-                ),
-          ),
-          const SizedBox(height: 32),
-          Card(
-            elevation: 0,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-              side: BorderSide(
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                width: 1,
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Icon(
-                          Icons.notifications_active_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 32,
-                        ),
-                      ),
-                      const SizedBox(width: 16),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              l10n.pushNotificationsTitle,
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              l10n.pushNotificationsDescription,
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: Colors.grey[600],
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Switch(
-                        value: initialValue,
-                        onChanged: (value) {
-                          onUpdateData(value);
-                        },
-                      ),
-                    ],
-                  ),
-                  if (initialValue) ...[
-                    const SizedBox(height: 16),
-                    const Divider(),
-                    const SizedBox(height: 16),
-                    Text(
-                      l10n.notificationTypesTitle,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 12),
-                    _NotificationItem(
-                      icon: Icons.message_outlined,
-                      title: l10n.newMessagesNotification,
-                    ),
-                    const SizedBox(height: 8),
-                    _NotificationItem(
-                      icon: Icons.update,
-                      title: l10n.appUpdatesNotification,
-                    ),
-                    const SizedBox(height: 8),
-                    _NotificationItem(
-                      icon: Icons.campaign_outlined,
-                      title: l10n.announcementsNotification,
-                    ),
-                  ],
-                ],
-              ),
-            ),
-          ),
-          const Spacer(),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: onPrevious,
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    l10n.back,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: onComplete,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: Theme.of(context).colorScheme.primary,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    l10n.completeSetup,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
+    final titleFontSize = isSmallScreen ? FontSize.h2 : FontSize.h1;
+    final descriptionFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h5;
+    final cardTitleFontSize = isSmallScreen ? FontSize.h4 : FontSize.h3;
+    final cardDescriptionFontSize = isSmallScreen ? FontSize.bodyMedium : FontSize.bodyLarge;
+    final buttonFontSize = isSmallScreen ? FontSize.buttonMedium : FontSize.buttonLarge;
+    final cardPadding = isSmallScreen ? BoxSize.cardPadding : BoxSize.cardPadding * 1.5;
+    final iconSize = isSmallScreen ? BoxSize.iconMedium : BoxSize.iconLarge;
 
-class _NotificationItem extends StatelessWidget {
-  final IconData icon;
-  final String title;
-
-  const _NotificationItem({
-    required this.icon,
-    required this.title,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          icon,
-          size: 20,
-          color: Colors.grey[600],
-        ),
-        const SizedBox(width: 12),
         Text(
-          title,
-          style: Theme.of(context).textTheme.bodyLarge,
+          l10n.notificationStepTitle,
+          style: TextStyle(
+            fontSize: titleFontSize,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+        Text(
+          l10n.notificationStepDescription,
+          style: TextStyle(
+            fontSize: descriptionFontSize,
+            color: Colors.grey,
+          ),
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+        Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+            side: BorderSide(
+              color: Colors.grey[300]!,
+              width: 1,
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(cardPadding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.pushNotificationsTitle,
+                  style: TextStyle(
+                    fontSize: cardTitleFontSize,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: isSmallScreen ? BoxSize.spacingS : BoxSize.spacingM),
+                Text(
+                  l10n.pushNotificationsDescription,
+                  style: TextStyle(
+                    fontSize: cardDescriptionFontSize,
+                    color: Colors.grey,
+                  ),
+                ),
+                SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+                SwitchListTile(
+                  value: _pushNotificationsEnabled,
+                  onChanged: _isLoading ? null : _togglePushNotifications,
+                  title: Text(
+                    l10n.pushNotificationsTitle,
+                    style: TextStyle(fontSize: cardDescriptionFontSize),
+                  ),
+                  secondary: _isLoading
+                      ? SizedBox(
+                          width: iconSize,
+                          height: iconSize,
+                          child: CircularProgressIndicator(
+                            strokeWidth: isSmallScreen ? 2 : 3,
+                          ),
+                        )
+                      : Icon(
+                          Icons.notifications_outlined,
+                          size: iconSize,
+                        ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const Spacer(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: widget.onBack,
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.5,
+                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
+                ),
+              ),
+              child: Text(
+                l10n.back,
+                style: TextStyle(fontSize: buttonFontSize),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: widget.onNext,
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? BoxSize.buttonPadding * 2 : BoxSize.buttonPadding * 3,
+                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(BoxSize.buttonRadius),
+                ),
+              ),
+              child: Text(
+                l10n.next,
+                style: TextStyle(fontSize: buttonFontSize),
+              ),
+            ),
+          ],
         ),
       ],
     );

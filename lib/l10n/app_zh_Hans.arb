@@ -134,5 +134,17 @@
     "logoutMessage": "确定要退出登录吗？",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "需要通知权限",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "请在设备设置中启用通知，以接收重要更新。",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "确定",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

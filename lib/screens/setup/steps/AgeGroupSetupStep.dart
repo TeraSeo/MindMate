@@ -1,143 +1,159 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ai_chatter/constants/BoxSize.dart';
+import 'package:ai_chatter/constants/FontSize.dart';
 
-class AgeGroupSetupStep extends StatelessWidget {
+class AgeGroupSetupStep extends StatefulWidget {
+  final Function(String) onAgeGroupChanged;
   final VoidCallback onNext;
-  final VoidCallback onPrevious;
-  final Function(String) onUpdateData;
-  final String initialValue;
+  final VoidCallback onBack;
+  final String? initialValue;
 
   const AgeGroupSetupStep({
     super.key,
+    required this.onAgeGroupChanged,
     required this.onNext,
-    required this.onPrevious,
-    required this.onUpdateData,
-    required this.initialValue,
+    required this.onBack,
+    this.initialValue,
   });
 
-  static const List<String> _ageGroups = [
-    'Under 20',
-    '20s',
-    '30s',
-    '40s',
-    '50s',
-    '60s',
-    'Over 70',
-  ];
+  @override
+  State<AgeGroupSetupStep> createState() => _AgeGroupSetupStepState();
+}
+
+class _AgeGroupSetupStepState extends State<AgeGroupSetupStep> {
+  String? selectedAgeGroup;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedAgeGroup = widget.initialValue;
+  }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final ageGroups = ['18-24', '25-34', '35-44', '45-54', '55+'];
+    final size = MediaQuery.of(context).size;
+    final isSmallScreen = size.width < 600;
 
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.ageGroupStepTitle,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+    final titleFontSize = isSmallScreen ? FontSize.h2 : FontSize.h1;
+    final descriptionFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h5;
+    final optionFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h6;
+    final buttonFontSize = isSmallScreen ? FontSize.buttonMedium : FontSize.buttonLarge;
+    final cardPadding = isSmallScreen ? BoxSize.cardPadding : BoxSize.cardPadding * 1.5;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.ageGroupStepTitle,
+          style: TextStyle(
+            fontSize: titleFontSize,
+            fontWeight: FontWeight.bold,
           ),
-          const SizedBox(height: 8),
-          Text(
-            l10n.ageGroupStepDescription,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.grey[600],
-                ),
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+        Text(
+          l10n.ageGroupStepDescription,
+          style: TextStyle(
+            fontSize: descriptionFontSize,
+            color: Colors.grey,
           ),
-          const SizedBox(height: 32),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _ageGroups.length,
-              itemBuilder: (context, index) {
-                final ageGroup = _ageGroups[index];
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Card(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      side: BorderSide(
-                        color: ageGroup == initialValue
-                            ? Theme.of(context).colorScheme.primary
-                            : Colors.grey[300]!,
-                        width: ageGroup == initialValue ? 2 : 1,
-                      ),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        onUpdateData(ageGroup);
-                        onNext();
-                      },
-                      borderRadius: BorderRadius.circular(12),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 16,
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                ageGroup,
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                            ),
-                            if (ageGroup == initialValue)
-                              Icon(
-                                Icons.check_circle,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+        Expanded(
+          child: ListView.separated(
+            itemCount: ageGroups.length,
+            separatorBuilder: (_, __) => SizedBox(
+              height: isSmallScreen ? BoxSize.spacingS : BoxSize.spacingM,
             ),
-          ),
-          const SizedBox(height: 24),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: onPrevious,
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    l10n.back,
-                    style: const TextStyle(fontSize: 16),
+            itemBuilder: (context, index) {
+              final ageGroup = ageGroups[index];
+              final isSelected = selectedAgeGroup == ageGroup;
+              
+              return Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                  side: BorderSide(
+                    color: isSelected ? Theme.of(context).colorScheme.primary : Colors.grey[300]!,
+                    width: isSelected ? 2 : 1,
                   ),
                 ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: onNext,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedAgeGroup = ageGroup;
+                    });
+                    widget.onAgeGroupChanged(ageGroup);
+                  },
+                  borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                  child: Padding(
+                    padding: EdgeInsets.all(cardPadding),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            ageGroup,
+                            style: TextStyle(
+                              fontSize: optionFontSize,
+                              color: isSelected
+                                  ? Theme.of(context).colorScheme.primary
+                                  : null,
+                            ),
+                          ),
+                        ),
+                        if (isSelected)
+                          Icon(
+                            Icons.check_circle,
+                            size: isSmallScreen ? BoxSize.iconMedium : BoxSize.iconLarge,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                      ],
                     ),
                   ),
-                  child: Text(
-                    l10n.next,
-                    style: const TextStyle(fontSize: 16),
-                  ),
+                ),
+              );
+            },
+          ),
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: widget.onBack,
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.5,
+                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
                 ),
               ),
-            ],
-          ),
-        ],
-      ),
+              child: Text(
+                l10n.back,
+                style: TextStyle(fontSize: buttonFontSize),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: selectedAgeGroup != null ? widget.onNext : null,
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? BoxSize.buttonPadding * 2 : BoxSize.buttonPadding * 3,
+                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(BoxSize.buttonRadius),
+                ),
+              ),
+              child: Text(
+                l10n.next,
+                style: TextStyle(fontSize: buttonFontSize),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 } 

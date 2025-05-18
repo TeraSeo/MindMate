@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:ai_chatter/constants/BoxSize.dart';
+import 'package:ai_chatter/constants/FontSize.dart';
 
-class GenderSetupStep extends StatelessWidget {
+class GenderSetupStep extends StatefulWidget {
   final VoidCallback onNext;
   final VoidCallback onPrevious;
   final Function(String) onUpdateData;
@@ -14,6 +16,19 @@ class GenderSetupStep extends StatelessWidget {
     required this.onUpdateData,
     required this.initialValue,
   });
+
+  @override
+  State<GenderSetupStep> createState() => _GenderSetupStepState();
+}
+
+class _GenderSetupStepState extends State<GenderSetupStep> {
+  String? selectedGender;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedGender = widget.initialValue;
+  }
 
   static const List<Map<String, dynamic>> _genderOptions = [
     {
@@ -41,126 +56,137 @@ class GenderSetupStep extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final size = MediaQuery.of(context).size;
+    final isSmallScreen = size.width < 600;
 
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.genderStepTitle,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
+    final titleFontSize = isSmallScreen ? FontSize.h2 : FontSize.h1;
+    final descriptionFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h5;
+    final optionFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h6;
+    final buttonFontSize = isSmallScreen ? FontSize.buttonMedium : FontSize.buttonLarge;
+    final cardPadding = isSmallScreen ? BoxSize.cardPadding : BoxSize.cardPadding * 1.5;
+    final iconSize = isSmallScreen ? BoxSize.iconMedium : BoxSize.iconLarge;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.genderStepTitle,
+          style: TextStyle(
+            fontSize: titleFontSize,
+            fontWeight: FontWeight.bold,
           ),
-          const SizedBox(height: 8),
-          Text(
-            l10n.genderStepDescription,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Colors.grey[600],
-                ),
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+        Text(
+          l10n.genderStepDescription,
+          style: TextStyle(
+            fontSize: descriptionFontSize,
+            color: Colors.grey,
           ),
-          const SizedBox(height: 32),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _genderOptions.length,
-              itemBuilder: (context, index) {
-                final option = _genderOptions[index];
-                final isSelected = option['value'] == initialValue;
-                
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: Card(
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      side: BorderSide(
-                        color: isSelected
-                            ? Theme.of(context).colorScheme.primary
-                            : Colors.grey[300]!,
-                        width: isSelected ? 2 : 1,
-                      ),
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        onUpdateData(option['value']);
-                        onNext();
-                      },
-                      borderRadius: BorderRadius.circular(12),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 16,
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+        Expanded(
+          child: ListView.separated(
+            itemCount: _genderOptions.length,
+            separatorBuilder: (_, __) => SizedBox(
+              height: isSmallScreen ? BoxSize.spacingS : BoxSize.spacingM,
+            ),
+            itemBuilder: (context, index) {
+              final option = _genderOptions[index];
+              final isSelected = option['value'] == selectedGender;
+              
+              return Card(
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                  side: BorderSide(
+                    color: isSelected
+                        ? Theme.of(context).colorScheme.primary
+                        : Colors.grey[300]!,
+                    width: isSelected ? 2 : 1,
+                  ),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = option['value'];
+                    });
+                    widget.onUpdateData(option['value']);
+                  },
+                  borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                  child: Padding(
+                    padding: EdgeInsets.all(cardPadding),
+                    child: Row(
+                      children: [
+                        Icon(
+                          option['icon'],
+                          size: iconSize,
+                          color: isSelected
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.grey[600],
                         ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              option['icon'],
-                              size: 24,
+                        SizedBox(width: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+                        Expanded(
+                          child: Text(
+                            option['label'],
+                            style: TextStyle(
+                              fontSize: optionFontSize,
                               color: isSelected
                                   ? Theme.of(context).colorScheme.primary
-                                  : Colors.grey[600],
+                                  : null,
                             ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Text(
-                                option['label'],
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                            ),
-                            if (isSelected)
-                              Icon(
-                                Icons.check_circle,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                          ],
+                          ),
                         ),
-                      ),
+                        if (isSelected)
+                          Icon(
+                            Icons.check_circle,
+                            size: iconSize,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                      ],
                     ),
                   ),
-                );
-              },
+                ),
+              );
+            },
+          ),
+        ),
+        SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextButton(
+              onPressed: widget.onPrevious,
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.5,
+                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
+                ),
+              ),
+              child: Text(
+                l10n.back,
+                style: TextStyle(fontSize: buttonFontSize),
+              ),
             ),
-          ),
-          const SizedBox(height: 24),
-          Row(
-            children: [
-              Expanded(
-                child: OutlinedButton(
-                  onPressed: onPrevious,
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    l10n.back,
-                    style: const TextStyle(fontSize: 16),
-                  ),
+            ElevatedButton(
+              onPressed: selectedGender != null ? widget.onNext : null,
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? BoxSize.buttonPadding * 2 : BoxSize.buttonPadding * 3,
+                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(BoxSize.buttonRadius),
                 ),
               ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: onNext,
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    l10n.next,
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                ),
+              child: Text(
+                l10n.next,
+                style: TextStyle(fontSize: buttonFontSize),
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 } 

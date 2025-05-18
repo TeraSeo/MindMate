@@ -134,5 +134,17 @@
     "logoutMessage": "本当にログアウトしますか？",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "通知の許可が必要です",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "重要な更新を受け取るには、デバイスの設定で通知を有効にしてください。",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

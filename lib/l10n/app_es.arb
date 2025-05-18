@@ -134,5 +134,17 @@
     "logoutMessage": "¿Estás seguro de que quieres cerrar sesión?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "Notificaciones Requeridas",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "Por favor, activa las notificaciones en la configuración del dispositivo para recibir actualizaciones importantes.",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "Aceptar",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

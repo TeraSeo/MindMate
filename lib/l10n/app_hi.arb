@@ -131,8 +131,20 @@
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
-    "logoutMessage": "क्या आप वाकई लॉग आउट करना चाहते हैं?",
+    "logoutMessage": "क्या आप वाकई लॉगआउट करना चाहते हैं?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "सूचनाएं आवश्यक हैं",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "महत्वपूर्ण अपडेट प्राप्त करने के लिए कृपया डिवाइस सेटिंग्स में सूचनाएं सक्षम करें।",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "ठीक है",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

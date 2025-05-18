@@ -134,5 +134,17 @@
     "completeSetup": "Complete Setup",
     "@completeSetup": {
         "description": "Complete setup button text"
+    },
+    "notificationsRequired": "Notifications Required",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "Please enable notifications in your device settings to receive important updates.",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

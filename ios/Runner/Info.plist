@@ -45,5 +45,31 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Not used in app</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Not used in app</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Not used in app</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Not used in app</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
+	<key>PermissionGroupNotification</key>
+	<string>We need to send you notifications for important updates and messages.</string>
+	<key>NSUserNotificationUsageDescription</key>
+	<string>We need to send you notifications for important updates and messages.</string>
+	<key>NSNotificationCenterUsageDescription</key>
+	<string>We need to send you notifications for important updates and messages.</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+		<string>push-notification</string>
+	</array>
 </dict>
 </plist>

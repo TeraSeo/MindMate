@@ -134,5 +134,17 @@
     "logoutMessage": "Êtes-vous sûr de vouloir vous déconnecter ?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "Notifications Requises",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "Veuillez activer les notifications dans les paramètres de l'appareil pour recevoir les mises à jour importantes.",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

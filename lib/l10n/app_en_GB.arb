@@ -134,5 +134,17 @@
     "logoutMessage": "Are you sure you want to logout?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "Notifications Required",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "Please enable notifications in device settings to receive important updates.",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "OK",
+    "@ok": {
+        "description": "OK button text"
     }
 } 

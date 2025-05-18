@@ -134,5 +134,17 @@
     "logoutMessage": "정말 로그아웃 하시겠습니까?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
+    },
+    "notificationsRequired": "알림 권한 필요",
+    "@notificationsRequired": {
+        "description": "Title for the notifications required dialog"
+    },
+    "notificationsRequiredMessage": "중요한 업데이트를 받으려면 기기 설정에서 알림을 활성화해 주세요.",
+    "@notificationsRequiredMessage": {
+        "description": "Message shown when notifications permission is denied"
+    },
+    "ok": "확인",
+    "@ok": {
+        "description": "OK button text"
     }
 } 
