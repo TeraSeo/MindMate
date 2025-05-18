@@ -1,0 +1,138 @@
+{
+    "appTitle": "AI Chatter",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcome": "欢迎使用 AI Chatter！",
+    "@welcome": {
+        "description": "Welcome message"
+    },
+    "settings": "设置",
+    "@settings": {
+        "description": "Settings menu title"
+    },
+    "language": "语言",
+    "@language": {
+        "description": "Language selection option"
+    },
+    "setupRequired": "需要设置",
+    "@setupRequired": {
+        "description": "Title for the setup required dialog"
+    },
+    "setupRequiredMessage": "请在继续之前完成个人资料设置。",
+    "@setupRequiredMessage": {
+        "description": "Message shown in the setup required dialog"
+    },
+    "goToSetup": "前往设置",
+    "@goToSetup": {
+        "description": "Button text to navigate to setup page"
+    },
+    "cancel": "取消",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "nameStepTitle": "您的名字是什么？",
+    "@nameStepTitle": {
+        "description": "Title for the name setup step"
+    },
+    "nameStepDescription": "请输入您希望被称呼的名字。",
+    "@nameStepDescription": {
+        "description": "Description for the name setup step"
+    },
+    "nameFieldLabel": "姓名",
+    "@nameFieldLabel": {
+        "description": "Label for the name input field"
+    },
+    "nameFieldError": "请输入您的名字",
+    "@nameFieldError": {
+        "description": "Error message when name field is empty"
+    },
+    "nameFieldLengthError": "名字至少需要2个字符",
+    "@nameFieldLengthError": {
+        "description": "Error message when name is too short"
+    },
+    "ageGroupStepTitle": "您属于哪个年龄段？",
+    "@ageGroupStepTitle": {
+        "description": "Title for the age group setup step"
+    },
+    "ageGroupStepDescription": "选择您的年龄段，帮助我们为您提供个性化体验。",
+    "@ageGroupStepDescription": {
+        "description": "Description for the age group setup step"
+    },
+    "genderStepTitle": "您的性别是什么？",
+    "@genderStepTitle": {
+        "description": "Title for the gender setup step"
+    },
+    "genderStepDescription": "选择您的性别，帮助我们为您提供个性化体验。",
+    "@genderStepDescription": {
+        "description": "Description for the gender setup step"
+    },
+    "notificationStepTitle": "启用通知？",
+    "@notificationStepTitle": {
+        "description": "Title for the notification setup step"
+    },
+    "notificationStepDescription": "及时获取重要消息和更新。",
+    "@notificationStepDescription": {
+        "description": "Description for the notification setup step"
+    },
+    "pushNotificationsTitle": "推送通知",
+    "@pushNotificationsTitle": {
+        "description": "Title for push notifications section"
+    },
+    "pushNotificationsDescription": "实时获取对话更新",
+    "@pushNotificationsDescription": {
+        "description": "Description for push notifications"
+    },
+    "notificationTypesTitle": "您将收到以下通知：",
+    "@notificationTypesTitle": {
+        "description": "Title for notification types section"
+    },
+    "newMessagesNotification": "新消息",
+    "@newMessagesNotification": {
+        "description": "Label for new messages notification type"
+    },
+    "appUpdatesNotification": "应用更新",
+    "@appUpdatesNotification": {
+        "description": "Label for app updates notification type"
+    },
+    "announcementsNotification": "重要公告",
+    "@announcementsNotification": {
+        "description": "Label for announcements notification type"
+    },
+    "back": "返回",
+    "@back": {
+        "description": "Back button text"
+    },
+    "next": "下一步",
+    "@next": {
+        "description": "Next button text"
+    },
+    "completeSetup": "完成设置",
+    "@completeSetup": {
+        "description": "Complete setup button text"
+    },
+    "home": "首页",
+    "@home": {
+        "description": "Home navigation item"
+    },
+    "profile": "个人资料",
+    "@profile": {
+        "description": "Profile navigation item"
+    },
+    "about": "关于",
+    "@about": {
+        "description": "About navigation item"
+    },
+    "logout": "退出登录",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "logoutConfirmation": "确认退出",
+    "@logoutConfirmation": {
+        "description": "Logout confirmation dialog title"
+    },
+    "logoutMessage": "确定要退出登录吗？",
+    "@logoutMessage": {
+        "description": "Logout confirmation message"
+    }
+} 

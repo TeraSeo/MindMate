@@ -1,0 +1,138 @@
+{
+    "appTitle": "AI Chatter",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcome": "AI Chatter में आपका स्वागत है!",
+    "@welcome": {
+        "description": "Welcome message"
+    },
+    "settings": "सेटिंग्स",
+    "@settings": {
+        "description": "Settings menu title"
+    },
+    "language": "भाषा",
+    "@language": {
+        "description": "Language selection option"
+    },
+    "setupRequired": "सेटअप आवश्यक है",
+    "@setupRequired": {
+        "description": "Title for the setup required dialog"
+    },
+    "setupRequiredMessage": "कृपया आगे बढ़ने से पहले अपनी प्रोफ़ाइल सेटअप पूरा करें।",
+    "@setupRequiredMessage": {
+        "description": "Message shown in the setup required dialog"
+    },
+    "goToSetup": "सेटअप पर जाएं",
+    "@goToSetup": {
+        "description": "Button text to navigate to setup page"
+    },
+    "cancel": "रद्द करें",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "nameStepTitle": "आपका नाम क्या है?",
+    "@nameStepTitle": {
+        "description": "Title for the name setup step"
+    },
+    "nameStepDescription": "कृपया वह नाम दर्ज करें जिससे आप पुकारे जाना चाहते हैं।",
+    "@nameStepDescription": {
+        "description": "Description for the name setup step"
+    },
+    "nameFieldLabel": "नाम",
+    "@nameFieldLabel": {
+        "description": "Label for the name input field"
+    },
+    "nameFieldError": "कृपया अपना नाम दर्ज करें",
+    "@nameFieldError": {
+        "description": "Error message when name field is empty"
+    },
+    "nameFieldLengthError": "नाम कम से कम 2 अक्षर का होना चाहिए",
+    "@nameFieldLengthError": {
+        "description": "Error message when name is too short"
+    },
+    "ageGroupStepTitle": "आपका आयु वर्ग क्या है?",
+    "@ageGroupStepTitle": {
+        "description": "Title for the age group setup step"
+    },
+    "ageGroupStepDescription": "अपना अनुभव व्यक्तिगत बनाने में हमारी मदद करने के लिए अपना आयु वर्ग चुनें।",
+    "@ageGroupStepDescription": {
+        "description": "Description for the age group setup step"
+    },
+    "genderStepTitle": "आपका लिंग क्या है?",
+    "@genderStepTitle": {
+        "description": "Title for the gender setup step"
+    },
+    "genderStepDescription": "अपना अनुभव व्यक्तिगत बनाने में हमारी मदद करने के लिए अपना लिंग चुनें।",
+    "@genderStepDescription": {
+        "description": "Description for the gender setup step"
+    },
+    "notificationStepTitle": "सूचनाएं सक्षम करें?",
+    "@notificationStepTitle": {
+        "description": "Title for the notification setup step"
+    },
+    "notificationStepDescription": "महत्वपूर्ण संदेशों और अपडेट से अवगत रहें।",
+    "@notificationStepDescription": {
+        "description": "Description for the notification setup step"
+    },
+    "pushNotificationsTitle": "पुश सूचनाएं",
+    "@pushNotificationsTitle": {
+        "description": "Title for push notifications section"
+    },
+    "pushNotificationsDescription": "अपनी बातचीत के बारे में तत्काल अपडेट प्राप्त करें",
+    "@pushNotificationsDescription": {
+        "description": "Description for push notifications"
+    },
+    "notificationTypesTitle": "आपको इनके लिए सूचनाएं मिलेंगी:",
+    "@notificationTypesTitle": {
+        "description": "Title for notification types section"
+    },
+    "newMessagesNotification": "नए संदेश",
+    "@newMessagesNotification": {
+        "description": "Label for new messages notification type"
+    },
+    "appUpdatesNotification": "ऐप अपडेट",
+    "@appUpdatesNotification": {
+        "description": "Label for app updates notification type"
+    },
+    "announcementsNotification": "महत्वपूर्ण घोषणाएं",
+    "@announcementsNotification": {
+        "description": "Label for announcements notification type"
+    },
+    "back": "वापस",
+    "@back": {
+        "description": "Back button text"
+    },
+    "next": "अगला",
+    "@next": {
+        "description": "Next button text"
+    },
+    "completeSetup": "सेटअप पूरा करें",
+    "@completeSetup": {
+        "description": "Complete setup button text"
+    },
+    "home": "होम",
+    "@home": {
+        "description": "Home navigation item"
+    },
+    "profile": "प्रोफ़ाइल",
+    "@profile": {
+        "description": "Profile navigation item"
+    },
+    "about": "जानकारी",
+    "@about": {
+        "description": "About navigation item"
+    },
+    "logout": "लॉग आउट",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "logoutConfirmation": "लॉग आउट की पुष्टि करें",
+    "@logoutConfirmation": {
+        "description": "Logout confirmation dialog title"
+    },
+    "logoutMessage": "क्या आप वाकई लॉग आउट करना चाहते हैं?",
+    "@logoutMessage": {
+        "description": "Logout confirmation message"
+    }
+} 

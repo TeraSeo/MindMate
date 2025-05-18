@@ -1,0 +1,138 @@
+{
+    "appTitle": "AI Chatter",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcome": "¡Bienvenido a AI Chatter!",
+    "@welcome": {
+        "description": "Welcome message"
+    },
+    "settings": "Configuración",
+    "@settings": {
+        "description": "Settings menu title"
+    },
+    "language": "Idioma",
+    "@language": {
+        "description": "Language selection option"
+    },
+    "setupRequired": "Configuración Requerida",
+    "@setupRequired": {
+        "description": "Title for the setup required dialog"
+    },
+    "setupRequiredMessage": "Por favor, complete la configuración de su perfil antes de continuar.",
+    "@setupRequiredMessage": {
+        "description": "Message shown in the setup required dialog"
+    },
+    "goToSetup": "Ir a Configuración",
+    "@goToSetup": {
+        "description": "Button text to navigate to setup page"
+    },
+    "cancel": "Cancelar",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "nameStepTitle": "¿Cuál es tu nombre?",
+    "@nameStepTitle": {
+        "description": "Title for the name setup step"
+    },
+    "nameStepDescription": "Por favor, ingresa tu nombre como deseas que te llamen.",
+    "@nameStepDescription": {
+        "description": "Description for the name setup step"
+    },
+    "nameFieldLabel": "Nombre",
+    "@nameFieldLabel": {
+        "description": "Label for the name input field"
+    },
+    "nameFieldError": "Por favor, ingresa tu nombre",
+    "@nameFieldError": {
+        "description": "Error message when name field is empty"
+    },
+    "nameFieldLengthError": "El nombre debe tener al menos 2 caracteres",
+    "@nameFieldLengthError": {
+        "description": "Error message when name is too short"
+    },
+    "ageGroupStepTitle": "¿Cuál es tu grupo de edad?",
+    "@ageGroupStepTitle": {
+        "description": "Title for the age group setup step"
+    },
+    "ageGroupStepDescription": "Selecciona tu grupo de edad para ayudarnos a personalizar tu experiencia.",
+    "@ageGroupStepDescription": {
+        "description": "Description for the age group setup step"
+    },
+    "genderStepTitle": "¿Cuál es tu género?",
+    "@genderStepTitle": {
+        "description": "Title for the gender setup step"
+    },
+    "genderStepDescription": "Selecciona tu género para ayudarnos a personalizar tu experiencia.",
+    "@genderStepDescription": {
+        "description": "Description for the gender setup step"
+    },
+    "notificationStepTitle": "¿Activar notificaciones?",
+    "@notificationStepTitle": {
+        "description": "Title for the notification setup step"
+    },
+    "notificationStepDescription": "Mantente actualizado con mensajes y actualizaciones importantes.",
+    "@notificationStepDescription": {
+        "description": "Description for the notification setup step"
+    },
+    "pushNotificationsTitle": "Notificaciones Push",
+    "@pushNotificationsTitle": {
+        "description": "Title for push notifications section"
+    },
+    "pushNotificationsDescription": "Recibe actualizaciones instantáneas sobre tus conversaciones",
+    "@pushNotificationsDescription": {
+        "description": "Description for push notifications"
+    },
+    "notificationTypesTitle": "Recibirás notificaciones para:",
+    "@notificationTypesTitle": {
+        "description": "Title for notification types section"
+    },
+    "newMessagesNotification": "Nuevos Mensajes",
+    "@newMessagesNotification": {
+        "description": "Label for new messages notification type"
+    },
+    "appUpdatesNotification": "Actualizaciones de la App",
+    "@appUpdatesNotification": {
+        "description": "Label for app updates notification type"
+    },
+    "announcementsNotification": "Anuncios Importantes",
+    "@announcementsNotification": {
+        "description": "Label for announcements notification type"
+    },
+    "back": "Atrás",
+    "@back": {
+        "description": "Back button text"
+    },
+    "next": "Siguiente",
+    "@next": {
+        "description": "Next button text"
+    },
+    "completeSetup": "Completar Configuración",
+    "@completeSetup": {
+        "description": "Complete setup button text"
+    },
+    "home": "Inicio",
+    "@home": {
+        "description": "Home navigation item"
+    },
+    "profile": "Perfil",
+    "@profile": {
+        "description": "Profile navigation item"
+    },
+    "about": "Acerca de",
+    "@about": {
+        "description": "About navigation item"
+    },
+    "logout": "Cerrar sesión",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "logoutConfirmation": "Confirmar cierre de sesión",
+    "@logoutConfirmation": {
+        "description": "Logout confirmation dialog title"
+    },
+    "logoutMessage": "¿Estás seguro de que quieres cerrar sesión?",
+    "@logoutMessage": {
+        "description": "Logout confirmation message"
+    }
+} 

@@ -1,0 +1,138 @@
+{
+    "appTitle": "AI Chatter",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcome": "Welcome to AI Chatter!",
+    "@welcome": {
+        "description": "Welcome message"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Settings menu title"
+    },
+    "language": "Language",
+    "@language": {
+        "description": "Language selection option"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Home navigation item"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "Profile navigation item"
+    },
+    "about": "About",
+    "@about": {
+        "description": "About navigation item"
+    },
+    "logout": "Logout",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "logoutConfirmation": "Confirm Logout",
+    "@logoutConfirmation": {
+        "description": "Logout confirmation dialog title"
+    },
+    "logoutMessage": "Are you sure you want to logout?",
+    "@logoutMessage": {
+        "description": "Logout confirmation message"
+    },
+    "setupRequired": "Setup Required",
+    "@setupRequired": {
+        "description": "Title for the setup required dialog"
+    },
+    "setupRequiredMessage": "Please complete your profile setup before proceeding.",
+    "@setupRequiredMessage": {
+        "description": "Message shown in the setup required dialog"
+    },
+    "goToSetup": "Go to Setup",
+    "@goToSetup": {
+        "description": "Button text to navigate to setup page"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "nameStepTitle": "What's your name?",
+    "@nameStepTitle": {
+        "description": "Title for the name setup step"
+    },
+    "nameStepDescription": "Please enter your name as you'd like to be called.",
+    "@nameStepDescription": {
+        "description": "Description for the name setup step"
+    },
+    "nameFieldLabel": "Name",
+    "@nameFieldLabel": {
+        "description": "Label for the name input field"
+    },
+    "nameFieldError": "Please enter your name",
+    "@nameFieldError": {
+        "description": "Error message when name field is empty"
+    },
+    "nameFieldLengthError": "Name must be at least 2 characters",
+    "@nameFieldLengthError": {
+        "description": "Error message when name is too short"
+    },
+    "ageGroupStepTitle": "What's your age group?",
+    "@ageGroupStepTitle": {
+        "description": "Title for the age group setup step"
+    },
+    "ageGroupStepDescription": "Select your age group to help us personalize your experience.",
+    "@ageGroupStepDescription": {
+        "description": "Description for the age group setup step"
+    },
+    "genderStepTitle": "What's your gender?",
+    "@genderStepTitle": {
+        "description": "Title for the gender setup step"
+    },
+    "genderStepDescription": "Select your gender to help us personalize your experience.",
+    "@genderStepDescription": {
+        "description": "Description for the gender setup step"
+    },
+    "notificationStepTitle": "Enable Notifications?",
+    "@notificationStepTitle": {
+        "description": "Title for the notification setup step"
+    },
+    "notificationStepDescription": "Stay updated with important messages and updates.",
+    "@notificationStepDescription": {
+        "description": "Description for the notification setup step"
+    },
+    "pushNotificationsTitle": "Push Notifications",
+    "@pushNotificationsTitle": {
+        "description": "Title for push notifications section"
+    },
+    "pushNotificationsDescription": "Get instant updates about your conversations",
+    "@pushNotificationsDescription": {
+        "description": "Description for push notifications"
+    },
+    "notificationTypesTitle": "You'll receive notifications for:",
+    "@notificationTypesTitle": {
+        "description": "Title for notification types section"
+    },
+    "newMessagesNotification": "New Messages",
+    "@newMessagesNotification": {
+        "description": "Label for new messages notification type"
+    },
+    "appUpdatesNotification": "App Updates",
+    "@appUpdatesNotification": {
+        "description": "Label for app updates notification type"
+    },
+    "announcementsNotification": "Important Announcements",
+    "@announcementsNotification": {
+        "description": "Label for announcements notification type"
+    },
+    "back": "Back",
+    "@back": {
+        "description": "Back button text"
+    },
+    "next": "Next",
+    "@next": {
+        "description": "Next button text"
+    },
+    "completeSetup": "Complete Setup",
+    "@completeSetup": {
+        "description": "Complete setup button text"
+    }
+} 

@@ -1,0 +1,138 @@
+{
+    "appTitle": "AI Chatter",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcome": "AI Chatterへようこそ！",
+    "@welcome": {
+        "description": "Welcome message"
+    },
+    "settings": "設定",
+    "@settings": {
+        "description": "Settings menu title"
+    },
+    "language": "言語",
+    "@language": {
+        "description": "Language selection option"
+    },
+    "setupRequired": "セットアップが必要です",
+    "@setupRequired": {
+        "description": "Title for the setup required dialog"
+    },
+    "setupRequiredMessage": "続行する前にプロフィールの設定を完了してください。",
+    "@setupRequiredMessage": {
+        "description": "Message shown in the setup required dialog"
+    },
+    "goToSetup": "セットアップへ",
+    "@goToSetup": {
+        "description": "Button text to navigate to setup page"
+    },
+    "cancel": "キャンセル",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "nameStepTitle": "お名前は？",
+    "@nameStepTitle": {
+        "description": "Title for the name setup step"
+    },
+    "nameStepDescription": "呼ばれたい名前を入力してください。",
+    "@nameStepDescription": {
+        "description": "Description for the name setup step"
+    },
+    "nameFieldLabel": "名前",
+    "@nameFieldLabel": {
+        "description": "Label for the name input field"
+    },
+    "nameFieldError": "名前を入力してください",
+    "@nameFieldError": {
+        "description": "Error message when name field is empty"
+    },
+    "nameFieldLengthError": "名前は2文字以上である必要があります",
+    "@nameFieldLengthError": {
+        "description": "Error message when name is too short"
+    },
+    "ageGroupStepTitle": "年齢層は？",
+    "@ageGroupStepTitle": {
+        "description": "Title for the age group setup step"
+    },
+    "ageGroupStepDescription": "より良い体験のために年齢層を選択してください。",
+    "@ageGroupStepDescription": {
+        "description": "Description for the age group setup step"
+    },
+    "genderStepTitle": "性別は？",
+    "@genderStepTitle": {
+        "description": "Title for the gender setup step"
+    },
+    "genderStepDescription": "より良い体験のために性別を選択してください。",
+    "@genderStepDescription": {
+        "description": "Description for the gender setup step"
+    },
+    "notificationStepTitle": "通知を有効にしますか？",
+    "@notificationStepTitle": {
+        "description": "Title for the notification setup step"
+    },
+    "notificationStepDescription": "重要なメッセージやアップデートを受け取ります。",
+    "@notificationStepDescription": {
+        "description": "Description for the notification setup step"
+    },
+    "pushNotificationsTitle": "プッシュ通知",
+    "@pushNotificationsTitle": {
+        "description": "Title for push notifications section"
+    },
+    "pushNotificationsDescription": "会話の即時更新を受け取ります",
+    "@pushNotificationsDescription": {
+        "description": "Description for push notifications"
+    },
+    "notificationTypesTitle": "以下の通知を受け取ります：",
+    "@notificationTypesTitle": {
+        "description": "Title for notification types section"
+    },
+    "newMessagesNotification": "新着メッセージ",
+    "@newMessagesNotification": {
+        "description": "Label for new messages notification type"
+    },
+    "appUpdatesNotification": "アプリのアップデート",
+    "@appUpdatesNotification": {
+        "description": "Label for app updates notification type"
+    },
+    "announcementsNotification": "重要なお知らせ",
+    "@announcementsNotification": {
+        "description": "Label for announcements notification type"
+    },
+    "back": "戻る",
+    "@back": {
+        "description": "Back button text"
+    },
+    "next": "次へ",
+    "@next": {
+        "description": "Next button text"
+    },
+    "completeSetup": "セットアップを完了",
+    "@completeSetup": {
+        "description": "Complete setup button text"
+    },
+    "home": "ホーム",
+    "@home": {
+        "description": "Home navigation item"
+    },
+    "profile": "プロフィール",
+    "@profile": {
+        "description": "Profile navigation item"
+    },
+    "about": "アプリについて",
+    "@about": {
+        "description": "About navigation item"
+    },
+    "logout": "ログアウト",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "logoutConfirmation": "ログアウトの確認",
+    "@logoutConfirmation": {
+        "description": "Logout confirmation dialog title"
+    },
+    "logoutMessage": "本当にログアウトしますか？",
+    "@logoutMessage": {
+        "description": "Logout confirmation message"
+    }
+} 

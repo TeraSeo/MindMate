@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "563458320897",
+    "project_id": "mindmate-ea623",
+    "storage_bucket": "mindmate-ea623.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563458320897:android:79b72a1f1f040f1230ee00",
+        "android_client_info": {
+          "package_name": "com.example.ai_chatter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpaGgedtJGqpRcP4EjKY2mLQwgQdcY-BE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

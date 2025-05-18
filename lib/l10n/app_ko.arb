@@ -1,0 +1,138 @@
+{
+    "appTitle": "AI Chatter",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "welcome": "AI Chatter에 오신 것을 환영합니다!",
+    "@welcome": {
+        "description": "Welcome message"
+    },
+    "settings": "설정",
+    "@settings": {
+        "description": "Settings menu title"
+    },
+    "language": "언어",
+    "@language": {
+        "description": "Language selection option"
+    },
+    "setupRequired": "설정이 필요합니다",
+    "@setupRequired": {
+        "description": "Title for the setup required dialog"
+    },
+    "setupRequiredMessage": "계속하기 전에 프로필 설정을 완료해 주세요.",
+    "@setupRequiredMessage": {
+        "description": "Message shown in the setup required dialog"
+    },
+    "goToSetup": "설정하기",
+    "@goToSetup": {
+        "description": "Button text to navigate to setup page"
+    },
+    "cancel": "취소",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "nameStepTitle": "이름이 무엇인가요?",
+    "@nameStepTitle": {
+        "description": "Title for the name setup step"
+    },
+    "nameStepDescription": "불리고 싶은 이름을 입력해 주세요.",
+    "@nameStepDescription": {
+        "description": "Description for the name setup step"
+    },
+    "nameFieldLabel": "이름",
+    "@nameFieldLabel": {
+        "description": "Label for the name input field"
+    },
+    "nameFieldError": "이름을 입력해 주세요",
+    "@nameFieldError": {
+        "description": "Error message when name field is empty"
+    },
+    "nameFieldLengthError": "이름은 최소 2자 이상이어야 합니다",
+    "@nameFieldLengthError": {
+        "description": "Error message when name is too short"
+    },
+    "ageGroupStepTitle": "연령대가 어떻게 되시나요?",
+    "@ageGroupStepTitle": {
+        "description": "Title for the age group setup step"
+    },
+    "ageGroupStepDescription": "더 나은 경험을 위해 연령대를 선택해 주세요.",
+    "@ageGroupStepDescription": {
+        "description": "Description for the age group setup step"
+    },
+    "genderStepTitle": "성별이 어떻게 되시나요?",
+    "@genderStepTitle": {
+        "description": "Title for the gender setup step"
+    },
+    "genderStepDescription": "더 나은 경험을 위해 성별을 선택해 주세요.",
+    "@genderStepDescription": {
+        "description": "Description for the gender setup step"
+    },
+    "notificationStepTitle": "알림을 활성화하시겠습니까?",
+    "@notificationStepTitle": {
+        "description": "Title for the notification setup step"
+    },
+    "notificationStepDescription": "중요한 메시지와 업데이트를 받아보세요.",
+    "@notificationStepDescription": {
+        "description": "Description for the notification setup step"
+    },
+    "pushNotificationsTitle": "푸시 알림",
+    "@pushNotificationsTitle": {
+        "description": "Title for push notifications section"
+    },
+    "pushNotificationsDescription": "대화 내용을 실시간으로 받아보세요",
+    "@pushNotificationsDescription": {
+        "description": "Description for push notifications"
+    },
+    "notificationTypesTitle": "다음 알림을 받게 됩니다:",
+    "@notificationTypesTitle": {
+        "description": "Title for notification types section"
+    },
+    "newMessagesNotification": "새 메시지",
+    "@newMessagesNotification": {
+        "description": "Label for new messages notification type"
+    },
+    "appUpdatesNotification": "앱 업데이트",
+    "@appUpdatesNotification": {
+        "description": "Label for app updates notification type"
+    },
+    "announcementsNotification": "중요 공지사항",
+    "@announcementsNotification": {
+        "description": "Label for announcements notification type"
+    },
+    "back": "이전",
+    "@back": {
+        "description": "Back button text"
+    },
+    "next": "다음",
+    "@next": {
+        "description": "Next button text"
+    },
+    "completeSetup": "설정 완료",
+    "@completeSetup": {
+        "description": "Complete setup button text"
+    },
+    "home": "홈",
+    "@home": {
+        "description": "Home navigation item"
+    },
+    "profile": "프로필",
+    "@profile": {
+        "description": "Profile navigation item"
+    },
+    "about": "정보",
+    "@about": {
+        "description": "About navigation item"
+    },
+    "logout": "로그아웃",
+    "@logout": {
+        "description": "Logout button text"
+    },
+    "logoutConfirmation": "로그아웃 확인",
+    "@logoutConfirmation": {
+        "description": "Logout confirmation dialog title"
+    },
+    "logoutMessage": "정말 로그아웃 하시겠습니까?",
+    "@logoutMessage": {
+        "description": "Logout confirmation message"
+    }
+} 
