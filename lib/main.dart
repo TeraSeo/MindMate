@@ -1,12 +1,15 @@
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/firebase_options.dart';
 import 'package:ai_chatter/providers/LocaleProvider.dart';
+import 'package:ai_chatter/providers/UserProvider.dart';
 import 'package:ai_chatter/screens/SplashScreen.dart';
+import 'package:ai_chatter/screens/auth/LoginPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   // Ensure platform channels are properly initialized
@@ -19,22 +22,33 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  // Initialize SharedPreferences
+  final prefs = await SharedPreferences.getInstance();
   
-  runApp(const MyApp());
+  runApp(MyApp(prefs: prefs));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final SharedPreferences prefs;
+  
+  const MyApp({super.key, required this.prefs});
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) {
-        final provider = LocaleProvider();
-        // Initialize the provider
-        provider.initialize();
-        return provider;
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) {
+            final provider = LocaleProvider();
+            provider.initialize();
+            return provider;
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
+        ),
+      ],
       child: Consumer<LocaleProvider>(
         builder: (context, localeProvider, child) {
           return MaterialApp(
@@ -96,6 +110,14 @@ class MyApp extends StatelessWidget {
               return child ?? const SizedBox();
             },
             home: const SplashScreen(),
+            routes: {
+              '/login': (context) => const LoginPage(),
+            },
+            onUnknownRoute: (settings) {
+              return MaterialPageRoute(
+                builder: (context) => const LoginPage(),
+              );
+            },
           );
         },
       ),

@@ -6,7 +6,7 @@ import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
 import 'package:ai_chatter/screens/auth/LoginPage.dart';
 import 'package:ai_chatter/screens/HomePage.dart';
-import 'package:ai_chatter/screens/setup/UserSetupPage.dart';
+import 'package:ai_chatter/screens/setup/user/UserSetupPage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -146,5 +146,67 @@
     "ok": "OK",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "Personal Information",
+    "@personalInformation": {
+        "description": "Title for personal information section"
+    },
+    "name": "Name",
+    "@name": {
+        "description": "Label for name field"
+    },
+    "pleaseEnterName": "Please enter your name",
+    "@pleaseEnterName": {
+        "description": "Error message when name is empty"
+    },
+    "ageGroup": "Age Group",
+    "@ageGroup": {
+        "description": "Label for age group field"
+    },
+    "gender": "Gender",
+    "@gender": {
+        "description": "Label for gender field"
+    },
+    "male": "Male",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "Female",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "Non-binary",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "Prefer not to say",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "notifications": "Notifications",
+    "@notifications": {
+        "description": "Title for notifications section"
+    },
+    "enableNotifications": "Enable Notifications",
+    "@enableNotifications": {
+        "description": "Label for enable notifications switch"
+    },
+    "saveChanges": "Save Changes",
+    "@saveChanges": {
+        "description": "Save changes button text"
+    },
+    "profileUpdated": "Profile updated successfully",
+    "@profileUpdated": {
+        "description": "Success message when profile is updated"
+    },
+    "welcomeMessage": "Welcome to AI Chatter",
+    "pleaseCompleteSetup": "Please complete your profile setup before starting a chat.",
+    "errorSavingProfile": "Error saving profile. Please try again.",
+    "setupProfile": "Setup Profile",
+    "newChat": "New Chat",
+    "chatSetup": "Chat Setup",
+    "chatTopic": "Chat Topic",
+    "pleaseEnterTopic": "Please enter a chat topic",
+    "startChat": "Start Chat",
+    "errorStartingChat": "Error starting chat. Please try again."
 } 

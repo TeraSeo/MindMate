@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI Chatter",
+    "appTitle": "AI चैटर",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "AI Chatter में आपका स्वागत है!",
+    "welcome": "AI चैटर में आपका स्वागत है!",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -19,7 +19,7 @@
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "कृपया आगे बढ़ने से पहले अपनी प्रोफ़ाइल सेटअप पूरा करें।",
+    "setupRequiredMessage": "कृपया आगे बढ़ने से पहले अपनी प्रोफ़ाइल सेटअप पूरी करें।",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
@@ -51,11 +51,11 @@
     "@nameFieldLengthError": {
         "description": "Error message when name is too short"
     },
-    "ageGroupStepTitle": "आपका आयु वर्ग क्या है?",
+    "ageGroupStepTitle": "आपकी आयु वर्ग क्या है?",
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "अपना अनुभव व्यक्तिगत बनाने में हमारी मदद करने के लिए अपना आयु वर्ग चुनें।",
+    "ageGroupStepDescription": "अपने अनुभव को व्यक्तिगत बनाने के लिए अपनी आयु वर्ग चुनें।",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,7 +63,7 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "अपना अनुभव व्यक्तिगत बनाने में हमारी मदद करने के लिए अपना लिंग चुनें।",
+    "genderStepDescription": "अपने अनुभव को व्यक्तिगत बनाने के लिए अपना लिंग चुनें।",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,7 +71,7 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "महत्वपूर्ण संदेशों और अपडेट से अवगत रहें।",
+    "notificationStepDescription": "महत्वपूर्ण संदेशों और अपडेट के साथ अपडेट रहें।",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
@@ -79,11 +79,11 @@
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "अपनी बातचीत के बारे में तत्काल अपडेट प्राप्त करें",
+    "pushNotificationsDescription": "अपनी बातचीत के बारे में तुरंत अपडेट प्राप्त करें",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
-    "notificationTypesTitle": "आपको इनके लिए सूचनाएं मिलेंगी:",
+    "notificationTypesTitle": "आपको निम्नलिखित के लिए सूचनाएं मिलेंगी:",
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
@@ -131,7 +131,7 @@
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
-    "logoutMessage": "क्या आप वाकई लॉगआउट करना चाहते हैं?",
+    "logoutMessage": "क्या आप वाकई लॉग आउट करना चाहते हैं?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
@@ -139,12 +139,48 @@
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "महत्वपूर्ण अपडेट प्राप्त करने के लिए कृपया डिवाइस सेटिंग्स में सूचनाएं सक्षम करें।",
+    "notificationsRequiredMessage": "महत्वपूर्ण अपडेट प्राप्त करने के लिए कृपया अपनी डिवाइस सेटिंग्स में सूचनाएं सक्षम करें।",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "ठीक है",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "व्यक्तिगत जानकारी",
+    "name": "नाम",
+    "pleaseEnterName": "कृपया अपना नाम दर्ज करें",
+    "ageGroup": "आयु वर्ग",
+    "gender": "लिंग",
+    "male": "पुरुष",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "महिला",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "नॉन-बाइनरी",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "उत्तर नहीं देना चाहते",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "other": "अन्य",
+    "notifications": "सूचनाएं",
+    "enableNotifications": "सूचनाएं सक्षम करें",
+    "saveChanges": "परिवर्तन सहेजें",
+    "profileUpdated": "प्रोफ़ाइल सफलतापूर्वक अपडेट की गई",
+    "welcomeMessage": "AI Chatter में आपका स्वागत है",
+    "pleaseCompleteSetup": "चैट शुरू करने से पहले कृपया अपनी प्रोफ़ाइल सेटअप पूरा करें।",
+    "errorSavingProfile": "प्रोफ़ाइल सहेजने में त्रुटि। कृपया पुनः प्रयास करें।",
+    "setupProfile": "प्रोफ़ाइल सेटअप",
+    "newChat": "नई चैट",
+    "chatSetup": "चैट सेटअप",
+    "chatTopic": "चैट विषय",
+    "pleaseEnterTopic": "कृपया चैट के लिए एक विषय दर्ज करें",
+    "startChat": "चैट शुरू करें",
+    "errorStartingChat": "चैट शुरू करने में त्रुटि। कृपया पुनः प्रयास करें।"
 } 

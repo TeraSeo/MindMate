@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI Chatter",
+    "appTitle": "AI 聊天",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "欢迎使用 AI Chatter！",
+    "welcome": "欢迎使用 AI 聊天！",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -19,7 +19,7 @@
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "请在继续之前完成个人资料设置。",
+    "setupRequiredMessage": "请先完成个人资料设置后再继续。",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
@@ -51,19 +51,19 @@
     "@nameFieldLengthError": {
         "description": "Error message when name is too short"
     },
-    "ageGroupStepTitle": "您属于哪个年龄段？",
+    "ageGroupStepTitle": "您的年龄段是？",
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "选择您的年龄段，帮助我们为您提供个性化体验。",
+    "ageGroupStepDescription": "选择您的年龄段以个性化您的体验。",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
-    "genderStepTitle": "您的性别是什么？",
+    "genderStepTitle": "您的性别是？",
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "选择您的性别，帮助我们为您提供个性化体验。",
+    "genderStepDescription": "选择您的性别以个性化您的体验。",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -139,12 +139,48 @@
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "请在设备设置中启用通知，以接收重要更新。",
+    "notificationsRequiredMessage": "请在设备设置中启用通知以接收重要更新。",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "确定",
     "@ok": {
         "description": "OK button text"
+    },
+    "personalInformation": "个人信息",
+    "name": "姓名",
+    "pleaseEnterName": "请输入您的名字",
+    "ageGroup": "年龄段",
+    "gender": "性别",
+    "male": "男性",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "女性",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "other": "其他",
+    "notifications": "通知",
+    "enableNotifications": "启用通知",
+    "saveChanges": "保存更改",
+    "profileUpdated": "个人资料更新成功",
+    "welcomeMessage": "欢迎使用 AI Chatter",
+    "pleaseCompleteSetup": "在开始聊天之前，请先完成个人资料设置。",
+    "errorSavingProfile": "保存个人资料时出错。请重试。",
+    "setupProfile": "设置个人资料",
+    "newChat": "新聊天",
+    "chatSetup": "聊天设置",
+    "chatTopic": "聊天主题",
+    "pleaseEnterTopic": "请输入聊天主题",
+    "startChat": "开始聊天",
+    "errorStartingChat": "启动聊天时出错。请重试。",
+    "nonBinary": "非二元性别",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "不愿回答",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
     }
 } 

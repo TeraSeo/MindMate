@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI Chatter",
+    "appTitle": "AI 채터",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "AI Chatter에 오신 것을 환영합니다!",
+    "welcome": "AI 채터에 오신 것을 환영합니다!",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -15,15 +15,15 @@
     "@language": {
         "description": "Language selection option"
     },
-    "setupRequired": "설정이 필요합니다",
+    "setupRequired": "설정 필요",
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "계속하기 전에 프로필 설정을 완료해 주세요.",
+    "setupRequiredMessage": "계속하기 전에 프로필 설정을 완료해주세요.",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
-    "goToSetup": "설정하기",
+    "goToSetup": "설정으로 이동",
     "@goToSetup": {
         "description": "Button text to navigate to setup page"
     },
@@ -31,11 +31,11 @@
     "@cancel": {
         "description": "Cancel button text"
     },
-    "nameStepTitle": "이름이 무엇인가요?",
+    "nameStepTitle": "이름을 알려주세요",
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "불리고 싶은 이름을 입력해 주세요.",
+    "nameStepDescription": "호칭하고 싶은 이름을 입력해주세요.",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -43,7 +43,7 @@
     "@nameFieldLabel": {
         "description": "Label for the name input field"
     },
-    "nameFieldError": "이름을 입력해 주세요",
+    "nameFieldError": "이름을 입력해주세요",
     "@nameFieldError": {
         "description": "Error message when name field is empty"
     },
@@ -51,19 +51,19 @@
     "@nameFieldLengthError": {
         "description": "Error message when name is too short"
     },
-    "ageGroupStepTitle": "연령대가 어떻게 되시나요?",
+    "ageGroupStepTitle": "연령대를 선택해주세요",
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "더 나은 경험을 위해 연령대를 선택해 주세요.",
+    "ageGroupStepDescription": "맞춤형 경험을 위해 연령대를 선택해주세요.",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
-    "genderStepTitle": "성별이 어떻게 되시나요?",
+    "genderStepTitle": "성별을 선택해주세요",
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "더 나은 경험을 위해 성별을 선택해 주세요.",
+    "genderStepDescription": "맞춤형 경험을 위해 성별을 선택해주세요.",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -79,11 +79,11 @@
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "대화 내용을 실시간으로 받아보세요",
+    "pushNotificationsDescription": "대화에 대한 즉각적인 업데이트를 받아보세요",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
-    "notificationTypesTitle": "다음 알림을 받게 됩니다:",
+    "notificationTypesTitle": "다음 항목에 대한 알림을 받게 됩니다:",
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
@@ -99,7 +99,7 @@
     "@announcementsNotification": {
         "description": "Label for announcements notification type"
     },
-    "back": "이전",
+    "back": "뒤로",
     "@back": {
         "description": "Back button text"
     },
@@ -131,20 +131,56 @@
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
-    "logoutMessage": "정말 로그아웃 하시겠습니까?",
+    "logoutMessage": "로그아웃 하시겠습니까?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
-    "notificationsRequired": "알림 권한 필요",
+    "notificationsRequired": "알림 필요",
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "중요한 업데이트를 받으려면 기기 설정에서 알림을 활성화해 주세요.",
+    "notificationsRequiredMessage": "중요한 업데이트를 받으려면 기기 설정에서 알림을 활성화해주세요.",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "확인",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "개인 정보",
+    "name": "이름",
+    "pleaseEnterName": "이름을 입력해주세요",
+    "ageGroup": "연령대",
+    "gender": "성별",
+    "male": "남성",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "여성",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "논바이너리",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "응답하지 않음",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "other": "기타",
+    "notifications": "알림",
+    "enableNotifications": "알림 활성화",
+    "saveChanges": "변경사항 저장",
+    "profileUpdated": "프로필이 성공적으로 업데이트되었습니다",
+    "welcomeMessage": "AI Chatter에 오신 것을 환영합니다",
+    "pleaseCompleteSetup": "채팅을 시작하기 전에 프로필 설정을 완료해주세요.",
+    "errorSavingProfile": "프로필 저장 중 오류가 발생했습니다. 다시 시도해주세요.",
+    "setupProfile": "프로필 설정",
+    "newChat": "새 채팅",
+    "chatSetup": "채팅 설정",
+    "chatTopic": "채팅 주제",
+    "pleaseEnterTopic": "채팅 주제를 입력해주세요",
+    "startChat": "채팅 시작",
+    "errorStartingChat": "채팅 시작 중 오류가 발생했습니다. 다시 시도해주세요."
 } 

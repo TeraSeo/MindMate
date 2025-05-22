@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI Chatter",
+    "appTitle": "AI 聊天",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "歡迎使用 AI Chatter！",
+    "welcome": "歡迎使用 AI 聊天！",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -19,7 +19,7 @@
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "請在繼續之前完成個人資料設定。",
+    "setupRequiredMessage": "請先完成個人資料設定後再繼續。",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
@@ -47,23 +47,23 @@
     "@nameFieldError": {
         "description": "Error message when name field is empty"
     },
-    "nameFieldLengthError": "名字至少需要2個字元",
+    "nameFieldLengthError": "名字至少需要2個字符",
     "@nameFieldLengthError": {
         "description": "Error message when name is too short"
     },
-    "ageGroupStepTitle": "您屬於哪個年齡層？",
+    "ageGroupStepTitle": "您的年齡段是？",
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "選擇您的年齡層，幫助我們為您提供個人化體驗。",
+    "ageGroupStepDescription": "選擇您的年齡段以個人化您的體驗。",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
-    "genderStepTitle": "您的性別是什麼？",
+    "genderStepTitle": "您的性別是？",
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "選擇您的性別，幫助我們為您提供個人化體驗。",
+    "genderStepDescription": "選擇您的性別以個人化您的體驗。",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,11 +71,11 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "及時獲取重要訊息和更新。",
+    "notificationStepDescription": "及時獲取重要消息和更新。",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
-    "pushNotificationsTitle": "推播通知",
+    "pushNotificationsTitle": "推送通知",
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
@@ -87,11 +87,11 @@
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
-    "newMessagesNotification": "新訊息",
+    "newMessagesNotification": "新消息",
     "@newMessagesNotification": {
         "description": "Label for new messages notification type"
     },
-    "appUpdatesNotification": "應用程式更新",
+    "appUpdatesNotification": "應用更新",
     "@appUpdatesNotification": {
         "description": "Label for app updates notification type"
     },
@@ -111,27 +111,27 @@
     "@completeSetup": {
         "description": "Complete setup button text"
     },
-    "home": "首页",
+    "home": "首頁",
     "@home": {
         "description": "Home navigation item"
     },
-    "profile": "个人资料",
+    "profile": "個人資料",
     "@profile": {
         "description": "Profile navigation item"
     },
-    "about": "关于",
+    "about": "關於",
     "@about": {
         "description": "About navigation item"
     },
-    "logout": "退出登录",
+    "logout": "登出",
     "@logout": {
         "description": "Logout button text"
     },
-    "logoutConfirmation": "确认退出",
+    "logoutConfirmation": "確認登出",
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
-    "logoutMessage": "确定要退出登录吗？",
+    "logoutMessage": "確定要登出嗎？",
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
@@ -139,12 +139,48 @@
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "請在裝置設定中啟用通知，以接收重要更新。",
+    "notificationsRequiredMessage": "請在裝置設定中啟用通知以接收重要更新。",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "確定",
     "@ok": {
         "description": "OK button text"
+    },
+    "personalInformation": "個人資料",
+    "name": "姓名",
+    "pleaseEnterName": "請輸入您的名字",
+    "ageGroup": "年齡段",
+    "gender": "性別",
+    "male": "男性",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "女性",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "other": "其他",
+    "notifications": "通知",
+    "enableNotifications": "啟用通知",
+    "saveChanges": "儲存更改",
+    "profileUpdated": "個人資料更新成功",
+    "welcomeMessage": "欢迎使用 AI Chatter",
+    "pleaseCompleteSetup": "在开始聊天之前，请先完成个人资料设置。",
+    "errorSavingProfile": "保存个人资料时出错。请重试。",
+    "setupProfile": "设置个人资料",
+    "newChat": "新聊天",
+    "chatSetup": "聊天设置",
+    "chatTopic": "聊天主题",
+    "pleaseEnterTopic": "请输入聊天主题",
+    "startChat": "开始聊天",
+    "errorStartingChat": "启动聊天时出错。请重试。",
+    "nonBinary": "非二元性別",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "不願回答",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
     }
 } 

@@ -34,24 +34,35 @@ class _GenderSetupStepState extends State<GenderSetupStep> {
     {
       'value': 'Male',
       'icon': Icons.male,
-      'label': 'Male',
     },
     {
       'value': 'Female',
       'icon': Icons.female,
-      'label': 'Female',
     },
     {
       'value': 'Non-binary',
       'icon': Icons.person,
-      'label': 'Non-binary',
     },
     {
       'value': 'Prefer not to say',
       'icon': Icons.person_outline,
-      'label': 'Prefer not to say',
     },
   ];
+
+  String _getLocalizedGenderLabel(String value, AppLocalizations l10n) {
+    switch (value) {
+      case 'Male':
+        return l10n.male;
+      case 'Female':
+        return l10n.female;
+      case 'Non-binary':
+        return l10n.nonBinary;
+      case 'Prefer not to say':
+        return l10n.preferNotToSay;
+      default:
+        return value;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +139,7 @@ class _GenderSetupStepState extends State<GenderSetupStep> {
                         SizedBox(width: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
                         Expanded(
                           child: Text(
-                            option['label'],
+                            _getLocalizedGenderLabel(option['value'], l10n),
                             style: TextStyle(
                               fontSize: optionFontSize,
                               color: isSelected

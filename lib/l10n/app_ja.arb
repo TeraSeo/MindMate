@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI Chatter",
+    "appTitle": "AI チャッター",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "AI Chatterへようこそ！",
+    "welcome": "AI チャッターへようこそ！",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -15,15 +15,15 @@
     "@language": {
         "description": "Language selection option"
     },
-    "setupRequired": "セットアップが必要です",
+    "setupRequired": "設定が必要です",
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "続行する前にプロフィールの設定を完了してください。",
+    "setupRequiredMessage": "続行する前にプロフィール設定を完了してください。",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
-    "goToSetup": "セットアップへ",
+    "goToSetup": "設定へ移動",
     "@goToSetup": {
         "description": "Button text to navigate to setup page"
     },
@@ -31,11 +31,11 @@
     "@cancel": {
         "description": "Cancel button text"
     },
-    "nameStepTitle": "お名前は？",
+    "nameStepTitle": "お名前を教えてください",
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "呼ばれたい名前を入力してください。",
+    "nameStepDescription": "呼んでほしい名前を入力してください。",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -47,23 +47,23 @@
     "@nameFieldError": {
         "description": "Error message when name field is empty"
     },
-    "nameFieldLengthError": "名前は2文字以上である必要があります",
+    "nameFieldLengthError": "名前は2文字以上必要です",
     "@nameFieldLengthError": {
         "description": "Error message when name is too short"
     },
-    "ageGroupStepTitle": "年齢層は？",
+    "ageGroupStepTitle": "年齢層を選択してください",
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "より良い体験のために年齢層を選択してください。",
+    "ageGroupStepDescription": "パーソナライズされた体験のために年齢層を選択してください。",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
-    "genderStepTitle": "性別は？",
+    "genderStepTitle": "性別を選択してください",
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "より良い体験のために性別を選択してください。",
+    "genderStepDescription": "パーソナライズされた体験のために性別を選択してください。",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,7 +71,7 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "重要なメッセージやアップデートを受け取ります。",
+    "notificationStepDescription": "重要なメッセージや更新情報を受け取ります。",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
@@ -79,7 +79,7 @@
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "会話の即時更新を受け取ります",
+    "pushNotificationsDescription": "会話に関する最新情報をリアルタイムで受け取ります",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
@@ -87,11 +87,11 @@
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
-    "newMessagesNotification": "新着メッセージ",
+    "newMessagesNotification": "新しいメッセージ",
     "@newMessagesNotification": {
         "description": "Label for new messages notification type"
     },
-    "appUpdatesNotification": "アプリのアップデート",
+    "appUpdatesNotification": "アプリの更新",
     "@appUpdatesNotification": {
         "description": "Label for app updates notification type"
     },
@@ -107,7 +107,7 @@
     "@next": {
         "description": "Next button text"
     },
-    "completeSetup": "セットアップを完了",
+    "completeSetup": "設定を完了",
     "@completeSetup": {
         "description": "Complete setup button text"
     },
@@ -131,20 +131,55 @@
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
-    "logoutMessage": "本当にログアウトしますか？",
+    "logoutMessage": "ログアウトしてもよろしいですか？",
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
-    "notificationsRequired": "通知の許可が必要です",
+    "notificationsRequired": "通知が必要です",
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "重要な更新を受け取るには、デバイスの設定で通知を有効にしてください。",
+    "notificationsRequiredMessage": "重要な更新情報を受け取るには、デバイスの設定で通知を有効にしてください。",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "OK",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "個人情報",
+    "name": "名前",
+    "pleaseEnterName": "名前を入力してください",
+    "ageGroup": "年齢層",
+    "gender": "性別",
+    "male": "男性",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "女性",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "ノンバイナリー",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "回答を控える",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "notifications": "通知",
+    "enableNotifications": "通知を有効にする",
+    "saveChanges": "変更を保存",
+    "profileUpdated": "プロフィールが正常に更新されました",
+    "welcomeMessage": "AI Chatterへようこそ",
+    "pleaseCompleteSetup": "チャットを開始する前に、プロフィールの設定を完了してください。",
+    "errorSavingProfile": "プロフィールの保存中にエラーが発生しました。もう一度お試しください。",
+    "setupProfile": "プロフィール設定",
+    "newChat": "新規チャット",
+    "chatSetup": "チャット設定",
+    "chatTopic": "チャットトピック",
+    "pleaseEnterTopic": "チャットトピックを入力してください",
+    "startChat": "チャット開始",
+    "errorStartingChat": "チャットの開始中にエラーが発生しました。もう一度お試しください。"
 } 

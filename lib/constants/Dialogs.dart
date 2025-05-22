@@ -1,7 +1,7 @@
 import 'package:ai_chatter/providers/LocaleProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:ai_chatter/screens/setup/UserSetupPage.dart';
+import 'package:ai_chatter/screens/setup/user/UserSetupPage.dart';
 import 'package:provider/provider.dart';
 
 class Dialogs {

@@ -19,7 +19,7 @@
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "Veuillez compléter votre profil avant de continuer.",
+    "setupRequiredMessage": "Veuillez compléter la configuration de votre profil avant de continuer.",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
@@ -35,7 +35,7 @@
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "Veuillez entrer le nom sous lequel vous souhaitez être appelé.",
+    "nameStepDescription": "Veuillez entrer votre nom comme vous souhaitez être appelé.",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -55,7 +55,7 @@
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "Sélectionnez votre tranche d'âge pour nous aider à personnaliser votre expérience.",
+    "ageGroupStepDescription": "Sélectionnez votre tranche d'âge pour personnaliser votre expérience.",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,7 +63,7 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "Sélectionnez votre genre pour nous aider à personnaliser votre expérience.",
+    "genderStepDescription": "Sélectionnez votre genre pour personnaliser votre expérience.",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,15 +71,15 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "Restez informé des messages et mises à jour importantes.",
+    "notificationStepDescription": "Restez informé des messages et mises à jour importants.",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
-    "pushNotificationsTitle": "Notifications Push",
+    "pushNotificationsTitle": "Notifications push",
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "Recevez des mises à jour instantanées de vos conversations",
+    "pushNotificationsDescription": "Recevez des mises à jour instantanées sur vos conversations",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
@@ -87,7 +87,7 @@
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
-    "newMessagesNotification": "Nouveaux Messages",
+    "newMessagesNotification": "Nouveaux messages",
     "@newMessagesNotification": {
         "description": "Label for new messages notification type"
     },
@@ -95,7 +95,7 @@
     "@appUpdatesNotification": {
         "description": "Label for app updates notification type"
     },
-    "announcementsNotification": "Annonces Importantes",
+    "announcementsNotification": "Annonces importantes",
     "@announcementsNotification": {
         "description": "Label for announcements notification type"
     },
@@ -135,16 +135,52 @@
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
-    "notificationsRequired": "Notifications Requises",
+    "notificationsRequired": "Notifications requises",
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "Veuillez activer les notifications dans les paramètres de l'appareil pour recevoir les mises à jour importantes.",
+    "notificationsRequiredMessage": "Veuillez activer les notifications dans les paramètres de votre appareil pour recevoir des mises à jour importantes.",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "OK",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "Informations personnelles",
+    "name": "Nom",
+    "pleaseEnterName": "Veuillez entrer votre nom",
+    "ageGroup": "Tranche d'âge",
+    "gender": "Genre",
+    "male": "Masculin",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "Féminin",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "Non-binaire",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "Je préfère ne pas le dire",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "other": "Autre",
+    "notifications": "Notifications",
+    "enableNotifications": "Activer les notifications",
+    "saveChanges": "Enregistrer les modifications",
+    "profileUpdated": "Profil mis à jour avec succès",
+    "welcomeMessage": "Bienvenue sur AI Chatter",
+    "pleaseCompleteSetup": "Veuillez compléter la configuration de votre profil avant de commencer un chat.",
+    "errorSavingProfile": "Erreur lors de la sauvegarde du profil. Veuillez réessayer.",
+    "setupProfile": "Configurer le Profil",
+    "newChat": "Nouveau Chat",
+    "chatSetup": "Configuration du Chat",
+    "chatTopic": "Sujet du Chat",
+    "pleaseEnterTopic": "Veuillez entrer un sujet pour le chat",
+    "startChat": "Démarrer le Chat",
+    "errorStartingChat": "Erreur lors du démarrage du chat. Veuillez réessayer."
 } 

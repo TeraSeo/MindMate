@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ai_chatter/screens/HomePage.dart';
-import 'package:ai_chatter/screens/setup/UserSetupPage.dart';
+import 'package:ai_chatter/screens/setup/user/UserSetupPage.dart';
 import 'package:ai_chatter/screens/auth/RegisterPage.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';

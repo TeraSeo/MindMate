@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ai_chatter/screens/HomePage.dart';
-import 'package:ai_chatter/screens/setup/steps/NameSetupStep.dart';
-import 'package:ai_chatter/screens/setup/steps/AgeGroupSetupStep.dart';
-import 'package:ai_chatter/screens/setup/steps/GenderSetupStep.dart';
-import 'package:ai_chatter/screens/setup/steps/NotificationSetupStep.dart';
+import 'package:ai_chatter/screens/setup/user/steps/NameSetupStep.dart';
+import 'package:ai_chatter/screens/setup/user/steps/AgeGroupSetupStep.dart';
+import 'package:ai_chatter/screens/setup/user/steps/GenderSetupStep.dart';
+import 'package:ai_chatter/screens/setup/user/steps/NotificationSetupStep.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
 
 class UserSetupPage extends StatefulWidget {

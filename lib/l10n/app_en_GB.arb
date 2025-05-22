@@ -139,12 +139,47 @@
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "Please enable notifications in device settings to receive important updates.",
+    "notificationsRequiredMessage": "Please enable notifications in your device settings to receive important updates.",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "OK",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "Personal Information",
+    "name": "Name",
+    "pleaseEnterName": "Please enter your name",
+    "ageGroup": "Age Group",
+    "gender": "Gender",
+    "male": "Male",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "Female",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "Non-binary",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "Prefer not to say",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "notifications": "Notifications",
+    "enableNotifications": "Enable Notifications",
+    "saveChanges": "Save Changes",
+    "profileUpdated": "Profile updated successfully",
+    "welcomeMessage": "Welcome to AI Chatter",
+    "pleaseCompleteSetup": "Please complete your profile setup before starting a chat.",
+    "errorSavingProfile": "Error saving profile. Please try again.",
+    "setupProfile": "Setup Profile",
+    "newChat": "New Chat",
+    "chatSetup": "Chat Setup",
+    "chatTopic": "Chat Topic",
+    "pleaseEnterTopic": "Please enter a chat topic",
+    "startChat": "Start Chat",
+    "errorStartingChat": "Error starting chat. Please try again."
 } 

@@ -15,7 +15,7 @@
     "@language": {
         "description": "Language selection option"
     },
-    "setupRequired": "Configuración Requerida",
+    "setupRequired": "Configuración requerida",
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
@@ -23,7 +23,7 @@
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
-    "goToSetup": "Ir a Configuración",
+    "goToSetup": "Ir a configuración",
     "@goToSetup": {
         "description": "Button text to navigate to setup page"
     },
@@ -31,11 +31,11 @@
     "@cancel": {
         "description": "Cancel button text"
     },
-    "nameStepTitle": "¿Cuál es tu nombre?",
+    "nameStepTitle": "¿Cuál es su nombre?",
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "Por favor, ingresa tu nombre como deseas que te llamen.",
+    "nameStepDescription": "Por favor, ingrese su nombre como desea ser llamado.",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -43,7 +43,7 @@
     "@nameFieldLabel": {
         "description": "Label for the name input field"
     },
-    "nameFieldError": "Por favor, ingresa tu nombre",
+    "nameFieldError": "Por favor, ingrese su nombre",
     "@nameFieldError": {
         "description": "Error message when name field is empty"
     },
@@ -51,19 +51,19 @@
     "@nameFieldLengthError": {
         "description": "Error message when name is too short"
     },
-    "ageGroupStepTitle": "¿Cuál es tu grupo de edad?",
+    "ageGroupStepTitle": "¿Cuál es su grupo de edad?",
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "Selecciona tu grupo de edad para ayudarnos a personalizar tu experiencia.",
+    "ageGroupStepDescription": "Seleccione su grupo de edad para personalizar su experiencia.",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
-    "genderStepTitle": "¿Cuál es tu género?",
+    "genderStepTitle": "¿Cuál es su género?",
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "Selecciona tu género para ayudarnos a personalizar tu experiencia.",
+    "genderStepDescription": "Seleccione su género para personalizar su experiencia.",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,31 +71,31 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "Mantente actualizado con mensajes y actualizaciones importantes.",
+    "notificationStepDescription": "Manténgase actualizado con mensajes y actualizaciones importantes.",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
-    "pushNotificationsTitle": "Notificaciones Push",
+    "pushNotificationsTitle": "Notificaciones push",
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "Recibe actualizaciones instantáneas sobre tus conversaciones",
+    "pushNotificationsDescription": "Reciba actualizaciones instantáneas sobre sus conversaciones",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
-    "notificationTypesTitle": "Recibirás notificaciones para:",
+    "notificationTypesTitle": "Recibirá notificaciones para:",
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
-    "newMessagesNotification": "Nuevos Mensajes",
+    "newMessagesNotification": "Nuevos mensajes",
     "@newMessagesNotification": {
         "description": "Label for new messages notification type"
     },
-    "appUpdatesNotification": "Actualizaciones de la App",
+    "appUpdatesNotification": "Actualizaciones de la aplicación",
     "@appUpdatesNotification": {
         "description": "Label for app updates notification type"
     },
-    "announcementsNotification": "Anuncios Importantes",
+    "announcementsNotification": "Anuncios importantes",
     "@announcementsNotification": {
         "description": "Label for announcements notification type"
     },
@@ -107,7 +107,7 @@
     "@next": {
         "description": "Next button text"
     },
-    "completeSetup": "Completar Configuración",
+    "completeSetup": "Completar configuración",
     "@completeSetup": {
         "description": "Complete setup button text"
     },
@@ -131,20 +131,55 @@
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
-    "logoutMessage": "¿Estás seguro de que quieres cerrar sesión?",
+    "logoutMessage": "¿Está seguro de que desea cerrar sesión?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
-    "notificationsRequired": "Notificaciones Requeridas",
+    "notificationsRequired": "Notificaciones requeridas",
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "Por favor, activa las notificaciones en la configuración del dispositivo para recibir actualizaciones importantes.",
+    "notificationsRequiredMessage": "Por favor, active las notificaciones en la configuración de su dispositivo para recibir actualizaciones importantes.",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "Aceptar",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "Información personal",
+    "name": "Nombre",
+    "pleaseEnterName": "Por favor, ingrese su nombre",
+    "ageGroup": "Grupo de edad",
+    "gender": "Género",
+    "male": "Masculino",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "Femenino",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "No binario",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "Prefiero no decirlo",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "notifications": "Notificaciones",
+    "enableNotifications": "Activar notificaciones",
+    "saveChanges": "Guardar cambios",
+    "profileUpdated": "Perfil actualizado exitosamente",
+    "welcomeMessage": "Bienvenido a AI Chatter",
+    "pleaseCompleteSetup": "Por favor complete la configuración de su perfil antes de iniciar un chat.",
+    "errorSavingProfile": "Error al guardar el perfil. Por favor, inténtelo de nuevo.",
+    "setupProfile": "Configurar Perfil",
+    "newChat": "Nuevo Chat",
+    "chatSetup": "Configuración del Chat",
+    "chatTopic": "Tema del Chat",
+    "pleaseEnterTopic": "Por favor ingrese un tema para el chat",
+    "startChat": "Iniciar Chat",
+    "errorStartingChat": "Error al iniciar el chat. Por favor, inténtelo de nuevo."
 } 

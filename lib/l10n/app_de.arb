@@ -19,7 +19,7 @@
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "Bitte vervollständigen Sie Ihr Profil, bevor Sie fortfahren.",
+    "setupRequiredMessage": "Bitte vervollständigen Sie Ihre Profileinrichtung, bevor Sie fortfahren.",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
@@ -31,11 +31,11 @@
     "@cancel": {
         "description": "Cancel button text"
     },
-    "nameStepTitle": "Wie ist Ihr Name?",
+    "nameStepTitle": "Wie heißen Sie?",
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "Bitte geben Sie Ihren Namen ein, wie Sie genannt werden möchten.",
+    "nameStepDescription": "Bitte geben Sie Ihren Namen ein, wie Sie angesprochen werden möchten.",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -51,11 +51,11 @@
     "@nameFieldLengthError": {
         "description": "Error message when name is too short"
     },
-    "ageGroupStepTitle": "Zu welcher Altersgruppe gehören Sie?",
+    "ageGroupStepTitle": "Wie alt sind Sie?",
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "Wählen Sie Ihre Altersgruppe aus, damit wir Ihre Erfahrung personalisieren können.",
+    "ageGroupStepDescription": "Wählen Sie Ihre Altersgruppe, um Ihr Erlebnis zu personalisieren.",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,7 +63,7 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "Wählen Sie Ihr Geschlecht aus, damit wir Ihre Erfahrung personalisieren können.",
+    "genderStepDescription": "Wählen Sie Ihr Geschlecht, um Ihr Erlebnis zu personalisieren.",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,7 +71,7 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "Bleiben Sie über wichtige Nachrichten und Updates informiert.",
+    "notificationStepDescription": "Bleiben Sie mit wichtigen Nachrichten und Updates auf dem Laufenden.",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
@@ -79,7 +79,7 @@
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "Erhalten Sie sofortige Updates über Ihre Gespräche",
+    "pushNotificationsDescription": "Erhalten Sie sofortige Updates zu Ihren Gesprächen",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
@@ -139,12 +139,47 @@
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "Bitte aktivieren Sie Benachrichtigungen in den Geräteeinstellungen, um wichtige Updates zu erhalten.",
+    "notificationsRequiredMessage": "Bitte aktivieren Sie Benachrichtigungen in Ihren Geräteeinstellungen, um wichtige Updates zu erhalten.",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
     "ok": "OK",
     "@ok": {
         "description": "OK button text"
-    }
+    },
+    "personalInformation": "Persönliche Informationen",
+    "name": "Name",
+    "pleaseEnterName": "Bitte geben Sie Ihren Namen ein",
+    "ageGroup": "Altersgruppe",
+    "gender": "Geschlecht",
+    "male": "Männlich",
+    "@male": {
+        "description": "Gender option for male"
+    },
+    "female": "Weiblich",
+    "@female": {
+        "description": "Gender option for female"
+    },
+    "nonBinary": "Nicht-binär",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "Keine Angabe",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
+    },
+    "notifications": "Benachrichtigungen",
+    "enableNotifications": "Benachrichtigungen aktivieren",
+    "saveChanges": "Änderungen speichern",
+    "profileUpdated": "Profil erfolgreich aktualisiert",
+    "welcomeMessage": "Willkommen bei AI Chatter",
+    "pleaseCompleteSetup": "Bitte vervollständigen Sie Ihr Profil, bevor Sie einen Chat starten.",
+    "errorSavingProfile": "Fehler beim Speichern des Profils. Bitte versuchen Sie es erneut.",
+    "setupProfile": "Profil einrichten",
+    "newChat": "Neuer Chat",
+    "chatSetup": "Chat-Einrichtung",
+    "chatTopic": "Chat-Thema",
+    "pleaseEnterTopic": "Bitte geben Sie ein Chat-Thema ein",
+    "startChat": "Chat starten",
+    "errorStartingChat": "Fehler beim Starten des Chats. Bitte versuchen Sie es erneut."
 } 
