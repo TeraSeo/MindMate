@@ -33,34 +33,29 @@ class _ChattingStyleStepState extends State<ChattingStyleStep> {
 
   final List<Map<String, dynamic>> _styleOptions = [
     {
-      'value': 'Casual',
-      'icon': Icons.chat_bubble_outline,
-      'description': 'Relaxed and informal conversations with everyday language.',
-    },
-    {
-      'value': 'Formal',
+      'value': 'Formal speech',
       'icon': Icons.business,
-      'description': 'Professional and structured communication with proper etiquette.',
+      'description': 'Professional and respectful communication with proper etiquette',
     },
     {
-      'value': 'Creative',
-      'icon': Icons.brush,
-      'description': 'Expressive and imaginative discussions with artistic flair.',
+      'value': 'Casual speech',
+      'icon': Icons.sentiment_satisfied,
+      'description': 'Relaxed and friendly conversations with everyday language',
     },
     {
-      'value': 'Academic',
-      'icon': Icons.school,
-      'description': 'Intellectual and research-oriented conversations.',
+      'value': 'Mixed speech',
+      'icon': Icons.swap_horiz,
+      'description': 'Balanced mix of formal and casual communication styles',
     },
     {
-      'value': 'Technical',
-      'icon': Icons.code,
-      'description': 'Precise and detailed discussions with technical terminology.',
+      'value': 'Short and direct',
+      'icon': Icons.format_align_left,
+      'description': 'Concise and straightforward messages with clear points',
     },
     {
-      'value': 'Poetic',
-      'icon': Icons.format_quote,
-      'description': 'Elegant and metaphorical language with literary elements.',
+      'value': 'Long and expressive',
+      'icon': Icons.format_align_justify,
+      'description': 'Detailed and elaborate messages with rich descriptions',
     },
   ];
 
@@ -69,111 +64,169 @@ class _ChattingStyleStepState extends State<ChattingStyleStep> {
     final l10n = AppLocalizations.of(context)!;
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.width < 600;
-    final titleFontSize = isSmallScreen ? FontSize.h5 : FontSize.h4;
-    final descriptionFontSize = isSmallScreen ? FontSize.bodyMedium : FontSize.bodyLarge;
-    final optionFontSize = isSmallScreen ? FontSize.bodyMedium : FontSize.bodyLarge;
-    final cardPadding = isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL;
-    final iconSize = isSmallScreen ? BoxSize.iconMedium : BoxSize.iconLarge;
+    final isMediumScreen = size.width >= 600 && size.width < 1200;
+    final isLargeScreen = size.width >= 1200;
+
+    // Responsive font sizes
+    final titleFontSize = isSmallScreen 
+        ? FontSize.h5 
+        : isMediumScreen 
+            ? FontSize.h4 
+            : FontSize.h3;
+    
+    final descriptionFontSize = isSmallScreen 
+        ? FontSize.bodyMedium 
+        : isMediumScreen 
+            ? FontSize.bodyLarge 
+            : FontSize.h6;
+
+    final optionFontSize = isSmallScreen 
+        ? FontSize.bodyMedium 
+        : isMediumScreen 
+            ? FontSize.bodyLarge 
+            : FontSize.h6;
+
+    // Responsive spacing
+    final verticalSpacing = isSmallScreen 
+        ? BoxSize.spacingM 
+        : isMediumScreen 
+            ? BoxSize.spacingL 
+            : BoxSize.spacingXL;
+
+    final cardPadding = isSmallScreen 
+        ? BoxSize.spacingM 
+        : isMediumScreen 
+            ? BoxSize.spacingL 
+            : BoxSize.spacingXL;
+
+    final iconSize = isSmallScreen 
+        ? BoxSize.iconMedium 
+        : isMediumScreen 
+            ? BoxSize.iconLarge 
+            : BoxSize.iconLarge * 1.2;
 
     return BaseStep(
       onNext: widget.onNext,
       onPrevious: widget.onPrevious,
       canProceed: selectedStyle != null,
+      isLastStep: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Choose Chatting Style',
+            l10n.chooseChattingStyle,
             style: TextStyle(
               fontSize: titleFontSize,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+          SizedBox(height: verticalSpacing),
           Text(
-            'Select the communication style that best suits your preferences.',
+            l10n.selectChattingStyleDescription,
             style: TextStyle(
               fontSize: descriptionFontSize,
               color: Colors.grey,
             ),
           ),
-          SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+          SizedBox(height: verticalSpacing * 2),
           Expanded(
-            child: ListView.separated(
-              itemCount: _styleOptions.length,
-              separatorBuilder: (context, index) => SizedBox(
-                height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL,
-              ),
-              itemBuilder: (context, index) {
-                final option = _styleOptions[index];
-                final isSelected = selectedStyle == option['value'];
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final crossAxisCount = isSmallScreen 
+                    ? 1 
+                    : isMediumScreen 
+                        ? 2 
+                        : 3;
 
-                return Card(
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                    side: BorderSide(
-                      color: isSelected
-                          ? Theme.of(context).colorScheme.primary
-                          : Colors.grey[300]!,
-                      width: isSelected ? 2 : 1,
-                    ),
+                final cardSpacing = isSmallScreen 
+                    ? BoxSize.spacingM 
+                    : isMediumScreen 
+                        ? BoxSize.spacingL 
+                        : BoxSize.spacingXL;
+
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    childAspectRatio: isSmallScreen ? 3 : 2.5,
+                    crossAxisSpacing: cardSpacing,
+                    mainAxisSpacing: cardSpacing,
                   ),
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedStyle = option['value'];
-                      });
-                      widget.onUpdateData(option['value']);
-                    },
-                    borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                    child: Padding(
-                      padding: EdgeInsets.all(cardPadding),
-                      child: Row(
-                        children: [
-                          Icon(
-                            option['icon'],
-                            size: iconSize,
-                            color: isSelected
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.grey[600],
-                          ),
-                          SizedBox(width: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  option['value'],
-                                  style: TextStyle(
-                                    fontSize: optionFontSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: isSelected
-                                        ? Theme.of(context).colorScheme.primary
-                                        : null,
-                                  ),
-                                ),
-                                SizedBox(height: BoxSize.spacingS),
-                                Text(
-                                  option['description'],
-                                  style: TextStyle(
-                                    fontSize: FontSize.bodySmall,
-                                    color: Colors.grey[600],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          if (isSelected)
-                            Icon(
-                              Icons.check_circle,
-                              size: iconSize,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                        ],
+                  itemCount: _styleOptions.length,
+                  itemBuilder: (context, index) {
+                    final option = _styleOptions[index];
+                    final isSelected = selectedStyle == option['value'];
+
+                    return Card(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                        side: BorderSide(
+                          color: isSelected
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.grey[300]!,
+                          width: isSelected ? 2 : 1,
+                        ),
                       ),
-                    ),
-                  ),
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedStyle = option['value'];
+                          });
+                          widget.onUpdateData(option['value']);
+                        },
+                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                        child: Padding(
+                          padding: EdgeInsets.all(cardPadding),
+                          child: Row(
+                            children: [
+                              Icon(
+                                option['icon'],
+                                size: iconSize,
+                                color: isSelected
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Colors.grey[600],
+                              ),
+                              SizedBox(width: cardPadding),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      _getLocalizedStyleLabel(option['value'], l10n),
+                                      style: TextStyle(
+                                        fontSize: optionFontSize,
+                                        fontWeight: FontWeight.bold,
+                                        color: isSelected
+                                            ? Theme.of(context).colorScheme.primary
+                                            : null,
+                                      ),
+                                    ),
+                                    SizedBox(height: BoxSize.spacingS),
+                                    Text(
+                                      _getLocalizedStyleDescription(option['value'], l10n),
+                                      style: TextStyle(
+                                        fontSize: optionFontSize * 0.9,
+                                        color: Colors.grey[600],
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              if (isSelected)
+                                Icon(
+                                  Icons.check_circle,
+                                  size: iconSize,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             ),
@@ -181,5 +234,39 @@ class _ChattingStyleStepState extends State<ChattingStyleStep> {
         ],
       ),
     );
+  }
+
+  String _getLocalizedStyleLabel(String style, AppLocalizations l10n) {
+    switch (style) {
+      case 'Formal speech':
+        return l10n.styleFormal;
+      case 'Casual speech':
+        return l10n.styleCasual;
+      case 'Mixed speech':
+        return l10n.styleMixed;
+      case 'Short and direct':
+        return l10n.styleShort;
+      case 'Long and expressive':
+        return l10n.styleLong;
+      default:
+        return style;
+    }
+  }
+
+  String _getLocalizedStyleDescription(String style, AppLocalizations l10n) {
+    switch (style) {
+      case 'Formal speech':
+        return l10n.styleFormalDescription;
+      case 'Casual speech':
+        return l10n.styleCasualDescription;
+      case 'Mixed speech':
+        return l10n.styleMixedDescription;
+      case 'Short and direct':
+        return l10n.styleShortDescription;
+      case 'Long and expressive':
+        return l10n.styleLongDescription;
+      default:
+        return style;
+    }
   }
 } 

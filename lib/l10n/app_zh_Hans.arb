@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI 聊天",
+    "appTitle": "AI 聊天助手",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "欢迎使用 AI 聊天！",
+    "welcome": "欢迎使用 AI 聊天助手！",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -39,7 +39,7 @@
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
-    "nameFieldLabel": "姓名",
+    "nameFieldLabel": "名字",
     "@nameFieldLabel": {
         "description": "Label for the name input field"
     },
@@ -55,7 +55,7 @@
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "选择您的年龄段以个性化您的体验。",
+    "ageGroupStepDescription": "选择您的年龄段以获得更好的体验。",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,15 +63,15 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "选择您的性别以个性化您的体验。",
+    "genderStepDescription": "选择您的性别以获得更好的体验。",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
-    "notificationStepTitle": "启用通知？",
+    "notificationStepTitle": "是否启用通知？",
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "及时获取重要消息和更新。",
+    "notificationStepDescription": "接收重要消息和更新。",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
@@ -79,7 +79,7 @@
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "实时获取对话更新",
+    "pushNotificationsDescription": "接收对话的即时更新",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
@@ -139,7 +139,7 @@
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "请在设备设置中启用通知以接收重要更新。",
+    "notificationsRequiredMessage": "请在设备设置中启用通知，以接收重要更新。",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
@@ -149,38 +149,162 @@
     },
     "personalInformation": "个人信息",
     "name": "姓名",
-    "pleaseEnterName": "请输入您的名字",
+    "pleaseEnterName": "请输入您的姓名",
     "ageGroup": "年龄段",
     "gender": "性别",
-    "male": "男性",
+    "male": "男",
     "@male": {
         "description": "Gender option for male"
     },
-    "female": "女性",
+    "female": "女",
     "@female": {
         "description": "Gender option for female"
+    },
+    "nonBinary": "非二元性别",
+    "@nonBinary": {
+        "description": "Gender option for non-binary"
+    },
+    "preferNotToSay": "不愿透露",
+    "@preferNotToSay": {
+        "description": "Gender option for prefer not to say"
     },
     "other": "其他",
     "notifications": "通知",
     "enableNotifications": "启用通知",
     "saveChanges": "保存更改",
-    "profileUpdated": "个人资料更新成功",
-    "welcomeMessage": "欢迎使用 AI Chatter",
-    "pleaseCompleteSetup": "在开始聊天之前，请先完成个人资料设置。",
-    "errorSavingProfile": "保存个人资料时出错。请重试。",
+    "profileUpdated": "个人资料已更新",
+    "welcomeMessage": "欢迎使用 AI 聊天助手",
+    "pleaseCompleteSetup": "请先完成个人资料设置后再开始聊天。",
+    "errorSavingProfile": "保存个人资料时出错，请重试。",
     "setupProfile": "设置个人资料",
-    "newChat": "新聊天",
-    "chatSetup": "聊天设置",
-    "chatTopic": "聊天主题",
-    "pleaseEnterTopic": "请输入聊天主题",
-    "startChat": "开始聊天",
-    "errorStartingChat": "启动聊天时出错。请重试。",
-    "nonBinary": "非二元性别",
-    "@nonBinary": {
-        "description": "Gender option for non-binary"
-    },
-    "preferNotToSay": "不愿回答",
-    "@preferNotToSay": {
-        "description": "Gender option for prefer not to say"
-    }
+    "newChat": "新对话",
+    "chatSetup": "对话设置",
+    "chatTopic": "对话主题",
+    "pleaseEnterTopic": "请输入对话主题",
+    "startChat": "开始对话",
+    "errorStartingChat": "开始对话时出错，请重试。",
+    "complete": "完成",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "search": "搜索",
+    "login": "登录",
+    "signup": "注册",
+    "email": "邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "forgotPassword": "忘记密码？",
+    "dontHaveAccount": "没有账号？",
+    "alreadyHaveAccount": "已有账号？",
+    "age": "年龄",
+    "unspecified": "未指定",
+    "ageGroupUnder18": "18岁以下",
+    "ageGroup18to24": "18-24岁",
+    "ageGroup25to34": "25-34岁",
+    "ageGroup35to44": "35-44岁",
+    "ageGroup45to54": "45-54岁",
+    "ageGroup55Plus": "55岁以上",
+    "ageGroupUnder18Description": "适用于18岁以下用户",
+    "ageGroup18to24Description": "适用于18-24岁用户",
+    "ageGroup25to34Description": "适用于25-34岁用户",
+    "ageGroup35to44Description": "适用于35-44岁用户",
+    "ageGroup45to54Description": "适用于45-54岁用户",
+    "ageGroup55PlusDescription": "适用于55岁及以上用户",
+    "genderMale": "男",
+    "genderFemale": "女",
+    "genderUnspecified": "未指定",
+    "genderMaleDescription": "男性性别认同",
+    "genderFemaleDescription": "女性性别认同",
+    "genderUnspecifiedDescription": "不愿指定或其他性别认同",
+    "theme": "主题",
+    "help": "帮助",
+    "privacyPolicy": "隐私政策",
+    "termsOfService": "服务条款",
+    "contactUs": "联系我们",
+    "version": "版本",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "warning": "警告",
+    "info": "信息",
+    "retry": "重试",
+    "close": "关闭",
+    "yes": "是",
+    "no": "否",
+    "chooseAgeGroup": "选择AI年龄段",
+    "selectAgeGroupDescription": "选择符合您偏好的年龄段。",
+    "ageGroupChild": "儿童（5-12岁）",
+    "ageGroupTeen": "青少年（13-19岁）",
+    "ageGroupYoungAdult": "青年（20-29岁）",
+    "ageGroupAdult": "成年（30-49岁）",
+    "ageGroupSenior": "老年（50岁以上）",
+    "ageGroupChildDescription": "简单语言，游戏式对话，适合年龄的话题。",
+    "ageGroupTeenDescription": "相关内容，轻松风格，青少年主题。",
+    "ageGroupYoungAdultDescription": "适合年轻专业人士的平衡沟通风格。",
+    "ageGroupAdultDescription": "带有专业见解的成熟对话风格。",
+    "ageGroupSeniorDescription": "尊重经验的清晰沟通。",
+    "chooseGender": "选择AI性别",
+    "selectGenderDescription": "选择符合您偏好的性别。",
+    "genderMale": "男性",
+    "genderFemale": "女性",
+    "genderUnspecified": "未指定（性别中立）",
+    "genderMaleDescription": "使用男性代词和沟通风格。",
+    "genderFemaleDescription": "使用女性代词和沟通风格。",
+    "genderUnspecifiedDescription": "使用性别中立代词和平衡的沟通风格。",
+    "chooseLanguage": "选择聊天语言",
+    "selectLanguageDescription": "选择您想要使用的对话语言。",
+    "languageEnglish": "英语",
+    "languageSpanish": "西班牙语",
+    "languageFrench": "法语",
+    "languageGerman": "德语",
+    "languageJapanese": "日语",
+    "languageKorean": "韩语",
+    "languageChinese": "中文",
+    "languageEnglishDescription": "以自然流畅的方式用英语交流。",
+    "languageSpanishDescription": "带有文化理解的西班牙语交流。",
+    "languageFrenchDescription": "带有适当细微差别的法语交流。",
+    "languageGermanDescription": "带有语法准确性的德语交流。",
+    "languageJapaneseDescription": "带有文化背景的日语交流。",
+    "languageKoreanDescription": "带有适当尊重的韩语交流。",
+    "languageChineseDescription": "带有文化敏感性的中文交流。",
+    "setRelationshipRole": "设置关系角色",
+    "setRelationshipDescription": "设定您与AI之间的情感背景",
+    "relationshipRomantic": "浪漫伴侣",
+    "relationshipDating": "约会对象",
+    "relationshipFriend": "多年好友",
+    "relationshipAdvisor": "倾听者/顾问",
+    "relationshipIdeal": "理想类型",
+    "relationshipMentor": "导师/前辈",
+    "relationshipSecret": "秘密伴侣",
+    "relationshipRomanticDescription": "具有深厚情感纽带的亲密浪漫关系",
+    "relationshipDatingDescription": "正在约会但尚未确定正式关系的对象",
+    "relationshipFriendDescription": "拥有多年共同经历的亲密可信朋友",
+    "relationshipAdvisorDescription": "认真倾听并提供深思熟虑建议的对象",
+    "relationshipIdealDescription": "具有您欣赏和追求的特质的理想对象",
+    "relationshipMentorDescription": "帮助您成长和发展的明智指导者",
+    "relationshipSecretDescription": "可以分享最私密想法的秘密信任对象",
+    "chooseChattingStyle": "选择聊天风格",
+    "selectChattingStyleDescription": "选择您希望AI如何与您交流",
+    "styleFormal": "正式用语",
+    "styleCasual": "随意用语",
+    "styleMixed": "混合风格",
+    "styleShort": "简洁直接",
+    "styleLong": "详细丰富",
+    "styleFormalDescription": "带有适当礼仪的专业和礼貌沟通",
+    "styleCasualDescription": "使用日常语言的轻松友好对话",
+    "styleMixedDescription": "正式和随意沟通风格的平衡组合",
+    "styleShortDescription": "带有明确要点的简洁直接消息",
+    "styleLongDescription": "带有丰富细节的全面丰富表达消息",
+    "choosePersonality": "选择AI性格",
+    "selectPersonalityDescription": "选择符合您偏好的性格。",
+    "personalityFriendly": "友好",
+    "personalityProfessional": "专业",
+    "personalityCreative": "创意",
+    "personalityWitty": "机智",
+    "personalityEmpathetic": "共情",
+    "personalityFriendlyDescription": "积极态度，温暖亲切",
+    "personalityProfessionalDescription": "专业行为，礼貌正式",
+    "personalityCreativeDescription": "独特视角，富有想象力和艺术性",
+    "personalityWittyDescription": "机智反应，幽默聪明",
+    "personalityEmpatheticDescription": "具有情感智能，理解力强且支持性强"
 } 

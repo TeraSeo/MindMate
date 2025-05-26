@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI Chatter",
+    "appTitle": "AI Chat Assistant",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "Welcome to AI Chatter!",
+    "welcome": "Welcome to AI Chat Assistant!",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -35,7 +35,7 @@
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "Please enter your name as you'd like to be called.",
+    "nameStepDescription": "Please enter the name you'd like to be called by.",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -55,7 +55,7 @@
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "Select your age group to help us personalise your experience.",
+    "ageGroupStepDescription": "Select your age group for a better experience.",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,15 +63,15 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "Select your gender to help us personalise your experience.",
+    "genderStepDescription": "Select your gender for a better experience.",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
-    "notificationStepTitle": "Enable Notifications?",
+    "notificationStepTitle": "Enable notifications?",
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "Stay updated with important messages and updates.",
+    "notificationStepDescription": "Receive important messages and updates.",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
@@ -83,19 +83,19 @@
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
-    "notificationTypesTitle": "You'll receive notifications for:",
+    "notificationTypesTitle": "You'll receive the following notifications:",
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
-    "newMessagesNotification": "New Messages",
+    "newMessagesNotification": "New messages",
     "@newMessagesNotification": {
         "description": "Label for new messages notification type"
     },
-    "appUpdatesNotification": "App Updates",
+    "appUpdatesNotification": "App updates",
     "@appUpdatesNotification": {
         "description": "Label for app updates notification type"
     },
-    "announcementsNotification": "Important Announcements",
+    "announcementsNotification": "Important announcements",
     "@announcementsNotification": {
         "description": "Label for announcements notification type"
     },
@@ -123,7 +123,7 @@
     "@about": {
         "description": "About navigation item"
     },
-    "logout": "Logout",
+    "logout": "Log out",
     "@logout": {
         "description": "Logout button text"
     },
@@ -131,11 +131,11 @@
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
-    "logoutMessage": "Are you sure you want to logout?",
+    "logoutMessage": "Are you sure you want to log out?",
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
-    "notificationsRequired": "Notifications Required",
+    "notificationsRequired": "Notification Permission Required",
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
@@ -168,18 +168,371 @@
     "@preferNotToSay": {
         "description": "Gender option for prefer not to say"
     },
+    "other": "Other",
     "notifications": "Notifications",
-    "enableNotifications": "Enable Notifications",
-    "saveChanges": "Save Changes",
-    "profileUpdated": "Profile updated successfully",
-    "welcomeMessage": "Welcome to AI Chatter",
-    "pleaseCompleteSetup": "Please complete your profile setup before starting a chat.",
+    "enableNotifications": "Enable notifications",
+    "saveChanges": "Save changes",
+    "profileUpdated": "Profile successfully updated",
+    "welcomeMessage": "Welcome to AI Chat Assistant",
+    "pleaseCompleteSetup": "Please complete your profile setup before starting to chat.",
     "errorSavingProfile": "Error saving profile. Please try again.",
     "setupProfile": "Setup Profile",
     "newChat": "New Chat",
     "chatSetup": "Chat Setup",
     "chatTopic": "Chat Topic",
-    "pleaseEnterTopic": "Please enter a chat topic",
+    "pleaseEnterTopic": "Please enter chat topic",
     "startChat": "Start Chat",
-    "errorStartingChat": "Error starting chat. Please try again."
+    "errorStartingChat": "Error starting chat. Please try again.",
+    "complete": "Complete",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "login": "Log in",
+    "signup": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "forgotPassword": "Forgot password?",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "age": "Age",
+    "unspecified": "Unspecified",
+    "ageGroupUnder18": "Under 18",
+    "ageGroup18to24": "18-24",
+    "ageGroup25to34": "25-34",
+    "ageGroup35to44": "35-44",
+    "ageGroup45to54": "45-54",
+    "ageGroup55Plus": "55+",
+    "ageGroupUnder18Description": "For users under 18 years old",
+    "ageGroup18to24Description": "For users aged 18-24",
+    "ageGroup25to34Description": "For users aged 25-34",
+    "ageGroup35to44Description": "For users aged 35-44",
+    "ageGroup45to54Description": "For users aged 45-54",
+    "ageGroup55PlusDescription": "For users aged 55 and above",
+    "genderMale": "Male",
+    "genderFemale": "Female",
+    "genderUnspecified": "Unspecified",
+    "genderMaleDescription": "Male gender identity",
+    "genderFemaleDescription": "Female gender identity",
+    "genderUnspecifiedDescription": "Prefer not to specify or other gender identity",
+    "theme": "Theme",
+    "help": "Help",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contactUs": "Contact Us",
+    "version": "Version",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information",
+    "retry": "Retry",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "chooseAgeGroup": "Choose AI Age Group",
+    "@chooseAgeGroup": {
+        "description": "Title for AI age group selection"
+    },
+    "selectAgeGroupDescription": "Select the age group that best matches your preferences.",
+    "@selectAgeGroupDescription": {
+        "description": "Description for AI age group selection"
+    },
+    "ageGroupChild": "Child (5-12)",
+    "@ageGroupChild": {
+        "description": "Child age group option"
+    },
+    "ageGroupTeen": "Teen (13-19)",
+    "@ageGroupTeen": {
+        "description": "Teen age group option"
+    },
+    "ageGroupYoungAdult": "Young Adult (20-29)",
+    "@ageGroupYoungAdult": {
+        "description": "Young adult age group option"
+    },
+    "ageGroupAdult": "Adult (30-49)",
+    "@ageGroupAdult": {
+        "description": "Adult age group option"
+    },
+    "ageGroupSenior": "Senior (50+)",
+    "@ageGroupSenior": {
+        "description": "Senior age group option"
+    },
+    "ageGroupChildDescription": "Simple language, playful tone, and age-appropriate topics.",
+    "@ageGroupChildDescription": {
+        "description": "Description for child age group"
+    },
+    "ageGroupTeenDescription": "Relatable content, casual style, and youth-focused topics.",
+    "@ageGroupTeenDescription": {
+        "description": "Description for teen age group"
+    },
+    "ageGroupYoungAdultDescription": "Balanced communication style for young professionals.",
+    "@ageGroupYoungAdultDescription": {
+        "description": "Description for young adult age group"
+    },
+    "ageGroupAdultDescription": "Mature conversation style with professional insights.",
+    "@ageGroupAdultDescription": {
+        "description": "Description for adult age group"
+    },
+    "ageGroupSeniorDescription": "Clear communication with respect for experience.",
+    "@ageGroupSeniorDescription": {
+        "description": "Description for senior age group"
+    },
+    "chooseGender": "Choose AI Gender",
+    "@chooseGender": {
+        "description": "Title for AI gender selection"
+    },
+    "selectGenderDescription": "Select the gender that best matches your preferences.",
+    "@selectGenderDescription": {
+        "description": "Description for AI gender selection"
+    },
+    "genderMale": "Male",
+    "@genderMale": {
+        "description": "Male gender option"
+    },
+    "genderFemale": "Female",
+    "@genderFemale": {
+        "description": "Female gender option"
+    },
+    "genderUnspecified": "Unspecified (gender-neutral)",
+    "@genderUnspecified": {
+        "description": "Unspecified gender option"
+    },
+    "genderMaleDescription": "Uses male pronouns and communication style.",
+    "@genderMaleDescription": {
+        "description": "Description for male gender option"
+    },
+    "genderFemaleDescription": "Uses female pronouns and communication style.",
+    "@genderFemaleDescription": {
+        "description": "Description for female gender option"
+    },
+    "genderUnspecifiedDescription": "Uses gender-neutral language and balanced communication style.",
+    "@genderUnspecifiedDescription": {
+        "description": "Description for unspecified gender option"
+    },
+    "setRelationshipRole": "Set Relationship Role",
+    "@setRelationshipRole": {
+        "description": "Title for relationship role selection"
+    },
+    "setRelationshipDescription": "Sets the emotional context between you and the AI",
+    "@setRelationshipDescription": {
+        "description": "Description for relationship role selection"
+    },
+    "relationshipRomantic": "Romantic Partner",
+    "@relationshipRomantic": {
+        "description": "Romantic partner relationship option"
+    },
+    "relationshipDating": "Dating",
+    "@relationshipDating": {
+        "description": "Dating relationship option"
+    },
+    "relationshipFriend": "Long-term Friend",
+    "@relationshipFriend": {
+        "description": "Long-term friend relationship option"
+    },
+    "relationshipAdvisor": "Listener / Advisor",
+    "@relationshipAdvisor": {
+        "description": "Advisor relationship option"
+    },
+    "relationshipIdeal": "Ideal Type",
+    "@relationshipIdeal": {
+        "description": "Ideal type relationship option"
+    },
+    "relationshipMentor": "Mentor / Senior",
+    "@relationshipMentor": {
+        "description": "Mentor relationship option"
+    },
+    "relationshipSecret": "Secret Partner",
+    "@relationshipSecret": {
+        "description": "Secret partner relationship option"
+    },
+    "relationshipRomanticDescription": "A loving and intimate relationship with deep emotional connection",
+    "@relationshipRomanticDescription": {
+        "description": "Description for romantic partner relationship"
+    },
+    "relationshipDatingDescription": "Someone you're dating but not in an official relationship yet",
+    "@relationshipDatingDescription": {
+        "description": "Description for dating relationship"
+    },
+    "relationshipFriendDescription": "A close, trusted friend with years of shared experiences",
+    "@relationshipFriendDescription": {
+        "description": "Description for longtime friend relationship"
+    },
+    "relationshipAdvisorDescription": "Someone who listens attentively and provides thoughtful advice",
+    "@relationshipAdvisorDescription": {
+        "description": "Description for advisor relationship"
+    },
+    "relationshipIdealDescription": "Your perfect match with qualities you admire and desire",
+    "@relationshipIdealDescription": {
+        "description": "Description for ideal type relationship"
+    },
+    "relationshipMentorDescription": "A wise guide who helps you grow and develop",
+    "@relationshipMentorDescription": {
+        "description": "Description for mentor relationship"
+    },
+    "relationshipSecretDescription": "A private confidant for your most personal thoughts",
+    "@relationshipSecretDescription": {
+        "description": "Description for secret partner relationship"
+    },
+    "chooseChattingStyle": "Choose Chatting Style",
+    "@chooseChattingStyle": {
+        "description": "Title for chatting style selection"
+    },
+    "selectChattingStyleDescription": "Select how you want the AI to communicate with you",
+    "@selectChattingStyleDescription": {
+        "description": "Description for chatting style selection"
+    },
+    "styleFormal": "Formal speech",
+    "@styleFormal": {
+        "description": "Formal speech style option"
+    },
+    "styleCasual": "Casual speech",
+    "@styleCasual": {
+        "description": "Casual speech style option"
+    },
+    "styleMixed": "Mixed speech",
+    "@styleMixed": {
+        "description": "Mixed speech style option"
+    },
+    "styleShort": "Short and direct",
+    "@styleShort": {
+        "description": "Short speech style option"
+    },
+    "styleLong": "Long and expressive",
+    "@styleLong": {
+        "description": "Long speech style option"
+    },
+    "styleFormalDescription": "Professional and respectful communication with proper etiquette",
+    "@styleFormalDescription": {
+        "description": "Description for formal speech style"
+    },
+    "styleCasualDescription": "Relaxed and friendly conversations with everyday language",
+    "@styleCasualDescription": {
+        "description": "Description for casual speech style"
+    },
+    "styleMixedDescription": "Balanced mix of formal and casual communication styles",
+    "@styleMixedDescription": {
+        "description": "Description for mixed speech style"
+    },
+    "styleShortDescription": "Concise and straightforward messages with clear points",
+    "@styleShortDescription": {
+        "description": "Description for short speech style"
+    },
+    "styleLongDescription": "Detailed and elaborate messages with rich descriptions",
+    "@styleLongDescription": {
+        "description": "Description for long speech style"
+    },
+    "choosePersonality": "Choose AI Personality",
+    "@choosePersonality": {
+        "description": "Title for AI personality selection"
+    },
+    "selectPersonalityDescription": "Select the personality that best matches your preferences.",
+    "@selectPersonalityDescription": {
+        "description": "Description for AI personality selection"
+    },
+    "personalityFriendly": "Friendly",
+    "@personalityFriendly": {
+        "description": "Friendly personality option"
+    },
+    "personalityProfessional": "Professional",
+    "@personalityProfessional": {
+        "description": "Professional personality option"
+    },
+    "personalityCreative": "Creative",
+    "@personalityCreative": {
+        "description": "Creative personality option"
+    },
+    "personalityWitty": "Witty",
+    "@personalityWitty": {
+        "description": "Witty personality option"
+    },
+    "personalityEmpathetic": "Empathetic",
+    "@personalityEmpathetic": {
+        "description": "Empathetic personality option"
+    },
+    "personalityFriendlyDescription": "Warm and approachable with a positive attitude",
+    "@personalityFriendlyDescription": {
+        "description": "Description for friendly personality"
+    },
+    "personalityProfessionalDescription": "Polite and formal with a business-like demeanor",
+    "@personalityProfessionalDescription": {
+        "description": "Description for professional personality"
+    },
+    "personalityCreativeDescription": "Imaginative and artistic with unique perspectives",
+    "@personalityCreativeDescription": {
+        "description": "Description for creative personality"
+    },
+    "personalityWittyDescription": "Humorous and clever with quick responses",
+    "@personalityWittyDescription": {
+        "description": "Description for witty personality"
+    },
+    "personalityEmpatheticDescription": "Understanding and supportive with emotional intelligence",
+    "@personalityEmpatheticDescription": {
+        "description": "Description for empathetic personality"
+    },
+    "chooseLanguage": "Choose Chat Language",
+    "@chooseLanguage": {
+        "description": "Title for chat language selection"
+    },
+    "selectLanguageDescription": "Select the language you prefer for your conversations.",
+    "@selectLanguageDescription": {
+        "description": "Description for chat language selection"
+    },
+    "languageEnglish": "English",
+    "@languageEnglish": {
+        "description": "English language option"
+    },
+    "languageSpanish": "Spanish",
+    "@languageSpanish": {
+        "description": "Spanish language option"
+    },
+    "languageFrench": "French",
+    "@languageFrench": {
+        "description": "French language option"
+    },
+    "languageGerman": "German",
+    "@languageGerman": {
+        "description": "German language option"
+    },
+    "languageJapanese": "Japanese",
+    "@languageJapanese": {
+        "description": "Japanese language option"
+    },
+    "languageKorean": "Korean",
+    "@languageKorean": {
+        "description": "Korean language option"
+    },
+    "languageChinese": "Chinese",
+    "@languageChinese": {
+        "description": "Chinese language option"
+    },
+    "languageEnglishDescription": "Communicate in English with natural fluency.",
+    "@languageEnglishDescription": {
+        "description": "Description for English language"
+    },
+    "languageSpanishDescription": "Communicate in Spanish with cultural understanding.",
+    "@languageSpanishDescription": {
+        "description": "Description for Spanish language"
+    },
+    "languageFrenchDescription": "Communicate in French with proper nuances.",
+    "@languageFrenchDescription": {
+        "description": "Description for French language"
+    },
+    "languageGermanDescription": "Communicate in German with grammatical accuracy.",
+    "@languageGermanDescription": {
+        "description": "Description for German language"
+    },
+    "languageJapaneseDescription": "Communicate in Japanese with cultural context.",
+    "@languageJapaneseDescription": {
+        "description": "Description for Japanese language"
+    },
+    "languageKoreanDescription": "Communicate in Korean with proper honorifics.",
+    "@languageKoreanDescription": {
+        "description": "Description for Korean language"
+    },
+    "languageChineseDescription": "Communicate in Chinese with cultural sensitivity.",
+    "@languageChineseDescription": {
+        "description": "Description for Chinese language"
+    }
 } 

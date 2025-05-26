@@ -15,7 +15,7 @@
     "@language": {
         "description": "Language selection option"
     },
-    "setupRequired": "設定が必要です",
+    "setupRequired": "セットアップが必要です",
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
@@ -23,7 +23,7 @@
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
-    "goToSetup": "設定へ移動",
+    "goToSetup": "セットアップへ",
     "@goToSetup": {
         "description": "Button text to navigate to setup page"
     },
@@ -55,7 +55,7 @@
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "パーソナライズされた体験のために年齢層を選択してください。",
+    "ageGroupStepDescription": "より良い体験のために年齢層を選択してください。",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,7 +63,7 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "パーソナライズされた体験のために性別を選択してください。",
+    "genderStepDescription": "より良い体験のために性別を選択してください。",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,7 +71,7 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "重要なメッセージや更新情報を受け取ります。",
+    "notificationStepDescription": "重要なメッセージとアップデートを受け取ります。",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
@@ -79,7 +79,7 @@
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "会話に関する最新情報をリアルタイムで受け取ります",
+    "pushNotificationsDescription": "会話に関する最新情報を受け取ります",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
@@ -91,7 +91,7 @@
     "@newMessagesNotification": {
         "description": "Label for new messages notification type"
     },
-    "appUpdatesNotification": "アプリの更新",
+    "appUpdatesNotification": "アプリのアップデート",
     "@appUpdatesNotification": {
         "description": "Label for app updates notification type"
     },
@@ -107,7 +107,7 @@
     "@next": {
         "description": "Next button text"
     },
-    "completeSetup": "設定を完了",
+    "completeSetup": "セットアップ完了",
     "@completeSetup": {
         "description": "Complete setup button text"
     },
@@ -119,7 +119,7 @@
     "@profile": {
         "description": "Profile navigation item"
     },
-    "about": "アプリについて",
+    "about": "情報",
     "@about": {
         "description": "About navigation item"
     },
@@ -139,7 +139,7 @@
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
-    "notificationsRequiredMessage": "重要な更新情報を受け取るには、デバイスの設定で通知を有効にしてください。",
+    "notificationsRequiredMessage": "重要なアップデートを受け取るには、デバイスの設定で通知を有効にしてください。",
     "@notificationsRequiredMessage": {
         "description": "Message shown when notifications permission is denied"
     },
@@ -164,22 +164,147 @@
     "@nonBinary": {
         "description": "Gender option for non-binary"
     },
-    "preferNotToSay": "回答を控える",
+    "preferNotToSay": "回答しない",
     "@preferNotToSay": {
         "description": "Gender option for prefer not to say"
     },
+    "other": "その他",
     "notifications": "通知",
     "enableNotifications": "通知を有効にする",
     "saveChanges": "変更を保存",
     "profileUpdated": "プロフィールが正常に更新されました",
-    "welcomeMessage": "AI Chatterへようこそ",
-    "pleaseCompleteSetup": "チャットを開始する前に、プロフィールの設定を完了してください。",
+    "welcomeMessage": "AI チャッターへようこそ",
+    "pleaseCompleteSetup": "チャットを開始する前にプロフィール設定を完了してください。",
     "errorSavingProfile": "プロフィールの保存中にエラーが発生しました。もう一度お試しください。",
     "setupProfile": "プロフィール設定",
-    "newChat": "新規チャット",
+    "newChat": "新しいチャット",
     "chatSetup": "チャット設定",
     "chatTopic": "チャットトピック",
     "pleaseEnterTopic": "チャットトピックを入力してください",
     "startChat": "チャット開始",
-    "errorStartingChat": "チャットの開始中にエラーが発生しました。もう一度お試しください。"
+    "errorStartingChat": "チャットの開始中にエラーが発生しました。もう一度お試しください。",
+    "complete": "完了",
+    "save": "保存",
+    "delete": "削除",
+    "edit": "編集",
+    "search": "検索",
+    "login": "ログイン",
+    "signup": "新規登録",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "confirmPassword": "パスワード（確認）",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "dontHaveAccount": "アカウントをお持ちでないですか？",
+    "alreadyHaveAccount": "すでにアカウントをお持ちですか？",
+    "age": "年齢",
+    "unspecified": "未指定",
+    "ageGroupUnder18": "18歳未満",
+    "ageGroup18to24": "18-24歳",
+    "ageGroup25to34": "25-34歳",
+    "ageGroup35to44": "35-44歳",
+    "ageGroup45to54": "45-54歳",
+    "ageGroup55Plus": "55歳以上",
+    "ageGroupUnder18Description": "18歳未満のユーザー向け",
+    "ageGroup18to24Description": "18歳から24歳までのユーザー向け",
+    "ageGroup25to34Description": "25歳から34歳までのユーザー向け",
+    "ageGroup35to44Description": "35歳から44歳までのユーザー向け",
+    "ageGroup45to54Description": "45歳から54歳までのユーザー向け",
+    "ageGroup55PlusDescription": "55歳以上のユーザー向け",
+    "genderMale": "男性",
+    "genderFemale": "女性",
+    "genderUnspecified": "未指定",
+    "genderMaleDescription": "男性の性自認",
+    "genderFemaleDescription": "女性の性自認",
+    "genderUnspecifiedDescription": "指定しない、またはその他の性自認",
+    "theme": "テーマ",
+    "help": "ヘルプ",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約",
+    "contactUs": "お問い合わせ",
+    "version": "バージョン",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功",
+    "warning": "警告",
+    "info": "情報",
+    "retry": "再試行",
+    "close": "閉じる",
+    "yes": "はい",
+    "no": "いいえ",
+    "chooseAgeGroup": "AIの年齢層を選択",
+    "selectAgeGroupDescription": "好みに合わせて年齢層を選択してください。",
+    "ageGroupChild": "子供（5-12歳）",
+    "ageGroupTeen": "ティーン（13-19歳）",
+    "ageGroupYoungAdult": "若年成人（20-29歳）",
+    "ageGroupAdult": "成人（30-49歳）",
+    "ageGroupSenior": "シニア（50歳以上）",
+    "ageGroupChildDescription": "シンプルな言葉遣い、遊び心のある会話、年齢に適した話題。",
+    "ageGroupTeenDescription": "関連性のある内容、リラックスしたスタイル、若者向けの話題。",
+    "ageGroupYoungAdultDescription": "若手プロフェッショナル向けのバランスの取れたコミュニケーションスタイル。",
+    "ageGroupAdultDescription": "専門的な洞察を交えた成熟した会話スタイル。",
+    "ageGroupSeniorDescription": "経験を尊重した明確なコミュニケーション。",
+    "chooseGender": "AIの性別を選択",
+    "selectGenderDescription": "好みに合わせて性別を選択してください。",
+    "genderMale": "男性",
+    "genderFemale": "女性",
+    "genderUnspecified": "未指定（性別中立）",
+    "genderMaleDescription": "男性の代名詞とコミュニケーションスタイルを使用。",
+    "genderFemaleDescription": "女性の代名詞とコミュニケーションスタイルを使用。",
+    "genderUnspecifiedDescription": "性別中立の代名詞とバランスの取れたコミュニケーションスタイルを使用。",
+    "chooseLanguage": "チャット言語を選択",
+    "selectLanguageDescription": "会話に使用する言語を選択してください。",
+    "languageEnglish": "英語",
+    "languageSpanish": "スペイン語",
+    "languageFrench": "フランス語",
+    "languageGerman": "ドイツ語",
+    "languageJapanese": "日本語",
+    "languageKorean": "韓国語",
+    "languageChinese": "中国語",
+    "languageEnglishDescription": "自然な流れで英語で会話。",
+    "languageSpanishDescription": "文化的理解を交えたスペイン語での会話。",
+    "languageFrenchDescription": "適切なニュアンスを交えたフランス語での会話。",
+    "languageGermanDescription": "文法的正確さを交えたドイツ語での会話。",
+    "languageJapaneseDescription": "文化的文脈を交えた日本語での会話。",
+    "languageKoreanDescription": "適切な敬意を交えた韓国語での会話。",
+    "languageChineseDescription": "文化的感受性を交えた中国語での会話。",
+    "setRelationshipRole": "関係性の役割を設定",
+    "setRelationshipDescription": "あなたとAIの間の感情的コンテキストを設定します",
+    "relationshipRomantic": "ロマンチックなパートナー",
+    "relationshipDating": "デート相手",
+    "relationshipFriend": "長年の友人",
+    "relationshipAdvisor": "聞き手/アドバイザー",
+    "relationshipIdeal": "理想のタイプ",
+    "relationshipMentor": "メンター/先輩",
+    "relationshipSecret": "秘密のパートナー",
+    "relationshipRomanticDescription": "深い感情的絆を持つ愛情深く親密な関係",
+    "relationshipDatingDescription": "デートしているがまだ正式な関係には至っていない相手",
+    "relationshipFriendDescription": "長年の共有体験を持つ親密で信頼できる友人",
+    "relationshipAdvisorDescription": "注意深く耳を傾け、思慮深いアドバイスを提供する相手",
+    "relationshipIdealDescription": "あなたが賞賛し、求める資質を持つ理想の相手",
+    "relationshipMentorDescription": "成長と発展を助ける賢明な指導者",
+    "relationshipSecretDescription": "最も個人的な考えを共有できる秘密の信頼できる相手",
+    "chooseChattingStyle": "チャットスタイルを選択",
+    "selectChattingStyleDescription": "AIとのコミュニケーション方法を選択してください",
+    "styleFormal": "フォーマルな話し方",
+    "styleCasual": "カジュアルな話し方",
+    "styleMixed": "混合スタイル",
+    "styleShort": "簡潔で直接的",
+    "styleLong": "詳細で表現豊か",
+    "styleFormalDescription": "適切な礼儀を交えた専門的で丁寧なコミュニケーション",
+    "styleCasualDescription": "日常的な言葉遣いでのリラックスした友好的な会話",
+    "styleMixedDescription": "フォーマルとカジュアルなコミュニケーションスタイルのバランスの取れた組み合わせ",
+    "styleShortDescription": "明確なポイントを交えた簡潔で直接的なメッセージ",
+    "styleLongDescription": "豊かな詳細を交えた包括的で表現豊かなメッセージ",
+    "choosePersonality": "AIの性格を選択",
+    "selectPersonalityDescription": "好みに合わせて性格を選択してください。",
+    "personalityFriendly": "フレンドリー",
+    "personalityProfessional": "プロフェッショナル",
+    "personalityCreative": "クリエイティブ",
+    "personalityWitty": "ウィットに富む",
+    "personalityEmpathetic": "共感的",
+    "personalityFriendlyDescription": "ポジティブな態度で温かく親しみやすい",
+    "personalityProfessionalDescription": "プロフェッショナルな振る舞いで丁寧でフォーマル",
+    "personalityCreativeDescription": "ユニークな視点で想像力豊かで芸術的",
+    "personalityWittyDescription": "機知に富んだ反応でユーモアがあり賢い",
+    "personalityEmpatheticDescription": "感情的知性を持って理解力があり支援的"
 } 

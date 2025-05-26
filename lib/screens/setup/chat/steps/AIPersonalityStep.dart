@@ -33,44 +33,29 @@ class _AIPersonalityStepState extends State<AIPersonalityStep> {
 
   final List<Map<String, dynamic>> _personalityOptions = [
     {
-      'value': 'Warm and caring',
-      'icon': Icons.favorite,
-      'description': 'A nurturing and empathetic personality that shows genuine care and concern.',
-    },
-    {
-      'value': 'Cold and blunt',
-      'icon': Icons.ac_unit,
-      'description': 'A direct and straightforward personality that values honesty over tact.',
-    },
-    {
-      'value': 'Playful and teasing',
+      'value': 'Friendly',
       'icon': Icons.sentiment_very_satisfied,
-      'description': 'A fun-loving personality that enjoys light-hearted banter and jokes.',
+      'description': 'Warm and approachable with a positive attitude',
     },
     {
-      'value': 'Logical and rational',
-      'icon': Icons.psychology,
-      'description': 'An analytical personality that focuses on facts and clear reasoning.',
+      'value': 'Professional',
+      'icon': Icons.business,
+      'description': 'Polite and formal with a business-like demeanor',
     },
     {
-      'value': 'Emotional and sensitive',
-      'icon': Icons.mood,
-      'description': 'A deeply empathetic personality that connects on an emotional level.',
+      'value': 'Creative',
+      'icon': Icons.brush,
+      'description': 'Imaginative and artistic with unique perspectives',
     },
     {
-      'value': 'Tsundere',
-      'icon': Icons.volunteer_activism,
-      'description': 'A tough exterior with a caring heart, showing affection indirectly.',
+      'value': 'Witty',
+      'icon': Icons.emoji_emotions,
+      'description': 'Humorous and clever with quick responses',
     },
     {
-      'value': 'Quiet and serious',
-      'icon': Icons.volume_off,
-      'description': 'A reserved personality that communicates thoughtfully and deliberately.',
-    },
-    {
-      'value': 'Encouraging and supportive',
-      'icon': Icons.thumb_up,
-      'description': 'A positive personality that motivates and uplifts others.',
+      'value': 'Empathetic',
+      'icon': Icons.favorite,
+      'description': 'Understanding and supportive with emotional intelligence',
     },
   ];
 
@@ -79,11 +64,46 @@ class _AIPersonalityStepState extends State<AIPersonalityStep> {
     final l10n = AppLocalizations.of(context)!;
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.width < 600;
-    final titleFontSize = isSmallScreen ? FontSize.h5 : FontSize.h4;
-    final descriptionFontSize = isSmallScreen ? FontSize.bodyMedium : FontSize.bodyLarge;
-    final optionFontSize = isSmallScreen ? FontSize.bodyMedium : FontSize.bodyLarge;
-    final cardPadding = isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL;
-    final iconSize = isSmallScreen ? BoxSize.iconMedium : BoxSize.iconLarge;
+    final isMediumScreen = size.width >= 600 && size.width < 1200;
+    final isLargeScreen = size.width >= 1200;
+
+    // Responsive font sizes
+    final titleFontSize = isSmallScreen 
+        ? FontSize.h5 
+        : isMediumScreen 
+            ? FontSize.h4 
+            : FontSize.h3;
+    
+    final descriptionFontSize = isSmallScreen 
+        ? FontSize.bodyMedium 
+        : isMediumScreen 
+            ? FontSize.bodyLarge 
+            : FontSize.h6;
+
+    final optionFontSize = isSmallScreen 
+        ? FontSize.bodyMedium 
+        : isMediumScreen 
+            ? FontSize.bodyLarge 
+            : FontSize.h6;
+
+    // Responsive spacing
+    final verticalSpacing = isSmallScreen 
+        ? BoxSize.spacingM 
+        : isMediumScreen 
+            ? BoxSize.spacingL 
+            : BoxSize.spacingXL;
+
+    final cardPadding = isSmallScreen 
+        ? BoxSize.spacingM 
+        : isMediumScreen 
+            ? BoxSize.spacingL 
+            : BoxSize.spacingXL;
+
+    final iconSize = isSmallScreen 
+        ? BoxSize.iconMedium 
+        : isMediumScreen 
+            ? BoxSize.iconLarge 
+            : BoxSize.iconLarge * 1.2;
 
     return BaseStep(
       onNext: widget.onNext,
@@ -93,97 +113,119 @@ class _AIPersonalityStepState extends State<AIPersonalityStep> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Choose AI Personality',
+            l10n.choosePersonality,
             style: TextStyle(
               fontSize: titleFontSize,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+          SizedBox(height: verticalSpacing),
           Text(
-            'Select the personality type that best matches your preferences.',
+            l10n.selectPersonalityDescription,
             style: TextStyle(
               fontSize: descriptionFontSize,
               color: Colors.grey,
             ),
           ),
-          SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+          SizedBox(height: verticalSpacing * 2),
           Expanded(
-            child: ListView.separated(
-              itemCount: _personalityOptions.length,
-              separatorBuilder: (context, index) => SizedBox(
-                height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL,
-              ),
-              itemBuilder: (context, index) {
-                final option = _personalityOptions[index];
-                final isSelected = selectedPersonality == option['value'];
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final crossAxisCount = isSmallScreen 
+                    ? 1 
+                    : isMediumScreen 
+                        ? 2 
+                        : 3;
 
-                return Card(
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                    side: BorderSide(
-                      color: isSelected
-                          ? Theme.of(context).colorScheme.primary
-                          : Colors.grey[300]!,
-                      width: isSelected ? 2 : 1,
-                    ),
+                final cardSpacing = isSmallScreen 
+                    ? BoxSize.spacingM 
+                    : isMediumScreen 
+                        ? BoxSize.spacingL 
+                        : BoxSize.spacingXL;
+
+                return GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: crossAxisCount,
+                    childAspectRatio: isSmallScreen ? 3 : 2.5,
+                    crossAxisSpacing: cardSpacing,
+                    mainAxisSpacing: cardSpacing,
                   ),
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        selectedPersonality = option['value'];
-                      });
-                      widget.onUpdateData(option['value']);
-                    },
-                    borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                    child: Padding(
-                      padding: EdgeInsets.all(cardPadding),
-                      child: Row(
-                        children: [
-                          Icon(
-                            option['icon'],
-                            size: iconSize,
-                            color: isSelected
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.grey[600],
-                          ),
-                          SizedBox(width: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  option['value'],
-                                  style: TextStyle(
-                                    fontSize: optionFontSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: isSelected
-                                        ? Theme.of(context).colorScheme.primary
-                                        : null,
-                                  ),
-                                ),
-                                SizedBox(height: BoxSize.spacingS),
-                                Text(
-                                  option['description'],
-                                  style: TextStyle(
-                                    fontSize: FontSize.bodySmall,
-                                    color: Colors.grey[600],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          if (isSelected)
-                            Icon(
-                              Icons.check_circle,
-                              size: iconSize,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
-                        ],
+                  itemCount: _personalityOptions.length,
+                  itemBuilder: (context, index) {
+                    final option = _personalityOptions[index];
+                    final isSelected = selectedPersonality == option['value'];
+
+                    return Card(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                        side: BorderSide(
+                          color: isSelected
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.grey[300]!,
+                          width: isSelected ? 2 : 1,
+                        ),
                       ),
-                    ),
-                  ),
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedPersonality = option['value'];
+                          });
+                          widget.onUpdateData(option['value']);
+                        },
+                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                        child: Padding(
+                          padding: EdgeInsets.all(cardPadding),
+                          child: Row(
+                            children: [
+                              Icon(
+                                option['icon'],
+                                size: iconSize,
+                                color: isSelected
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Colors.grey[600],
+                              ),
+                              SizedBox(width: cardPadding),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      _getLocalizedPersonalityLabel(option['value'], l10n),
+                                      style: TextStyle(
+                                        fontSize: optionFontSize,
+                                        fontWeight: FontWeight.bold,
+                                        color: isSelected
+                                            ? Theme.of(context).colorScheme.primary
+                                            : null,
+                                      ),
+                                    ),
+                                    SizedBox(height: BoxSize.spacingS),
+                                    Text(
+                                      _getLocalizedPersonalityDescription(option['value'], l10n),
+                                      style: TextStyle(
+                                        fontSize: optionFontSize * 0.9,
+                                        color: Colors.grey[600],
+                                      ),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              if (isSelected)
+                                Icon(
+                                  Icons.check_circle,
+                                  size: iconSize,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             ),
@@ -191,5 +233,39 @@ class _AIPersonalityStepState extends State<AIPersonalityStep> {
         ],
       ),
     );
+  }
+
+  String _getLocalizedPersonalityLabel(String personality, AppLocalizations l10n) {
+    switch (personality) {
+      case 'Friendly':
+        return l10n.personalityFriendly;
+      case 'Professional':
+        return l10n.personalityProfessional;
+      case 'Creative':
+        return l10n.personalityCreative;
+      case 'Witty':
+        return l10n.personalityWitty;
+      case 'Empathetic':
+        return l10n.personalityEmpathetic;
+      default:
+        return personality;
+    }
+  }
+
+  String _getLocalizedPersonalityDescription(String personality, AppLocalizations l10n) {
+    switch (personality) {
+      case 'Friendly':
+        return l10n.personalityFriendlyDescription;
+      case 'Professional':
+        return l10n.personalityProfessionalDescription;
+      case 'Creative':
+        return l10n.personalityCreativeDescription;
+      case 'Witty':
+        return l10n.personalityWittyDescription;
+      case 'Empathetic':
+        return l10n.personalityEmpatheticDescription;
+      default:
+        return personality;
+    }
   }
 } 

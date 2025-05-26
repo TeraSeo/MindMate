@@ -106,6 +106,7 @@ class _UserSetupPageState extends State<UserSetupPage> {
                 ? NameSetupStep(
                     onNameChanged: (name) => setState(() => _name = name),
                     onNext: _nextStep,
+                    onPrevious: _previousStep,
                     initialValue: _name,
                   )
                 : _currentStep == 1
@@ -113,7 +114,7 @@ class _UserSetupPageState extends State<UserSetupPage> {
                         onAgeGroupChanged: (ageGroup) =>
                             setState(() => _ageGroup = ageGroup),
                         onNext: _nextStep,
-                        onBack: _previousStep,
+                        onPrevious: _previousStep,
                         initialValue: _ageGroup,
                       )
                     : _currentStep == 2
@@ -127,7 +128,7 @@ class _UserSetupPageState extends State<UserSetupPage> {
                             onNotificationPreferencesChanged: (prefs) =>
                                 setState(() => _notificationPreferences = prefs),
                             onNext: _nextStep,
-                            onBack: _previousStep,
+                            onPrevious: _previousStep,
                             initialPreferences: _notificationPreferences,
                           ),
           ),

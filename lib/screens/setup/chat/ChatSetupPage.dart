@@ -9,7 +9,6 @@ import 'package:ai_chatter/screens/setup/chat/steps/AgeGroupStep.dart';
 import 'package:ai_chatter/screens/setup/chat/steps/LanguageStep.dart';
 import 'package:ai_chatter/screens/setup/chat/steps/RelationshipStep.dart';
 import 'package:ai_chatter/screens/setup/chat/steps/ChattingStyleStep.dart';
-import 'package:ai_chatter/screens/setup/chat/steps/ChattingPurposeStep.dart';
 
 class ChatSetupPage extends StatefulWidget {
   const ChatSetupPage({super.key});
@@ -27,11 +26,10 @@ class _ChatSetupPageState extends State<ChatSetupPage> {
     'language': '',
     'relationship': '',
     'chattingStyle': '',
-    'chattingPurpose': '',
   };
 
   void _handleNext() {
-    if (_currentStep < 6) {
+    if (_currentStep < 5) {
       setState(() {
         _currentStep++;
       });
@@ -99,13 +97,6 @@ class _ChatSetupPageState extends State<ChatSetupPage> {
           onUpdateData: (value) => _handleUpdateData('chattingStyle', value),
           initialValue: _setupData['chattingStyle']!,
         );
-      case 6:
-        return ChattingPurposeStep(
-          onNext: _handleNext,
-          onPrevious: _handlePrevious,
-          onUpdateData: (value) => _handleUpdateData('chattingPurpose', value),
-          initialValue: _setupData['chattingPurpose']!,
-        );
       default:
         return const SizedBox();
     }
@@ -144,7 +135,7 @@ class _ChatSetupPageState extends State<ChatSetupPage> {
             child: Column(
               children: [
                 LinearProgressIndicator(
-                  value: (_currentStep + 1) / 7,
+                  value: (_currentStep + 1) / 6,
                   backgroundColor: Colors.grey[200],
                   valueColor: AlwaysStoppedAnimation<Color>(
                     Theme.of(context).colorScheme.primary,

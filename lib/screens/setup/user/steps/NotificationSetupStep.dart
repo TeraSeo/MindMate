@@ -4,18 +4,19 @@ import 'package:ai_chatter/constants/BoxSize.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/services/NotificationService.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:ai_chatter/screens/setup/BaseStep.dart';
 
 class NotificationSetupStep extends StatefulWidget {
   final Function(Map<String, bool>) onNotificationPreferencesChanged;
   final VoidCallback onNext;
-  final VoidCallback onBack;
+  final VoidCallback onPrevious;
   final Map<String, bool>? initialPreferences;
 
   const NotificationSetupStep({
     super.key,
     required this.onNotificationPreferencesChanged,
     required this.onNext,
-    required this.onBack,
+    required this.onPrevious,
     this.initialPreferences,
   });
 
@@ -121,9 +122,11 @@ class _NotificationSetupStepState extends State<NotificationSetupStep> {
         );
       }
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 
@@ -137,119 +140,89 @@ class _NotificationSetupStepState extends State<NotificationSetupStep> {
     final descriptionFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h5;
     final cardTitleFontSize = isSmallScreen ? FontSize.h4 : FontSize.h3;
     final cardDescriptionFontSize = isSmallScreen ? FontSize.bodyMedium : FontSize.bodyLarge;
-    final buttonFontSize = isSmallScreen ? FontSize.buttonMedium : FontSize.buttonLarge;
     final cardPadding = isSmallScreen ? BoxSize.cardPadding : BoxSize.cardPadding * 1.5;
     final iconSize = isSmallScreen ? BoxSize.iconMedium : BoxSize.iconLarge;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          l10n.notificationStepTitle,
-          style: TextStyle(
-            fontSize: titleFontSize,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
-        Text(
-          l10n.notificationStepDescription,
-          style: TextStyle(
-            fontSize: descriptionFontSize,
-            color: Colors.grey,
-          ),
-        ),
-        SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
-        Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-            side: BorderSide(
-              color: Colors.grey[300]!,
-              width: 1,
+    return BaseStep(
+      onNext: widget.onNext,
+      onPrevious: widget.onPrevious,
+      canProceed: true,
+      isLastStep: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            l10n.notificationStepTitle,
+            style: TextStyle(
+              fontSize: titleFontSize,
+              fontWeight: FontWeight.bold,
             ),
           ),
-          child: Padding(
-            padding: EdgeInsets.all(cardPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l10n.pushNotificationsTitle,
-                  style: TextStyle(
-                    fontSize: cardTitleFontSize,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: isSmallScreen ? BoxSize.spacingS : BoxSize.spacingM),
-                Text(
-                  l10n.pushNotificationsDescription,
-                  style: TextStyle(
-                    fontSize: cardDescriptionFontSize,
-                    color: Colors.grey,
-                  ),
-                ),
-                SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
-                SwitchListTile(
-                  value: _pushNotificationsEnabled,
-                  onChanged: _isLoading ? null : _togglePushNotifications,
-                  title: Text(
+          SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+          Text(
+            l10n.notificationStepDescription,
+            style: TextStyle(
+              fontSize: descriptionFontSize,
+              color: Colors.grey,
+            ),
+          ),
+          SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+          Card(
+            elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+              side: BorderSide(
+                color: Colors.grey[300]!,
+                width: 1,
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(cardPadding),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
                     l10n.pushNotificationsTitle,
-                    style: TextStyle(fontSize: cardDescriptionFontSize),
+                    style: TextStyle(
+                      fontSize: cardTitleFontSize,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  secondary: _isLoading
-                      ? SizedBox(
-                          width: iconSize,
-                          height: iconSize,
-                          child: CircularProgressIndicator(
-                            strokeWidth: isSmallScreen ? 2 : 3,
+                  SizedBox(height: isSmallScreen ? BoxSize.spacingS : BoxSize.spacingM),
+                  Text(
+                    l10n.pushNotificationsDescription,
+                    style: TextStyle(
+                      fontSize: cardDescriptionFontSize,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
+                  SwitchListTile(
+                    value: _pushNotificationsEnabled,
+                    onChanged: _isLoading ? null : _togglePushNotifications,
+                    title: Text(
+                      l10n.pushNotificationsTitle,
+                      style: TextStyle(fontSize: cardDescriptionFontSize),
+                    ),
+                    secondary: _isLoading
+                        ? SizedBox(
+                            width: iconSize,
+                            height: iconSize,
+                            child: CircularProgressIndicator(
+                              strokeWidth: isSmallScreen ? 2 : 3,
+                            ),
+                          )
+                        : Icon(
+                            Icons.notifications_outlined,
+                            size: iconSize,
                           ),
-                        )
-                      : Icon(
-                          Icons.notifications_outlined,
-                          size: iconSize,
-                        ),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        const Spacer(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            TextButton(
-              onPressed: widget.onBack,
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.5,
-                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
-                ),
-              ),
-              child: Text(
-                l10n.back,
-                style: TextStyle(fontSize: buttonFontSize),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: widget.onNext,
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: isSmallScreen ? BoxSize.buttonPadding * 2 : BoxSize.buttonPadding * 3,
-                  vertical: isSmallScreen ? BoxSize.buttonPadding : BoxSize.buttonPadding * 1.2,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(BoxSize.buttonRadius),
-                ),
-              ),
-              child: Text(
-                l10n.next,
-                style: TextStyle(fontSize: buttonFontSize),
-              ),
-            ),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 } 

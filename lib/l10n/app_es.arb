@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI Chatter",
+    "appTitle": "Asistente de Chat IA",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "¡Bienvenido a AI Chatter!",
+    "welcome": "¡Bienvenido al Asistente de Chat IA!",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -15,7 +15,7 @@
     "@language": {
         "description": "Language selection option"
     },
-    "setupRequired": "Configuración requerida",
+    "setupRequired": "Configuración Requerida",
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
@@ -23,7 +23,7 @@
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
-    "goToSetup": "Ir a configuración",
+    "goToSetup": "Ir a Configuración",
     "@goToSetup": {
         "description": "Button text to navigate to setup page"
     },
@@ -35,7 +35,7 @@
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "Por favor, ingrese su nombre como desea ser llamado.",
+    "nameStepDescription": "Por favor, ingrese el nombre con el que desea ser llamado.",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -55,7 +55,7 @@
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "Seleccione su grupo de edad para personalizar su experiencia.",
+    "ageGroupStepDescription": "Seleccione su grupo de edad para una mejor experiencia.",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,7 +63,7 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "Seleccione su género para personalizar su experiencia.",
+    "genderStepDescription": "Seleccione su género para una mejor experiencia.",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,19 +71,19 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "Manténgase actualizado con mensajes y actualizaciones importantes.",
+    "notificationStepDescription": "Reciba mensajes y actualizaciones importantes.",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
-    "pushNotificationsTitle": "Notificaciones push",
+    "pushNotificationsTitle": "Notificaciones Push",
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "Reciba actualizaciones instantáneas sobre sus conversaciones",
+    "pushNotificationsDescription": "Reciba actualizaciones instantáneas de sus conversaciones",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
-    "notificationTypesTitle": "Recibirá notificaciones para:",
+    "notificationTypesTitle": "Recibirá las siguientes notificaciones:",
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
@@ -107,7 +107,7 @@
     "@next": {
         "description": "Next button text"
     },
-    "completeSetup": "Completar configuración",
+    "completeSetup": "Completar Configuración",
     "@completeSetup": {
         "description": "Complete setup button text"
     },
@@ -127,7 +127,7 @@
     "@logout": {
         "description": "Logout button text"
     },
-    "logoutConfirmation": "Confirmar cierre de sesión",
+    "logoutConfirmation": "Confirmar Cierre de Sesión",
     "@logoutConfirmation": {
         "description": "Logout confirmation dialog title"
     },
@@ -135,7 +135,7 @@
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
-    "notificationsRequired": "Notificaciones requeridas",
+    "notificationsRequired": "Permiso de Notificaciones Requerido",
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
@@ -147,10 +147,10 @@
     "@ok": {
         "description": "OK button text"
     },
-    "personalInformation": "Información personal",
+    "personalInformation": "Información Personal",
     "name": "Nombre",
     "pleaseEnterName": "Por favor, ingrese su nombre",
-    "ageGroup": "Grupo de edad",
+    "ageGroup": "Grupo de Edad",
     "gender": "Género",
     "male": "Masculino",
     "@male": {
@@ -168,18 +168,143 @@
     "@preferNotToSay": {
         "description": "Gender option for prefer not to say"
     },
+    "other": "Otro",
     "notifications": "Notificaciones",
     "enableNotifications": "Activar notificaciones",
     "saveChanges": "Guardar cambios",
     "profileUpdated": "Perfil actualizado exitosamente",
-    "welcomeMessage": "Bienvenido a AI Chatter",
-    "pleaseCompleteSetup": "Por favor complete la configuración de su perfil antes de iniciar un chat.",
+    "welcomeMessage": "Bienvenido al Asistente de Chat IA",
+    "pleaseCompleteSetup": "Por favor, complete la configuración de su perfil antes de comenzar a chatear.",
     "errorSavingProfile": "Error al guardar el perfil. Por favor, inténtelo de nuevo.",
     "setupProfile": "Configurar Perfil",
     "newChat": "Nuevo Chat",
     "chatSetup": "Configuración del Chat",
     "chatTopic": "Tema del Chat",
-    "pleaseEnterTopic": "Por favor ingrese un tema para el chat",
+    "pleaseEnterTopic": "Por favor, ingrese el tema del chat",
     "startChat": "Iniciar Chat",
-    "errorStartingChat": "Error al iniciar el chat. Por favor, inténtelo de nuevo."
+    "errorStartingChat": "Error al iniciar el chat. Por favor, inténtelo de nuevo.",
+    "complete": "Completar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "search": "Buscar",
+    "login": "Iniciar sesión",
+    "signup": "Registrarse",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "forgotPassword": "¿Olvidó su contraseña?",
+    "dontHaveAccount": "¿No tiene una cuenta?",
+    "alreadyHaveAccount": "¿Ya tiene una cuenta?",
+    "age": "Edad",
+    "unspecified": "No especificado",
+    "ageGroupUnder18": "Menos de 18",
+    "ageGroup18to24": "18-24",
+    "ageGroup25to34": "25-34",
+    "ageGroup35to44": "35-44",
+    "ageGroup45to54": "45-54",
+    "ageGroup55Plus": "55+",
+    "ageGroupUnder18Description": "Para usuarios menores de 18 años",
+    "ageGroup18to24Description": "Para usuarios de 18-24 años",
+    "ageGroup25to34Description": "Para usuarios de 25-34 años",
+    "ageGroup35to44Description": "Para usuarios de 35-44 años",
+    "ageGroup45to54Description": "Para usuarios de 45-54 años",
+    "ageGroup55PlusDescription": "Para usuarios de 55 años o más",
+    "genderMale": "Masculino",
+    "genderFemale": "Femenino",
+    "genderUnspecified": "No especificado",
+    "genderMaleDescription": "Identidad de género masculina",
+    "genderFemaleDescription": "Identidad de género femenina",
+    "genderUnspecifiedDescription": "Prefiero no especificar u otra identidad de género",
+    "theme": "Tema",
+    "help": "Ayuda",
+    "privacyPolicy": "Política de Privacidad",
+    "termsOfService": "Términos de Servicio",
+    "contactUs": "Contáctenos",
+    "version": "Versión",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "info": "Información",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "yes": "Sí",
+    "no": "No",
+    "chooseAgeGroup": "Elegir Grupo de Edad de la IA",
+    "selectAgeGroupDescription": "Selecciona el grupo de edad que mejor se adapte a tus preferencias.",
+    "ageGroupChild": "Niño (5-12)",
+    "ageGroupTeen": "Adolescente (13-19)",
+    "ageGroupYoungAdult": "Adulto Joven (20-29)",
+    "ageGroupAdult": "Adulto (30-49)",
+    "ageGroupSenior": "Adulto Mayor (50+)",
+    "ageGroupChildDescription": "Lenguaje simple, tono lúdico y temas apropiados para la edad.",
+    "ageGroupTeenDescription": "Contenido relatable, estilo casual y temas orientados a jóvenes.",
+    "ageGroupYoungAdultDescription": "Estilo de comunicación equilibrado para jóvenes profesionales.",
+    "ageGroupAdultDescription": "Estilo de conversación maduro con perspectivas profesionales.",
+    "ageGroupSeniorDescription": "Comunicación clara con respeto a la experiencia.",
+    "chooseGender": "Elegir Género de la IA",
+    "selectGenderDescription": "Selecciona el género que mejor se adapte a tus preferencias.",
+    "genderMale": "Masculino",
+    "genderFemale": "Femenino",
+    "genderUnspecified": "No especificado (neutral)",
+    "genderMaleDescription": "Usa pronombres masculinos y estilo de comunicación masculino.",
+    "genderFemaleDescription": "Usa pronombres femeninos y estilo de comunicación femenino.",
+    "genderUnspecifiedDescription": "Usa pronombres neutrales y estilo de comunicación equilibrado.",
+    "chooseLanguage": "Elegir Idioma del Chat",
+    "selectLanguageDescription": "Selecciona el idioma que prefieres para tus conversaciones.",
+    "languageEnglish": "Inglés",
+    "languageSpanish": "Español",
+    "languageFrench": "Francés",
+    "languageGerman": "Alemán",
+    "languageJapanese": "Japonés",
+    "languageKorean": "Coreano",
+    "languageChinese": "Chino",
+    "languageEnglishDescription": "Comunicación en inglés con fluidez natural.",
+    "languageSpanishDescription": "Comunicación en español con comprensión cultural.",
+    "languageFrenchDescription": "Comunicación en francés con matices apropiados.",
+    "languageGermanDescription": "Comunicación en alemán con precisión gramatical.",
+    "languageJapaneseDescription": "Comunicación en japonés con contexto cultural.",
+    "languageKoreanDescription": "Comunicación en coreano con honoríficos apropiados.",
+    "languageChineseDescription": "Comunicación en chino con sensibilidad cultural.",
+    "setRelationshipRole": "Establecer Rol de Relación",
+    "setRelationshipDescription": "Establece el contexto emocional entre tú y la IA",
+    "relationshipRomantic": "Pareja romántica",
+    "relationshipDating": "Cita",
+    "relationshipFriend": "Amigo de toda la vida",
+    "relationshipAdvisor": "Oyente / consejero",
+    "relationshipIdeal": "Tipo ideal",
+    "relationshipMentor": "Mentor / mayor",
+    "relationshipSecret": "Compañero secreto",
+    "relationshipRomanticDescription": "Una relación amorosa e íntima con profunda conexión emocional",
+    "relationshipDatingDescription": "Alguien con quien estás saliendo pero aún no en una relación oficial",
+    "relationshipFriendDescription": "Un amigo cercano y de confianza con años de experiencias compartidas",
+    "relationshipAdvisorDescription": "Alguien que escucha atentamente y proporciona consejos reflexivos",
+    "relationshipIdealDescription": "Tu pareja perfecta con cualidades que admiras y deseas",
+    "relationshipMentorDescription": "Un guía sabio que te ayuda a crecer y desarrollarte",
+    "relationshipSecretDescription": "Un confidente privado para tus pensamientos más personales",
+    "chooseChattingStyle": "Elegir Estilo de Chat",
+    "selectChattingStyleDescription": "Selecciona cómo quieres que la IA se comunique contigo",
+    "styleFormal": "Habla formal",
+    "styleCasual": "Habla casual",
+    "styleMixed": "Habla mixta",
+    "styleShort": "Corto y directo",
+    "styleLong": "Largo y expresivo",
+    "styleFormalDescription": "Comunicación profesional y respetuosa con etiqueta apropiada",
+    "styleCasualDescription": "Conversaciones relajadas y amigables con lenguaje cotidiano",
+    "styleMixedDescription": "Mezcla equilibrada de estilos de comunicación formal y casual",
+    "styleShortDescription": "Mensajes concisos y directos con puntos claros",
+    "styleLongDescription": "Mensajes detallados y elaborados con descripciones ricas",
+    "choosePersonality": "Elegir Personalidad de la IA",
+    "selectPersonalityDescription": "Selecciona la personalidad que mejor se adapte a tus preferencias.",
+    "personalityFriendly": "Amigable",
+    "personalityProfessional": "Profesional",
+    "personalityCreative": "Creativo",
+    "personalityWitty": "Ingenioso",
+    "personalityEmpathetic": "Empático",
+    "personalityFriendlyDescription": "Cálido y accesible con una actitud positiva",
+    "personalityProfessionalDescription": "Educado y formal con un comportamiento profesional",
+    "personalityCreativeDescription": "Imaginativo y artístico con perspectivas únicas",
+    "personalityWittyDescription": "Humorístico e inteligente con respuestas rápidas",
+    "personalityEmpatheticDescription": "Comprensivo y solidario con inteligencia emocional"
 } 

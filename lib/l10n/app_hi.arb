@@ -1,9 +1,9 @@
 {
-    "appTitle": "AI चैटर",
+    "appTitle": "AI चैट सहायक",
     "@appTitle": {
         "description": "The title of the application"
     },
-    "welcome": "AI चैटर में आपका स्वागत है!",
+    "welcome": "AI चैट सहायक में आपका स्वागत है!",
     "@welcome": {
         "description": "Welcome message"
     },
@@ -19,7 +19,7 @@
     "@setupRequired": {
         "description": "Title for the setup required dialog"
     },
-    "setupRequiredMessage": "कृपया आगे बढ़ने से पहले अपनी प्रोफ़ाइल सेटअप पूरी करें।",
+    "setupRequiredMessage": "कृपया आगे बढ़ने से पहले अपनी प्रोफ़ाइल सेटअप पूरा करें।",
     "@setupRequiredMessage": {
         "description": "Message shown in the setup required dialog"
     },
@@ -35,7 +35,7 @@
     "@nameStepTitle": {
         "description": "Title for the name setup step"
     },
-    "nameStepDescription": "कृपया वह नाम दर्ज करें जिससे आप पुकारे जाना चाहते हैं।",
+    "nameStepDescription": "कृपया वह नाम दर्ज करें जिससे आप संबोधित होना चाहते हैं।",
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
@@ -55,7 +55,7 @@
     "@ageGroupStepTitle": {
         "description": "Title for the age group setup step"
     },
-    "ageGroupStepDescription": "अपने अनुभव को व्यक्तिगत बनाने के लिए अपनी आयु वर्ग चुनें।",
+    "ageGroupStepDescription": "बेहतर अनुभव के लिए अपनी आयु वर्ग चुनें।",
     "@ageGroupStepDescription": {
         "description": "Description for the age group setup step"
     },
@@ -63,7 +63,7 @@
     "@genderStepTitle": {
         "description": "Title for the gender setup step"
     },
-    "genderStepDescription": "अपने अनुभव को व्यक्तिगत बनाने के लिए अपना लिंग चुनें।",
+    "genderStepDescription": "बेहतर अनुभव के लिए अपना लिंग चुनें।",
     "@genderStepDescription": {
         "description": "Description for the gender setup step"
     },
@@ -71,7 +71,7 @@
     "@notificationStepTitle": {
         "description": "Title for the notification setup step"
     },
-    "notificationStepDescription": "महत्वपूर्ण संदेशों और अपडेट के साथ अपडेट रहें।",
+    "notificationStepDescription": "महत्वपूर्ण संदेश और अपडेट प्राप्त करें।",
     "@notificationStepDescription": {
         "description": "Description for the notification setup step"
     },
@@ -79,11 +79,11 @@
     "@pushNotificationsTitle": {
         "description": "Title for push notifications section"
     },
-    "pushNotificationsDescription": "अपनी बातचीत के बारे में तुरंत अपडेट प्राप्त करें",
+    "pushNotificationsDescription": "अपनी बातचीत के तुरंत अपडेट प्राप्त करें",
     "@pushNotificationsDescription": {
         "description": "Description for push notifications"
     },
-    "notificationTypesTitle": "आपको निम्नलिखित के लिए सूचनाएं मिलेंगी:",
+    "notificationTypesTitle": "आपको निम्नलिखित सूचनाएं प्राप्त होंगी:",
     "@notificationTypesTitle": {
         "description": "Title for notification types section"
     },
@@ -135,7 +135,7 @@
     "@logoutMessage": {
         "description": "Logout confirmation message"
     },
-    "notificationsRequired": "सूचनाएं आवश्यक हैं",
+    "notificationsRequired": "सूचना अनुमति आवश्यक है",
     "@notificationsRequired": {
         "description": "Title for the notifications required dialog"
     },
@@ -164,7 +164,7 @@
     "@nonBinary": {
         "description": "Gender option for non-binary"
     },
-    "preferNotToSay": "उत्तर नहीं देना चाहते",
+    "preferNotToSay": "बताना नहीं चाहते",
     "@preferNotToSay": {
         "description": "Gender option for prefer not to say"
     },
@@ -173,14 +173,138 @@
     "enableNotifications": "सूचनाएं सक्षम करें",
     "saveChanges": "परिवर्तन सहेजें",
     "profileUpdated": "प्रोफ़ाइल सफलतापूर्वक अपडेट की गई",
-    "welcomeMessage": "AI Chatter में आपका स्वागत है",
+    "welcomeMessage": "AI चैट सहायक में आपका स्वागत है",
     "pleaseCompleteSetup": "चैट शुरू करने से पहले कृपया अपनी प्रोफ़ाइल सेटअप पूरा करें।",
     "errorSavingProfile": "प्रोफ़ाइल सहेजने में त्रुटि। कृपया पुनः प्रयास करें।",
     "setupProfile": "प्रोफ़ाइल सेटअप",
     "newChat": "नई चैट",
     "chatSetup": "चैट सेटअप",
     "chatTopic": "चैट विषय",
-    "pleaseEnterTopic": "कृपया चैट के लिए एक विषय दर्ज करें",
+    "pleaseEnterTopic": "कृपया चैट विषय दर्ज करें",
     "startChat": "चैट शुरू करें",
-    "errorStartingChat": "चैट शुरू करने में त्रुटि। कृपया पुनः प्रयास करें।"
+    "errorStartingChat": "चैट शुरू करने में त्रुटि। कृपया पुनः प्रयास करें।",
+    "complete": "पूरा करें",
+    "save": "सहेजें",
+    "delete": "हटाएं",
+    "edit": "संपादित करें",
+    "search": "खोजें",
+    "login": "लॉग इन",
+    "signup": "साइन अप",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "dontHaveAccount": "खाता नहीं है?",
+    "alreadyHaveAccount": "पहले से खाता है?",
+    "age": "आयु",
+    "unspecified": "अनिर्दिष्ट",
+    "ageGroupUnder18": "18 से कम",
+    "ageGroup18to24": "18-24",
+    "ageGroup25to34": "25-34",
+    "ageGroup35to44": "35-44",
+    "ageGroup45to54": "45-54",
+    "ageGroup55Plus": "55+",
+    "ageGroupUnder18Description": "18 वर्ष से कम उम्र के उपयोगकर्ताओं के लिए",
+    "ageGroup18to24Description": "18-24 वर्ष के उपयोगकर्ताओं के लिए",
+    "ageGroup25to34Description": "25-34 वर्ष के उपयोगकर्ताओं के लिए",
+    "ageGroup35to44Description": "35-44 वर्ष के उपयोगकर्ताओं के लिए",
+    "ageGroup45to54Description": "45-54 वर्ष के उपयोगकर्ताओं के लिए",
+    "ageGroup55PlusDescription": "55 वर्ष और उससे अधिक उम्र के उपयोगकर्ताओं के लिए",
+    "genderMale": "पुरुष",
+    "genderFemale": "महिला",
+    "genderUnspecified": "अनिर्दिष्ट",
+    "genderMaleDescription": "पुरुष लिंग पहचान",
+    "genderFemaleDescription": "महिला लिंग पहचान",
+    "genderUnspecifiedDescription": "निर्दिष्ट नहीं करना चाहते या अन्य लिंग पहचान",
+    "theme": "थीम",
+    "help": "सहायता",
+    "privacyPolicy": "गोपनीयता नीति",
+    "termsOfService": "सेवा की शर्तें",
+    "contactUs": "संपर्क करें",
+    "version": "संस्करण",
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफल",
+    "warning": "चेतावनी",
+    "info": "जानकारी",
+    "retry": "पुनः प्रयास करें",
+    "close": "बंद करें",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "chooseAgeGroup": "AI आयु वर्ग चुनें",
+    "selectAgeGroupDescription": "अपनी पसंद के अनुसार आयु वर्ग चुनें।",
+    "ageGroupChild": "बच्चा (5-12)",
+    "ageGroupTeen": "किशोर (13-19)",
+    "ageGroupYoungAdult": "युवा वयस्क (20-29)",
+    "ageGroupAdult": "वयस्क (30-49)",
+    "ageGroupSenior": "वरिष्ठ (50+)",
+    "ageGroupChildDescription": "सरल भाषा, खेल-खेल में बातचीत और आयु-उपयुक्त विषय।",
+    "ageGroupTeenDescription": "संबंधित सामग्री, आरामदायक शैली और युवा-केंद्रित विषय।",
+    "ageGroupYoungAdultDescription": "युवा पेशेवरों के लिए संतुलित संचार शैली।",
+    "ageGroupAdultDescription": "पेशेवर अंतर्दृष्टि के साथ परिपक्व बातचीत शैली।",
+    "ageGroupSeniorDescription": "अनुभव के प्रति सम्मान के साथ स्पष्ट संचार।",
+    "chooseGender": "AI लिंग चुनें",
+    "selectGenderDescription": "अपनी पसंद के अनुसार लिंग चुनें।",
+    "genderMale": "पुरुष",
+    "genderFemale": "महिला",
+    "genderUnspecified": "अनिर्दिष्ट (लिंग-तटस्थ)",
+    "genderMaleDescription": "पुरुष सर्वनाम और संचार शैली का उपयोग करता है।",
+    "genderFemaleDescription": "महिला सर्वनाम और संचार शैली का उपयोग करती है।",
+    "genderUnspecifiedDescription": "लिंग-तटस्थ सर्वनाम और संतुलित संचार शैली का उपयोग करता है।",
+    "chooseLanguage": "चैट भाषा चुनें",
+    "selectLanguageDescription": "अपनी बातचीत के लिए पसंदीदा भाषा चुनें।",
+    "languageEnglish": "अंग्रेजी",
+    "languageSpanish": "स्पेनिश",
+    "languageFrench": "फ्रेंच",
+    "languageGerman": "जर्मन",
+    "languageJapanese": "जापानी",
+    "languageKorean": "कोरियाई",
+    "languageChinese": "चीनी",
+    "languageEnglishDescription": "प्राकृतिक प्रवाह के साथ अंग्रेजी में संवाद।",
+    "languageSpanishDescription": "सांस्कृतिक समझ के साथ स्पेनिश में संवाद।",
+    "languageFrenchDescription": "उचित न्यूअन्स के साथ फ्रेंच में संवाद।",
+    "languageGermanDescription": "व्याकरणिक सटीकता के साथ जर्मन में संवाद।",
+    "languageJapaneseDescription": "सांस्कृतिक संदर्भ के साथ जापानी में संवाद।",
+    "languageKoreanDescription": "उचित सम्मान के साथ कोरियाई में संवाद।",
+    "languageChineseDescription": "सांस्कृतिक संवेदनशीलता के साथ चीनी में संवाद।",
+    "setRelationshipRole": "संबंध भूमिका निर्धारित करें",
+    "setRelationshipDescription": "आप और AI के बीच भावनात्मक संदर्भ निर्धारित करता है",
+    "relationshipRomantic": "रोमांटिक साथी",
+    "relationshipDating": "डेटिंग",
+    "relationshipFriend": "दीर्घकालिक मित्र",
+    "relationshipAdvisor": "श्रोता / सलाहकार",
+    "relationshipIdeal": "आदर्श प्रकार",
+    "relationshipMentor": "मार्गदर्शक / वरिष्ठ",
+    "relationshipSecret": "गुप्त साथी",
+    "relationshipRomanticDescription": "गहरे भावनात्मक संबंध के साथ प्रेमपूर्ण और अंतरंग संबंध",
+    "relationshipDatingDescription": "कोई जिसके साथ आप डेटिंग कर रहे हैं लेकिन अभी तक आधिकारिक संबंध में नहीं हैं",
+    "relationshipFriendDescription": "साझा अनुभवों के वर्षों के साथ एक करीबी, विश्वसनीय मित्र",
+    "relationshipAdvisorDescription": "कोई जो ध्यान से सुनता है और विचारशील सलाह देता है",
+    "relationshipIdealDescription": "आपका सही मैच जिसमें आप जिन गुणों की प्रशंसा और इच्छा करते हैं",
+    "relationshipMentorDescription": "एक बुद्धिमान मार्गदर्शक जो आपको बढ़ने और विकसित होने में मदद करता है",
+    "relationshipSecretDescription": "आपके सबसे व्यक्तिगत विचारों के लिए एक निजी विश्वासपात्र",
+    "chooseChattingStyle": "चैटिंग शैली चुनें",
+    "selectChattingStyleDescription": "चुनें कि आप AI को कैसे संवाद करना चाहते हैं",
+    "styleFormal": "औपचारिक भाषा",
+    "styleCasual": "आरामदायक भाषा",
+    "styleMixed": "मिश्रित भाषा",
+    "styleShort": "संक्षिप्त और सीधा",
+    "styleLong": "विस्तृत और अभिव्यंजक",
+    "styleFormalDescription": "उचित शिष्टाचार के साथ पेशेवर और सम्मानजनक संचार",
+    "styleCasualDescription": "रोजमर्रा की भाषा के साथ आरामदायक और मैत्रीपूर्ण बातचीत",
+    "styleMixedDescription": "औपचारिक और आरामदायक संचार शैलियों का संतुलित मिश्रण",
+    "styleShortDescription": "स्पष्ट बिंदुओं के साथ संक्षिप्त और सीधे संदेश",
+    "styleLongDescription": "समृद्ध विवरणों के साथ विस्तृत और विस्तृत संदेश",
+    "choosePersonality": "AI व्यक्तित्व चुनें",
+    "selectPersonalityDescription": "अपनी पसंद के अनुसार व्यक्तित्व चुनें।",
+    "personalityFriendly": "मैत्रीपूर्ण",
+    "personalityProfessional": "पेशेवर",
+    "personalityCreative": "रचनात्मक",
+    "personalityWitty": "विनोदी",
+    "personalityEmpathetic": "सहानुभूतिशील",
+    "personalityFriendlyDescription": "सकारात्मक दृष्टिकोण के साथ गर्मजोशी और सुलभ",
+    "personalityProfessionalDescription": "पेशेवर व्यवहार के साथ विनम्र और औपचारिक",
+    "personalityCreativeDescription": "अद्वितीय दृष्टिकोण के साथ कल्पनाशील और कलात्मक",
+    "personalityWittyDescription": "त्वरित प्रतिक्रियाओं के साथ हास्यपूर्ण और चतुर",
+    "personalityEmpatheticDescription": "भावनात्मक बुद्धिमत्ता के साथ समझदार और सहायक"
 } 
