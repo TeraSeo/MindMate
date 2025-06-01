@@ -52,9 +52,19 @@ class _AINameSetupStepState extends State<AINameSetupStep> {
     final l10n = AppLocalizations.of(context)!;
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.width < 600;
+    final isMediumScreen = size.width >= 600 && size.width < 1200;
 
-    final titleFontSize = isSmallScreen ? FontSize.h2 : FontSize.h1;
-    final descriptionFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h5;
+    final titleFontSize = isSmallScreen 
+        ? FontSize.h5 
+        : isMediumScreen 
+            ? FontSize.h4 
+            : FontSize.h3;
+            
+    final descriptionFontSize = isSmallScreen 
+        ? FontSize.bodyMedium 
+        : isMediumScreen 
+            ? FontSize.bodyLarge 
+            : FontSize.h6;
     final inputFontSize = isSmallScreen ? FontSize.bodyLarge : FontSize.h6;
     final buttonHeight = isSmallScreen ? BoxSize.buttonHeight : BoxSize.buttonHeight * 1.2;
 
@@ -68,7 +78,7 @@ class _AINameSetupStepState extends State<AINameSetupStep> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              l10n.nameStepTitle,
+              l10n.aiNameStepTitle,
               style: TextStyle(
                 fontSize: titleFontSize,
                 fontWeight: FontWeight.bold,
@@ -76,7 +86,7 @@ class _AINameSetupStepState extends State<AINameSetupStep> {
             ),
             SizedBox(height: isSmallScreen ? BoxSize.spacingM : BoxSize.spacingL),
             Text(
-              l10n.nameStepDescription,
+              l10n.aiNameStepDescription,
               style: TextStyle(
                 fontSize: descriptionFontSize,
                 color: Colors.grey,

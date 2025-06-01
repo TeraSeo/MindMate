@@ -1,6 +1,6 @@
 import 'package:ai_chatter/widgets/button/HomeFloatingActionButton.dart';
 import 'package:ai_chatter/widgets/drawer/HomeDrawer.dart';
-import 'package:ai_chatter/widgets/drawer/characters/ChatCharacterList.dart';
+import 'package:ai_chatter/widgets/characters/ChatCharacterList.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/constants/FontSize.dart';

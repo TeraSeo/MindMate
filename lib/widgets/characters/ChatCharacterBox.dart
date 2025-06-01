@@ -1,3 +1,4 @@
+import 'package:ai_chatter/screens/ChatPage.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
@@ -21,7 +22,12 @@ class ChatCharacterBox extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        // TODO: Navigate to ChatPage with character info
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatPage(character: character),
+          ),
+        );
       },
       borderRadius: BorderRadius.circular(16),
       child: Container(

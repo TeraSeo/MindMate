@@ -2,7 +2,7 @@ import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/providers/UserProvider.dart';
 import 'package:ai_chatter/services/CharacterService.dart';
-import 'package:ai_chatter/widgets/drawer/characters/ChatCharacterBox.dart';
+import 'package:ai_chatter/widgets/characters/ChatCharacterBox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

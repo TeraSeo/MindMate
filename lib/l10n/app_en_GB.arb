@@ -39,6 +39,8 @@
     "@nameStepDescription": {
         "description": "Description for the name setup step"
     },
+    "aiNameStepTitle": "Choose your AI's name",
+    "aiNameStepDescription": "Give your AI a name to personalise your experience.",
     "nameFieldLabel": "Name",
     "@nameFieldLabel": {
         "description": "Label for the name input field"

@@ -4,7 +4,6 @@ import 'package:ai_chatter/providers/LocaleProvider.dart';
 import 'package:ai_chatter/providers/UserProvider.dart';
 import 'package:ai_chatter/screens/SplashScreen.dart';
 import 'package:ai_chatter/screens/auth/LoginPage.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -26,16 +25,6 @@ Future<void> main() async {
 
   // Initialize SharedPreferences
   final prefs = await SharedPreferences.getInstance();
-
-  final user = FirebaseAuth.instance.currentUser;
-
-  if (user != null) {
-    final token = await user.getIdToken(true); // await 필수
-    print("✅ $token");
-  } else {
-    print("❌ No user is currently signed in.");
-  }
-  
   runApp(MyApp(prefs: prefs));
 }
 

@@ -13,6 +13,7 @@ import 'package:ai_chatter/screens/setup/chat/steps/AgeGroupStep.dart';
 import 'package:ai_chatter/screens/setup/chat/steps/LanguageStep.dart';
 import 'package:ai_chatter/screens/setup/chat/steps/RelationshipStep.dart';
 import 'package:ai_chatter/screens/setup/chat/steps/ChattingStyleStep.dart';
+import 'package:uuid/uuid.dart';
 
 class ChatSetupPage extends StatefulWidget {
   const ChatSetupPage({super.key});
@@ -23,6 +24,7 @@ class ChatSetupPage extends StatefulWidget {
 
 class _ChatSetupPageState extends State<ChatSetupPage> {
   int _currentStep = 0;
+  final _uuid = const Uuid();
   final Map<String, String> _setupData = {
     'name': '',
     'personality': '',
@@ -48,7 +50,10 @@ class _ChatSetupPageState extends State<ChatSetupPage> {
         .collection('characters')
         .doc();
 
+      final _characterId = _uuid.v4();
+
       await characterRef.set({
+        'characterId': _characterId,
         'name': _setupData['name'],
         'personality': _setupData['personality'],
         'ageGroup': _setupData['ageGroup'],

@@ -55,7 +55,7 @@ User Message: ${userMessage || "None"}
         {role: "user", content: prompt},
       ],
       temperature: 0.8,
-      max_tokens: userMessage.length,
+      max_tokens: userMessage.length * 2,
     });
 
     const reply = response.data.choices[0].message.content.trim();
