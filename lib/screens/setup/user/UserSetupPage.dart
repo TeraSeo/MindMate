@@ -25,25 +25,34 @@ class _UserSetupPageState extends State<UserSetupPage> {
     'appUpdates': false,
     'announcements': false,
   };
+  bool _isSubmitting = false;
 
   Future<void> _completeSetup() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
+    if (_isSubmitting) return;
+    _isSubmitting = true;
 
-    await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
-      'name': _name,
-      'ageGroup': _ageGroup,
-      'gender': _gender,
-      'notificationPreferences': _notificationPreferences,
-      'isUserSet': true,
-      'updatedAt': FieldValue.serverTimestamp(),
-    });
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) return;
 
-    if (mounted) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+        'name': _name,
+        'ageGroup': _ageGroup,
+        'gender': _gender,
+        'notificationPreferences': _notificationPreferences,
+        'isUserSet': true,
+        'updatedAt': FieldValue.serverTimestamp(),
+      });
+
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      }
+    } catch (e) {
+      _isSubmitting = false;
+      debugPrint('Setup failed: $e');
     }
   }
 

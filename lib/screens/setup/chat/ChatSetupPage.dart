@@ -1,4 +1,8 @@
 import 'package:ai_chatter/constants/Colors.dart';
+import 'package:ai_chatter/screens/HomePage.dart';
+import 'package:ai_chatter/screens/setup/chat/steps/AINameSetupStep.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
@@ -20,6 +24,7 @@ class ChatSetupPage extends StatefulWidget {
 class _ChatSetupPageState extends State<ChatSetupPage> {
   int _currentStep = 0;
   final Map<String, String> _setupData = {
+    'name': '',
     'personality': '',
     'gender': '',
     'ageGroup': '',
@@ -27,15 +32,52 @@ class _ChatSetupPageState extends State<ChatSetupPage> {
     'relationship': '',
     'chattingStyle': '',
   };
+  bool _isSubmitting = false;
+
+  Future<void> _completeSetup() async {
+    if (_isSubmitting) return;
+    _isSubmitting = true;
+
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    try {
+      final characterRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .collection('characters')
+        .doc();
+
+      await characterRef.set({
+        'name': _setupData['name'],
+        'personality': _setupData['personality'],
+        'ageGroup': _setupData['ageGroup'],
+        'gender': _setupData['gender'],
+        'language': _setupData['language'],
+        'relationship': _setupData['relationship'],
+        'chattingStyle': _setupData['chattingStyle'],
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      }
+    } catch (e) {
+      _isSubmitting = false;
+      debugPrint('Setup failed: $e');
+    }
+  }
 
   void _handleNext() {
-    if (_currentStep < 5) {
+    if (_currentStep < 6) {
       setState(() {
         _currentStep++;
       });
     } else {
-      // TODO: Handle completion
-      Navigator.pop(context, _setupData);
+      _completeSetup();
     }
   }
 
@@ -56,41 +98,48 @@ class _ChatSetupPageState extends State<ChatSetupPage> {
   Widget _buildStep() {
     switch (_currentStep) {
       case 0:
+        return AINameSetupStep(
+          onNext: _handleNext,
+          onPrevious: _handlePrevious,
+          onUpdateData: (value) => _handleUpdateData('name', value),
+          initialValue: _setupData['name']!,
+        );
+      case 1:
         return AIPersonalityStep(
           onNext: _handleNext,
           onPrevious: _handlePrevious,
           onUpdateData: (value) => _handleUpdateData('personality', value),
           initialValue: _setupData['personality']!,
         );
-      case 1:
+      case 2:
         return GenderStep(
           onNext: _handleNext,
           onPrevious: _handlePrevious,
           onUpdateData: (value) => _handleUpdateData('gender', value),
           initialValue: _setupData['gender']!,
         );
-      case 2:
+      case 3:
         return AgeGroupStep(
           onNext: _handleNext,
           onPrevious: _handlePrevious,
           onUpdateData: (value) => _handleUpdateData('ageGroup', value),
           initialValue: _setupData['ageGroup']!,
         );
-      case 3:
+      case 4:
         return LanguageStep(
           onNext: _handleNext,
           onPrevious: _handlePrevious,
           onUpdateData: (value) => _handleUpdateData('language', value),
           initialValue: _setupData['language']!,
         );
-      case 4:
+      case 5:
         return RelationshipStep(
           onNext: _handleNext,
           onPrevious: _handlePrevious,
           onUpdateData: (value) => _handleUpdateData('relationship', value),
           initialValue: _setupData['relationship']!,
         );
-      case 5:
+      case 6:
         return ChattingStyleStep(
           onNext: _handleNext,
           onPrevious: _handlePrevious,
