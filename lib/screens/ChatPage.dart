@@ -1,13 +1,12 @@
+import 'dart:async';
+import 'package:ai_chatter/services/ChatSessionService.dart';
+import 'package:ai_chatter/services/MessageService.dart';
+import 'package:ai_chatter/widgets/chat/LoadingBubble.dart';
 import 'package:ai_chatter/widgets/chat/MessageBubble.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:uuid/uuid.dart';
 
 class ChatPage extends StatefulWidget {
   final Map<String, dynamic> character;
@@ -18,6 +17,8 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin {
+  final ChatSessionService _chatSessionService = ChatSessionService();
+  final MessageService _messageService = MessageService();
   final TextEditingController _messageController = TextEditingController();
   final List<Map<String, dynamic>> _messages = [];
   final ScrollController _scrollController = ScrollController();
@@ -25,8 +26,11 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
   late AnimationController _dotAnimationController;
   late Animation<double> _dotAnimation;
   String? _sessionId;
-  final _firestore = FirebaseFirestore.instance;
-  final _uuid = const Uuid();
+  bool _isInitialLoading = true;
+  List<String> _sentMessagesBuffer = [];
+  Timer? _typingTimer;
+  bool _isGeneratingResponse = false;
+  final FocusNode _focusNode = FocusNode();
 
   @override
   void initState() {
@@ -38,6 +42,8 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
     )..repeat();
     
     _dotAnimation = Tween<double>(begin: 0, end: 1).animate(_dotAnimationController);
+
+    _focusNode.addListener(_handleFocusChange);
   }
 
   @override
@@ -45,170 +51,97 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
     _messageController.dispose();
     _scrollController.dispose();
     _dotAnimationController.dispose();
+    _typingTimer?.cancel();
+    _focusNode.dispose();
     super.dispose();
   }
 
-  Future<void> _initializeChatSession() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final characterId = widget.character['characterId'];
-    final sessionsRef = _firestore
-        .collection('users')
-        .doc(user.uid)
-        .collection('characters')
-        .doc(characterId)
-        .collection('chatsessions');
-
-    // Check for existing active session
-    final activeSession = await sessionsRef
-        .orderBy('lastActiveAt', descending: true)
-        .limit(1)
-        .get();
-
-    if (activeSession.docs.isNotEmpty) {
-      _sessionId = activeSession.docs.first.id;
-      await sessionsRef.doc(_sessionId).update({
-        'lastActiveAt': FieldValue.serverTimestamp(),
+  void _handleFocusChange() {
+    if (!_focusNode.hasFocus && _sentMessagesBuffer.isNotEmpty) {
+      _typingTimer?.cancel();
+      _typingTimer = Timer(const Duration(seconds: 3), () {
+        if (!_focusNode.hasFocus && _sentMessagesBuffer.isNotEmpty) {
+          final combinedMessage = _sentMessagesBuffer.join('\\n');
+          _sentMessagesBuffer.clear();
+          _generateAIResponse(combinedMessage);
+        }
       });
-      
-      // Load existing messages
-      await _loadMessages();
     } else {
-      // Create new session
-      _sessionId = _uuid.v4();
-      await sessionsRef.doc(_sessionId).set({
-        'createdAt': FieldValue.serverTimestamp(),
-        'lastActiveAt': FieldValue.serverTimestamp(),
-        'summary': '대화가 시작되었습니다.',
-      });
+      _typingTimer?.cancel();
     }
+  }
+
+  Future<void> _initializeChatSession() async {
+    final characterId = widget.character['characterId'];
+    _sessionId = await _chatSessionService.initializeSession(characterId: characterId);
+    await _loadMessages();
   }
 
   Future<void> _loadMessages() async {
     if (_sessionId == null) return;
-
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final characterId = widget.character['characterId'];
-    final messagesRef = _firestore
-        .collection('users')
-        .doc(user.uid)
-        .collection('characters')
-        .doc(characterId)
-        .collection('chatsessions')
-        .doc(_sessionId)
-        .collection('messages')
-        .orderBy('createdAt', descending: false);
+    setState(() => _isInitialLoading = true);
 
     try {
-      final messagesSnapshot = await messagesRef.get();
-      
+      final characterId = widget.character['characterId'];
+      final messages = await _messageService.loadMessages(
+        characterId: characterId,
+        sessionId: _sessionId!,
+      );
+
       setState(() {
         _messages.clear();
-        for (var doc in messagesSnapshot.docs) {
-          final data = doc.data();
-          _messages.add({
-            'text': data['content'],
-            'isUser': data['role'] == 'user',
-            'timestamp': (data['createdAt'] as Timestamp).toDate(),
-          });
-        }
+        _messages.addAll(messages);
+        _isInitialLoading = false;
       });
 
       _scrollToBottom();
     } catch (e) {
       print('Error loading messages: $e');
+      setState(() => _isInitialLoading = false);
     }
   }
 
   Future<void> _saveMessage(String content, String role) async {
-    if (_sessionId == null) return;
-
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final characterId = widget.character['characterId'];
-    final messageId = _uuid.v4();
-
-    await _firestore
-        .collection('users')
-        .doc(user.uid)
-        .collection('characters')
-        .doc(characterId)
-        .collection('chatsessions')
-        .doc(_sessionId)
-        .collection('messages')
-        .doc(messageId)
-        .set({
-      'role': role,
-      'content': content,
-      'createdAt': FieldValue.serverTimestamp(),
-    });
+    await _messageService.saveMessage(
+      characterId: widget.character['characterId'],
+      sessionId: _sessionId!,
+      content: content,
+      role: role,
+    );
   }
 
   Future<void> _generateAIResponse(String userMessage) async {
+    if (_isGeneratingResponse || userMessage.trim().isEmpty) return;
+    _isGeneratingResponse = true;
+
     setState(() {
       _isLoading = true;
     });
 
-    await Future.delayed(const Duration(seconds: 2));
-
     try {
-      final user = FirebaseAuth.instance.currentUser;
-      if (user == null) {
-        throw Exception('User not authenticated');
-      }
-
-      final token = await user.getIdToken();
-      final response = await http.post(
-        Uri.parse('https://generategptresponse-ythjyxem5a-uc.a.run.app'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer $token',
-        },
-        body: jsonEncode({
-          'personality': widget.character['personality'],
-          'relationship': widget.character['relationship'],
-          'chattingStyle': widget.character['chattingStyle'],
-          'gender': widget.character['gender'],
-          'ageGroup': widget.character['ageGroup'],
-          'replyLanguage': widget.character['language'],
-          'userMessage': userMessage,
-          'conversationSummary': _generateConversationSummary(),
-        }),
+      final replies = await _messageService.generateAIResponse(
+        character: widget.character,
+        userMessage: userMessage,
+        conversationSummary: _generateConversationSummary(),
       );
 
-      if (response.statusCode == 200) {
-        final responseData = jsonDecode(response.body);
-        final aiResponse = responseData['reply'] as String?;
-        
-        if (aiResponse == null) {
-          throw Exception('Invalid response format from server');
+      setState(() {
+        for (final message in replies) {
+          _messages.add({
+            'text': message,
+            'isUser': false,
+            'timestamp': DateTime.now(),
+          });
         }
+      });
 
-        final messages = aiResponse
-            .split('\\n')
-            .map((msg) => msg.trim())
-            .where((msg) => msg.isNotEmpty);
-        
-        setState(() {
-          for (final message in messages) {
-            _messages.add({
-              'text': message,
-              'isUser': false,
-              'timestamp': DateTime.now(),
-            });
-            // Save AI message to Firestore
-            _saveMessage(message, 'assistant');
-          }
-        });
-
-        // Update session summary
-        await _updateSessionSummary();
-      } else {
-        throw Exception('Server error: ${response.statusCode}');
+      for (final message in replies) {
+        await _messageService.saveMessage(
+          characterId: widget.character['characterId'],
+          sessionId: _sessionId!,
+          content: message,
+          role: 'assistant',
+        );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -218,6 +151,7 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
         ),
       );
     } finally {
+      _isGeneratingResponse = false;
       setState(() {
         _isLoading = false;
       });
@@ -226,13 +160,19 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
   }
 
   String _generateConversationSummary() {
-    // Generate a simple summary of the conversation
     if (_messages.isEmpty) {
       return "This is the start of the conversation.";
     }
-    
-    final recentMessages = _messages.take(5).toList();
-    return recentMessages.map((m) => m['text']).join(' ');
+
+    final int count = _messages.length;
+    final int start = count > 10 ? count - 10 : 0;
+    final recentMessages = _messages.sublist(start, count);
+
+    return recentMessages.map((m) {
+      final role = m['isUser'] == true ? 'user' : 'ai';
+      final text = m['text'] ?? '';
+      return '$role: $text';
+    }).join('\n');
   }
 
   void _sendMessage() async {
@@ -240,6 +180,7 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
 
     final userMessage = _messageController.text;
     _messageController.clear();
+    _sentMessagesBuffer.add(userMessage);
 
     setState(() {
       _messages.add({
@@ -251,9 +192,7 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
 
     // Save user message to Firestore
     await _saveMessage(userMessage, 'user');
-
     _scrollToBottom();
-    await _generateAIResponse(userMessage);
   }
 
   void _scrollToBottom() {
@@ -266,99 +205,6 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
         );
       }
     });
-  }
-
-  Future<void> _updateSessionSummary() async {
-    if (_sessionId == null) return;
-
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    final characterId = widget.character['characterId'];
-    final summary = _generateConversationSummary();
-
-    await _firestore
-        .collection('users')
-        .doc(user.uid)
-        .collection('characters')
-        .doc(characterId)
-        .collection('chatSessions')
-        .doc(_sessionId)
-        .update({
-      'summary': summary,
-      'lastActiveAt': FieldValue.serverTimestamp(),
-    });
-  }
-
-  Widget _buildLoadingBubble() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          CircleAvatar(
-            radius: 16,
-            backgroundColor: ConstantColor.primaryColor.withOpacity(0.1),
-            child: Text(
-              'AI',
-              style: TextStyle(
-                fontSize: FontSize.bodySmall,
-                color: ConstantColor.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          const SizedBox(width: 8),
-          Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: BoxSize.spacingM,
-              vertical: BoxSize.spacingS,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(BoxSize.cardRadius),
-                topRight: Radius.circular(BoxSize.cardRadius),
-                bottomRight: Radius.circular(BoxSize.cardRadius),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 5,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Typing...',
-                  style: TextStyle(
-                    color: Colors.grey[600],
-                    fontSize: FontSize.bodyMedium,
-                  ),
-                ),
-                AnimatedBuilder(
-                  animation: _dotAnimation,
-                  builder: (context, child) {
-                    final dots = (3 * _dotAnimation.value).floor();
-                    return Text(
-                      '.' * dots,
-                      style: TextStyle(
-                        color: Colors.grey[600],
-                        fontSize: FontSize.bodyMedium,
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -394,110 +240,129 @@ class _ChatPageState extends State<ChatPage> with SingleTickerProviderStateMixin
         backgroundColor: ConstantColor.primaryColor,
         foregroundColor: Colors.white,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Stack(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[50],
-                    image: const DecorationImage(
-                      image: AssetImage('assets/images/chat_background.png'),
-                      opacity: 0.1,
-                      fit: BoxFit.cover,
-                    ),
+      body: GestureDetector(
+        onTap: () {
+          _focusNode.unfocus();
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: Stack(
+                children: [
+                  Container(
+                    child: _isInitialLoading
+                        ? Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    ConstantColor.primaryColor,
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  'Loading messages...',
+                                  style: TextStyle(
+                                    color: Colors.grey[600],
+                                    fontSize: FontSize.bodyMedium,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        : ListView.builder(
+                            controller: _scrollController,
+                            padding: const EdgeInsets.all(BoxSize.spacingM),
+                            itemCount: _messages.length + (_isLoading ? 1 : 0),
+                            itemBuilder: (context, index) {
+                              if (index == _messages.length && _isLoading) {
+                                return LoadingBubble(animation: _dotAnimation);
+                              }
+                              final message = _messages[index];
+                              return MessageBubble(
+                                text: message['text'],
+                                isUser: message['isUser'],
+                                timestamp: message['timestamp'],
+                              );
+                            },
+                          ),
                   ),
-                  child: ListView.builder(
-                    controller: _scrollController,
-                    padding: const EdgeInsets.all(BoxSize.spacingM),
-                    itemCount: _messages.length + (_isLoading ? 1 : 0),
-                    itemBuilder: (context, index) {
-                      if (index == _messages.length && _isLoading) {
-                        return _buildLoadingBubble();
-                      }
-                      final message = _messages[index];
-                      return MessageBubble(
-                        text: message['text'],
-                        isUser: message['isUser'],
-                        timestamp: message['timestamp'],
-                      );
-                    },
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(BoxSize.spacingM),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.05),
+                    blurRadius: 10,
+                    offset: const Offset(0, -5),
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(BoxSize.spacingM),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, -5),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey[100],
-                      borderRadius: BorderRadius.circular(BoxSize.inputRadius),
-                      border: Border.all(
-                        color: Colors.grey[300]!,
-                        width: 1,
+                ],
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(BoxSize.inputRadius),
+                        border: Border.all(
+                          color: Colors.grey[300]!,
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              controller: _messageController,
+                              focusNode: _focusNode,
+                              decoration: InputDecoration(
+                                hintText: 'Type a message...',
+                                border: InputBorder.none,
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: BoxSize.spacingM,
+                                  vertical: BoxSize.spacingS,
+                                ),
+                              ),
+                              maxLines: null,
+                              textInputAction: TextInputAction.send,
+                              onSubmitted: (_) => _sendMessage(),
+                            )
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              // TODO: Implement emoji picker
+                            },
+                            icon: const Icon(Icons.emoji_emotions_outlined),
+                            color: Colors.grey[600],
+                          ),
+                        ],
                       ),
                     ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            controller: _messageController,
-                            decoration: InputDecoration(
-                              hintText: 'Type a message...',
-                              border: InputBorder.none,
-                              contentPadding: const EdgeInsets.symmetric(
-                                horizontal: BoxSize.spacingM,
-                                vertical: BoxSize.spacingS,
-                              ),
-                            ),
-                            maxLines: null,
-                            textInputAction: TextInputAction.send,
-                            onSubmitted: (_) => _sendMessage(),
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            // TODO: Implement emoji picker
-                          },
-                          icon: const Icon(Icons.emoji_emotions_outlined),
-                          color: Colors.grey[600],
-                        ),
-                      ],
+                  ),
+                  const SizedBox(width: BoxSize.spacingM),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: ConstantColor.primaryColor,
+                      borderRadius: BorderRadius.circular(BoxSize.inputRadius),
+                    ),
+                    child: IconButton(
+                      onPressed: _sendMessage,
+                      icon: const Icon(Icons.send),
+                      color: Colors.white,
                     ),
                   ),
-                ),
-                const SizedBox(width: BoxSize.spacingM),
-                Container(
-                  decoration: BoxDecoration(
-                    color: ConstantColor.primaryColor,
-                    borderRadius: BorderRadius.circular(BoxSize.inputRadius),
-                  ),
-                  child: IconButton(
-                    onPressed: _sendMessage,
-                    icon: const Icon(Icons.send),
-                    color: Colors.white,
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      )
     );
   }
 }

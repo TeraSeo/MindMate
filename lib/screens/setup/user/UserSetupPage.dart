@@ -1,6 +1,5 @@
+import 'package:ai_chatter/services/UserService.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ai_chatter/screens/HomePage.dart';
 import 'package:ai_chatter/screens/setup/user/steps/NameSetupStep.dart';
 import 'package:ai_chatter/screens/setup/user/steps/AgeGroupSetupStep.dart';
@@ -16,6 +15,7 @@ class UserSetupPage extends StatefulWidget {
 }
 
 class _UserSetupPageState extends State<UserSetupPage> {
+  final UserService _userService = UserService();
   int _currentStep = 0;
   String _name = '';
   String _ageGroup = '';
@@ -32,17 +32,7 @@ class _UserSetupPageState extends State<UserSetupPage> {
     _isSubmitting = true;
 
     try {
-      final user = FirebaseAuth.instance.currentUser;
-      if (user == null) return;
-
-      await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
-        'name': _name,
-        'ageGroup': _ageGroup,
-        'gender': _gender,
-        'notificationPreferences': _notificationPreferences,
-        'isUserSet': true,
-        'updatedAt': FieldValue.serverTimestamp(),
-      });
+      await _userService.updateUser(_name, _ageGroup, _gender, _notificationPreferences);
 
       if (mounted) {
         Navigator.pushReplacement(

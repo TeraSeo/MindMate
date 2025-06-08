@@ -24,7 +24,8 @@ exports.generateGptResponse = onRequest(async (req, res) => {
     const openaiOrg = process.env.OPENAI_ORG;
 
     const {personality, relationship, chattingStyle, gender, ageGroup,
-      replyLanguage, userMessage, conversationSummary} = req.body;
+      replyLanguage, userMessage, conversationSummary,
+      username, userMessages} = req.body;
 
     const configuration = new Configuration({
       apiKey: openaiKey,
@@ -35,27 +36,42 @@ exports.generateGptResponse = onRequest(async (req, res) => {
 
     // 4. 프롬프트 구성 및 GPT 호출
     const prompt = `
-Generate reply message.
-End each sentence with a line break (\\n).
-No prefix like "Friend Reply:".
-Personality: ${personality || "None"}
-Relationship: ${relationship || "None"}
-Chatting Style: ${chattingStyle || "None"}
-Gender: ${gender || "None"}
-Age Group: ${ageGroup || "None"}
-Reply Language: ${replyLanguage || "None"}
-Conversation Summary: ${conversationSummary || "None"}
-User Message: ${userMessage || "None"}
-`;
+      You are an emotional, human-like AI character chatbot.
+      Your job is to respond naturally and emotionally, 
+      like a real person, based on the user's message and context.
+      
+      ### Conversation Instructions:
+      - Respond in ${replyLanguage}
+      - Match emotional tone and length of the latest message
+      - Respond with exactly ${userMessage.split("\\n").length + 1} lines
+      - End each sentence with a newline (\\n)
+      - Do not include prefixes like "AI:" or "Friend reply:"
+      - Speak like this character: ${personality}, ${ageGroup}, ${gender}, 
+      talking to their ${relationship}
+      
+      ### Conversation Context:
+      - Username: ${username}
+      - Chatting Style: ${chattingStyle}
+      - Last Conversation Summary: ${conversationSummary}
+      
+      ### User Messages:
+      ${userMessages}
+      
+      ### Your Task:
+      Reply to the most recent user message appropriately.
+      Understand the nuance and tone, and provide a relevant emotional response.
+    `;
 
 
+    const estimatedReplyLength = Math.min(1000,
+        Math.max(200, userMessage.length * 2));
     const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4o",
       messages: [
         {role: "user", content: prompt},
       ],
       temperature: 0.8,
-      max_tokens: userMessage.length * 2,
+      max_tokens: estimatedReplyLength,
     });
 
     const reply = response.data.choices[0].message.content.trim();

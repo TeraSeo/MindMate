@@ -1,3 +1,7 @@
+import 'package:ai_chatter/constants/ProfileOptions.dart';
+import 'package:ai_chatter/widgets/subscription/SubscriptionPlanDialog.dart';
+import 'package:ai_chatter/widgets/user/PersonalInfoForm.dart';
+import 'package:ai_chatter/widgets/subscription/SubscriptionCard.dart';
 import 'package:flutter/material.dart';
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
@@ -22,33 +26,6 @@ class _ProfilePageState extends State<ProfilePage> {
   bool _isLoading = true;
   late UserProvider _userProvider;
   bool _isInitialized = false;
-
-  final List<String> _ageGroups = [
-    '18-24',
-    '25-34',
-    '35-44',
-    '45-54',
-    '55+'
-  ];
-
-  final List<Map<String, String>> _genderOptions = [
-    {
-      'value': 'Male',
-      'label': 'Male',
-    },
-    {
-      'value': 'Female',
-      'label': 'Female',
-    },
-    {
-      'value': 'Non-binary',
-      'label': 'Non-binary',
-    },
-    {
-      'value': 'Prefer not to say',
-      'label': 'Prefer not to say',
-    },
-  ];
 
   @override
   void initState() {
@@ -121,104 +98,20 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
-  String _getLocalizedGenderLabel(String value) {
-    final l10n = AppLocalizations.of(context)!;
-    switch (value) {
-      case 'Male':
-        return l10n.male;
-      case 'Female':
-        return l10n.female;
-      case 'Non-binary':
-        return l10n.nonBinary;
-      case 'Prefer not to say':
-        return l10n.preferNotToSay;
-      default:
-        return value;
-    }
+  void _showSubscriptionPlans() {
+    showDialog(
+      context: context,
+      builder: (context) => const SubscriptionPlanDialog(),
+    );
   }
 
   Widget _buildSubscriptionInfo() {
     final user = _userProvider.user;
     final subscription = user?.subscription ?? 'free';
-    final isPremium = subscription == 'premium';
     
-    return Card(
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-        side: BorderSide(
-          color: isPremium ? Colors.amber : Colors.grey[300]!,
-          width: 1,
-        ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(BoxSize.cardPadding),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  isPremium ? Icons.star : Icons.star_border,
-                  color: isPremium ? Colors.amber : Colors.grey,
-                  size: BoxSize.iconLarge,
-                ),
-                SizedBox(width: BoxSize.spacingM),
-                Text(
-                  'Subscription',
-                  style: TextStyle(
-                    fontSize: FontSize.h5,
-                    fontWeight: FontWeight.bold,
-                    color: ConstantColor.textColor,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: BoxSize.spacingM),
-            Text(
-              isPremium ? 'Premium Plan' : 'Free Plan',
-              style: TextStyle(
-                fontSize: FontSize.h6,
-                color: isPremium ? Colors.amber : Colors.grey[600],
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            SizedBox(height: BoxSize.spacingS),
-            Text(
-              isPremium 
-                ? 'Enjoy all premium features and unlimited access'
-                : 'Upgrade to premium for more features',
-              style: TextStyle(
-                fontSize: FontSize.bodyMedium,
-                color: ConstantColor.textColor.withOpacity(0.7),
-              ),
-            ),
-            if (!isPremium) ...[
-              SizedBox(height: BoxSize.spacingM),
-              SizedBox(
-                width: double.infinity,
-                height: BoxSize.buttonHeight,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Implement upgrade to premium
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.amber,
-                    foregroundColor: Colors.black87,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(BoxSize.buttonRadius),
-                    ),
-                  ),
-                  child: Text(
-                    'Upgrade to Premium',
-                    style: TextStyle(fontSize: FontSize.buttonMedium),
-                  ),
-                ),
-              ),
-            ],
-          ],
-        ),
-      ),
+    return SubscriptionCard(
+      isPremium: subscription == 'premium',
+      onUpgrade: _showSubscriptionPlans,
     );
   }
 
@@ -284,105 +177,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                     SizedBox(height: isSmallScreen ? BoxSize.spacingL : BoxSize.spacingXL),
-                    TextFormField(
-                      controller: _nameController,
-                      style: TextStyle(
-                        fontSize: FontSize.inputText,
-                        color: ConstantColor.textColor,
-                      ),
-                      decoration: InputDecoration(
-                        labelText: l10n.name,
-                        labelStyle: TextStyle(
-                          fontSize: FontSize.inputLabel,
-                          color: ConstantColor.textColor,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(BoxSize.inputRadius),
-                        ),
-                        contentPadding: EdgeInsets.all(BoxSize.inputPadding),
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return l10n.pleaseEnterName;
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: BoxSize.inputSpacing),
-                    DropdownButtonFormField<String>(
-                      value: _selectedAge,
-                      style: TextStyle(
-                        fontSize: FontSize.inputText,
-                        color: ConstantColor.textColor,
-                      ),
-                      dropdownColor: ConstantColor.surfaceColor,
-                      decoration: InputDecoration(
-                        labelText: l10n.ageGroup,
-                        labelStyle: TextStyle(
-                          fontSize: FontSize.inputLabel,
-                          color: ConstantColor.textColor,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(BoxSize.inputRadius),
-                        ),
-                        contentPadding: EdgeInsets.all(BoxSize.inputPadding),
-                      ),
-                      items: _ageGroups
-                          .map((age) => DropdownMenuItem(
-                                value: age,
-                                child: Text(
-                                  age,
-                                  style: TextStyle(
-                                    color: ConstantColor.textColor,
-                                  ),
-                                ),
-                              ))
-                          .toList(),
-                      onChanged: (value) {
-                        if (value != null) {
-                          setState(() {
-                            _selectedAge = value;
-                          });
-                        }
-                      },
-                    ),
-                    SizedBox(height: BoxSize.inputSpacing),
-                    DropdownButtonFormField<String>(
-                      value: _selectedGender,
-                      style: TextStyle(
-                        fontSize: FontSize.inputText,
-                        color: ConstantColor.textColor,
-                      ),
-                      dropdownColor: ConstantColor.surfaceColor,
-                      decoration: InputDecoration(
-                        labelText: l10n.gender,
-                        labelStyle: TextStyle(
-                          fontSize: FontSize.inputLabel,
-                          color: ConstantColor.textColor,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(BoxSize.inputRadius),
-                        ),
-                        contentPadding: EdgeInsets.all(BoxSize.inputPadding),
-                      ),
-                      items: _genderOptions
-                          .map((gender) => DropdownMenuItem<String>(
-                                value: gender['value']!,
-                                child: Text(
-                                  _getLocalizedGenderLabel(gender['value']!),
-                                  style: TextStyle(
-                                    color: ConstantColor.textColor,
-                                  ),
-                                ),
-                              ))
-                          .toList(),
-                      onChanged: (value) {
-                        if (value != null) {
-                          setState(() {
-                            _selectedGender = value;
-                          });
-                        }
-                      },
+                    PersonalInfoForm(
+                      nameController: _nameController,
+                      selectedAge: _selectedAge,
+                      selectedGender: _selectedGender,
+                      ageGroups: ProfileOptions.ageGroups,
+                      genderOptions: ProfileOptions.genderOptions,
+                      onAgeChanged: (val) => setState(() => _selectedAge = val),
+                      onGenderChanged: (val) => setState(() => _selectedGender = val),
                     ),
                     SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
                     Text(

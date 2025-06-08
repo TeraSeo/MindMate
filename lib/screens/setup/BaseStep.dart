@@ -114,7 +114,7 @@ class _BaseStepState extends State<BaseStep> with SingleTickerProviderStateMixin
               ),
               child: Text(
                 widget.isLastStep ? l10n.completeSetup : l10n.next,
-                style: TextStyle(
+                style: TextStyle( 
                   fontSize: buttonFontSize,
                   color: Colors.white,
                 ),

@@ -82,12 +82,6 @@ class _RegisterPageState extends State<RegisterPage> {
     final isSmallScreen = size.width < 600;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Register',
-          style: TextStyle(fontSize: FontSize.h6),
-        ),
-      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
