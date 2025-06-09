@@ -5,7 +5,6 @@ class SubscriptionPlan {
   final double monthlyPrice;
   final String discount;
   final String description;
-  final List<String> features;
 
   const SubscriptionPlan({
     required this.name,
@@ -14,6 +13,5 @@ class SubscriptionPlan {
     required this.monthlyPrice,
     required this.discount,
     required this.description,
-    required this.features,
   });
 }

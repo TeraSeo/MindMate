@@ -1,0 +1,205 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../services/ChatSessionService.dart';
+import '../services/MessageService.dart';
+
+class ChatController with ChangeNotifier {
+  final ChatSessionService _chatSessionService;
+  final MessageService _messageService;
+  final ScrollController scrollController;
+  final TextEditingController messageController;
+  final FocusNode focusNode;
+
+  final List<Map<String, dynamic>> messages = [];
+  String? sessionId;
+  DocumentSnapshot? lastLoadedDoc;
+  bool hasMore = true;
+  bool isLoading = false;
+  bool isInitialLoading = true;
+  bool isGenerating = false;
+  bool isFetchingMore = false;
+  final List<String> _sentBuffer = [];
+  Timer? _typingTimer;
+
+  ChatController(
+    this._chatSessionService,
+    this._messageService,
+    this.scrollController,
+    this.messageController,
+    this.focusNode,
+  );
+
+  void setupScrollListener(String characterId) {
+    scrollController.addListener(() {
+      // 전체 스크롤 높이 대비 현재 위치의 비율
+      final currentOffset = scrollController.offset;
+      final maxExtent = scrollController.position.maxScrollExtent;
+      const thresholdRatio = 0.35; // 상단 15% 근처면 로드
+
+      if (currentOffset < maxExtent * thresholdRatio &&
+          !isFetchingMore &&
+          hasMore) {
+        fetchMore(characterId);
+      }
+    });
+  }
+
+  Future<void> initialize(String characterId) async {
+    sessionId = await _chatSessionService.initializeSession(characterId: characterId);
+    await loadInitialMessages(characterId);
+  }
+
+  Future<void> loadInitialMessages(String characterId) async {
+    isInitialLoading = true;
+    notifyListeners();
+
+    final newMessages = await _messageService.loadMessages(
+      characterId: characterId,
+      sessionId: sessionId!,
+    );
+
+    if (newMessages.isNotEmpty) {
+      lastLoadedDoc = newMessages.last['doc'];
+    }
+
+    messages.clear();
+    messages.addAll(newMessages.reversed);
+    isInitialLoading = false;
+    notifyListeners();
+
+    scrollToBottom();
+  }
+
+  Future<void> fetchMore(String characterId) async {
+    if (isFetchingMore || !hasMore) return;
+
+    isFetchingMore = true;
+    notifyListeners();
+
+    final beforeScrollOffset = scrollController.offset;
+    final beforeContentHeight = scrollController.position.maxScrollExtent;
+
+    final moreMessages = await _messageService.loadMessages(
+      characterId: characterId,
+      sessionId: sessionId!,
+      lastDoc: lastLoadedDoc,
+    );
+
+    if (moreMessages.isEmpty) {
+      hasMore = false;
+    } else {
+      lastLoadedDoc = moreMessages.last['doc'];
+      messages.insertAll(0, moreMessages.reversed);
+      notifyListeners();
+
+      await Future.delayed(const Duration(milliseconds: 10)); // layout build wait
+
+      final afterContentHeight = scrollController.position.maxScrollExtent;
+      final heightDifference = afterContentHeight - beforeContentHeight;
+
+      scrollController.jumpTo(beforeScrollOffset + heightDifference);
+    }
+
+    isFetchingMore = false;
+    notifyListeners();
+  }
+
+  void sendMessage(String characterId) async {
+    final content = messageController.text.trim();
+    if (content.isEmpty) return;
+
+    messageController.clear();
+    _sentBuffer.add(content);
+
+    messages.add({
+      'text': content,
+      'isUser': true,
+      'timestamp': DateTime.now()
+    });
+    notifyListeners();
+
+    await _messageService.saveMessage(
+      characterId: characterId,
+      sessionId: sessionId!,
+      content: content,
+      role: 'user',
+    );
+
+    _handleTypingFinish(characterId);
+    scrollToBottom();
+  }
+
+  void _handleTypingFinish(String characterId) {
+    _typingTimer?.cancel();
+    _typingTimer = Timer(const Duration(seconds: 3), () async {
+      if (_sentBuffer.isEmpty) return;
+      final combined = _sentBuffer.join('\n');
+      _sentBuffer.clear();
+      await generateAIResponse(characterId, combined);
+    });
+  }
+
+  Future<void> generateAIResponse(String characterId, String userMessage) async {
+    if (isGenerating) return;
+
+    isGenerating = true;
+    notifyListeners();
+
+    final replies = await _messageService.generateAIResponse(
+      character: {}, // pass character map here if needed
+      userMessage: userMessage,
+      conversationSummary: _generateSummary(),
+    );
+
+    for (final message in replies) {
+      messages.add({
+        'text': message,
+        'isUser': false,
+        'timestamp': DateTime.now(),
+      });
+
+      await _messageService.saveMessage(
+        characterId: characterId,
+        sessionId: sessionId!,
+        content: message,
+        role: 'assistant',
+      );
+    }
+
+    isGenerating = false;
+    notifyListeners();
+    scrollToBottom();
+  }
+
+  String _generateSummary() {
+    final recent = messages.reversed.take(10);
+    return recent.map((m) {
+      final role = m['isUser'] ? 'user' : 'ai';
+      return '$role: ${m['text']}';
+    }).join('\n');
+  }
+
+  void scrollToBottom({int retry = 3}) {
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (!scrollController.hasClients) return;
+
+    final position = scrollController.position;
+    final target = position.maxScrollExtent;
+
+    if ((position.pixels - target).abs() > 20 && retry > 0) {
+      scrollController.jumpTo(target);
+      Future.delayed(const Duration(milliseconds: 100), () {
+        scrollToBottom(retry: retry - 1);
+      });
+    } else {
+      scrollController.animateTo(
+        target,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    }
+  });
+}
+
+}

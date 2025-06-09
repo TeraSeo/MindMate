@@ -11,11 +11,13 @@ class MessageService {
   Future<List<Map<String, dynamic>>> loadMessages({
     required String characterId,
     required String sessionId,
+    DocumentSnapshot? lastDoc, // for pagination
+    int limit = 50,
   }) async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) throw Exception("User not authenticated");
 
-    final messagesRef = _firestore
+    Query query = _firestore
         .collection('users')
         .doc(user.uid)
         .collection('characters')
@@ -23,16 +25,23 @@ class MessageService {
         .collection('chatSessions')
         .doc(sessionId)
         .collection('messages')
-        .orderBy('createdAt', descending: false);
+        .orderBy('createdAt', descending: true) // recent first
+        .limit(limit);
 
-    final messagesSnapshot = await messagesRef.get();
+    if (lastDoc != null) {
+      query = query.startAfterDocument(lastDoc);
+    }
 
-    return messagesSnapshot.docs.map((doc) {
-      final data = doc.data();
+    final snapshot = await query.get();
+
+    return snapshot.docs.map((doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      
       return {
         'text': data['content'],
         'isUser': data['role'] == 'user',
         'timestamp': (data['createdAt'] as Timestamp).toDate(),
+        'doc': doc, // for pagination
       };
     }).toList();
   }
