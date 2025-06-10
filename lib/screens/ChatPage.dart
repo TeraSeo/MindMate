@@ -1,6 +1,7 @@
 import 'package:ai_chatter/controllers/ChatController.dart';
 import 'package:ai_chatter/services/ChatSessionService.dart';
 import 'package:ai_chatter/services/MessageService.dart';
+import 'package:ai_chatter/services/UserService.dart';
 import 'package:ai_chatter/widgets/chat/ChatInputBox.dart';
 import 'package:ai_chatter/widgets/chat/ChatMessageList.dart';
 import 'package:ai_chatter/constants/Colors.dart';
@@ -29,6 +30,8 @@ class _ChatPageState extends State<ChatPage> {
     final focusNode = FocusNode();
 
     _chatController = ChatController(
+      widget.character,
+      UserService(),
       ChatSessionService(),
       MessageService(),
       scrollController,

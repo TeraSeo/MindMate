@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'dart:async';
 
 class User {
@@ -77,43 +77,42 @@ class UserProvider extends ChangeNotifier {
   User? _user;
   bool _isLoading = true;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final firebase_auth.FirebaseAuth _auth = firebase_auth.FirebaseAuth.instance;
+
   StreamSubscription<DocumentSnapshot>? _userSubscription;
+  StreamSubscription<firebase_auth.User?>? _authSubscription;
 
   User? get user => _user;
   bool get isLoading => _isLoading;
 
   UserProvider() {
-    _loadUserData();
-  }
-
-  void _loadUserData() {
-    final currentUser = _auth.currentUser;
-    if (currentUser != null) {
+    _authSubscription = _auth.authStateChanges().listen((firebaseUser) {
       _userSubscription?.cancel();
-      _userSubscription = _firestore
-          .collection('users')
-          .doc(currentUser.uid)
-          .snapshots()
-          .listen((snapshot) {
-        if (snapshot.exists) {
-          _user = User.fromFirestore(snapshot);
-        } else {
-          // If document doesn't exist, create it with default values
-          _user = User(
-            uid: currentUser.uid,
-            email: currentUser.email,
-            isSetUp: false,
-          );
-          _firestore.collection('users').doc(currentUser.uid).set(_user!.toMap());
-        }
+
+      if (firebaseUser != null) {
+        _loadUserData(firebaseUser.uid);
+      } else {
+        _user = null;
         _isLoading = false;
         notifyListeners();
-      });
-    } else {
+      }
+    });
+  }
+
+  void _loadUserData(String uid) {
+    _isLoading = true;
+    notifyListeners();
+
+    _userSubscription = _firestore.collection('users').doc(uid).snapshots().listen((snapshot) {
+      if (snapshot.exists) {
+        _user = User.fromFirestore(snapshot);
+      } else {
+        _user = User(uid: uid, isSetUp: false);
+        _firestore.collection('users').doc(uid).set(_user!.toMap());
+      }
       _isLoading = false;
       notifyListeners();
-    }
+    });
   }
 
   Future<void> updateUserProfile({
@@ -132,14 +131,22 @@ class UserProvider extends ChangeNotifier {
     if (notificationsEnabled != null) {
       updates['notificationsEnabled'] = notificationsEnabled;
     }
-    updates['isUserSet'] = true;  // Mark user as set up when profile is updated
+    updates['isUserSet'] = true;
 
     await _firestore.collection('users').doc(currentUser.uid).update(updates);
+  }
+
+  void clearUserData() {
+    _userSubscription?.cancel();
+    _user = null;
+    _isLoading = true;
+    notifyListeners();
   }
 
   @override
   void dispose() {
     _userSubscription?.cancel();
+    _authSubscription?.cancel();
     super.dispose();
   }
-} 
+}

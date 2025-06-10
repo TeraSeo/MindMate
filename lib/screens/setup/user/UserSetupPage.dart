@@ -6,6 +6,7 @@ import 'package:ai_chatter/screens/setup/user/steps/AgeGroupSetupStep.dart';
 import 'package:ai_chatter/screens/setup/user/steps/GenderSetupStep.dart';
 import 'package:ai_chatter/screens/setup/user/steps/NotificationSetupStep.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UserSetupPage extends StatefulWidget {
   const UserSetupPage({super.key});
@@ -20,11 +21,7 @@ class _UserSetupPageState extends State<UserSetupPage> {
   String _name = '';
   String _ageGroup = '';
   String _gender = '';
-  Map<String, bool> _notificationPreferences = {
-    'newMessages': false,
-    'appUpdates': false,
-    'announcements': false,
-  };
+  bool _notificationsEnabled = false;
   bool _isSubmitting = false;
 
   Future<void> _completeSetup() async {
@@ -32,7 +29,10 @@ class _UserSetupPageState extends State<UserSetupPage> {
     _isSubmitting = true;
 
     try {
-      await _userService.updateUser(_name, _ageGroup, _gender, _notificationPreferences);
+      String enAgeGroup = convertAgeToEnValue(_ageGroup);
+      String enGender = convertGenderToEnValue(_gender);
+
+      await _userService.updateUser(_name, enAgeGroup, enGender, _notificationsEnabled);
 
       if (mounted) {
         Navigator.pushReplacement(
@@ -83,6 +83,40 @@ class _UserSetupPageState extends State<UserSetupPage> {
     }
   }
 
+  String convertAgeToEnValue(String value) {
+    final l10n = AppLocalizations.of(context)!;
+    if (value == l10n.ageGroupUnder18) {
+      return 'Under 18';
+    }
+    else if (value == l10n.ageGroup18to24) {
+      return '18-24';
+    }
+    else if (value == l10n.ageGroup25to34) {
+      return '25-34';
+    }
+    else if (value == l10n.ageGroup35to44) {
+      return '35-44';
+    }
+    else if (value == l10n.ageGroup45to54) {
+      return '45-54';
+    }
+    else if (value == l10n.ageGroup55Plus) {
+      return '55+';
+    }
+    return value;
+  }
+
+  String convertGenderToEnValue(String value) {
+    final l10n = AppLocalizations.of(context)!;
+    if (value == l10n.male) {
+      return 'Male';
+    }
+    else if (value == l10n.female) {
+      return 'Female';
+    }
+    return 'Unspecified';
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -124,11 +158,10 @@ class _UserSetupPageState extends State<UserSetupPage> {
                             initialValue: _gender,
                           )
                         : NotificationSetupStep(
-                            onNotificationPreferencesChanged: (prefs) =>
-                                setState(() => _notificationPreferences = prefs),
+                            onChanged: (value) => setState(() => _notificationsEnabled = value),
                             onNext: _nextStep,
                             onPrevious: _previousStep,
-                            initialPreferences: _notificationPreferences,
+                            initialValue: _notificationsEnabled,
                           ),
           ),
         ),

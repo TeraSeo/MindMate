@@ -1,3 +1,4 @@
+import 'package:ai_chatter/services/UserService.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -19,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
+  final UserService userService = UserService();
 
   @override
   void initState() {
@@ -71,6 +73,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       if (!mounted) return;
 
       if (userData.exists && userData.data()?['isUserSet'] == true) {
+        userService.updateLastLoginAndResetIfNeeded();
         _navigateToHome();
       } else {
         _navigateToSetup();

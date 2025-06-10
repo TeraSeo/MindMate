@@ -7,17 +7,17 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:ai_chatter/screens/setup/BaseStep.dart';
 
 class NotificationSetupStep extends StatefulWidget {
-  final Function(Map<String, bool>) onNotificationPreferencesChanged;
+  final ValueChanged<bool> onChanged;
   final VoidCallback onNext;
   final VoidCallback onPrevious;
-  final Map<String, bool>? initialPreferences;
+  final bool initialValue;
 
   const NotificationSetupStep({
     super.key,
-    required this.onNotificationPreferencesChanged,
+    required this.onChanged,
     required this.onNext,
     required this.onPrevious,
-    this.initialPreferences,
+    required this.initialValue,
   });
 
   @override
@@ -31,17 +31,7 @@ class _NotificationSetupStepState extends State<NotificationSetupStep> {
   @override
   void initState() {
     super.initState();
-    if (widget.initialPreferences != null) {
-      _pushNotificationsEnabled = widget.initialPreferences!.values.any((enabled) => enabled);
-    }
-  }
-
-  void _updatePreferences() {
-    widget.onNotificationPreferencesChanged({
-      'newMessages': _pushNotificationsEnabled,
-      'appUpdates': _pushNotificationsEnabled,
-      'announcements': _pushNotificationsEnabled,
-    });
+    _pushNotificationsEnabled = widget.initialValue;
   }
 
   Future<void> _togglePushNotifications(bool value) async {
@@ -75,7 +65,6 @@ class _NotificationSetupStepState extends State<NotificationSetupStep> {
             setState(() {
               _pushNotificationsEnabled = true;
             });
-            _updatePreferences();
           } else {
             if (mounted) {
               showDialog(
@@ -104,13 +93,11 @@ class _NotificationSetupStepState extends State<NotificationSetupStep> {
           setState(() {
             _pushNotificationsEnabled = true;
           });
-          _updatePreferences();
         }
       } else {
         setState(() {
           _pushNotificationsEnabled = false;
         });
-        _updatePreferences();
       }
     } catch (e) {
       print('Error in _togglePushNotifications: $e');

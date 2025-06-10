@@ -146,8 +146,8 @@ class HomeDrawer extends StatelessWidget {
           TextButton(
             onPressed: () async {
               try {
-                // Cancel any active subscriptions
-                userProvider.dispose();
+                // Clear user data instead of disposing
+                userProvider.clearUserData();
                 
                 // Sign out from Firebase
                 await FirebaseAuth.instance.signOut();

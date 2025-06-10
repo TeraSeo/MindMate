@@ -10,7 +10,6 @@ class ChatInputBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<ChatController>(context);
-    final characterId = controller.sessionId != null ? controller.sessionId! : '';
 
     return Container(
       padding: const EdgeInsets.all(BoxSize.spacingM),
@@ -46,7 +45,7 @@ class ChatInputBox extends StatelessWidget {
                 ),
                 maxLines: null,
                 textInputAction: TextInputAction.send,
-                onSubmitted: (_) => controller.sendMessage(characterId),
+                onSubmitted: (_) => controller.sendMessage(),
               ),
             ),
           ),
@@ -58,7 +57,7 @@ class ChatInputBox extends StatelessWidget {
             ),
             child: IconButton(
               icon: const Icon(Icons.send, color: Colors.white),
-              onPressed: () => controller.sendMessage(characterId),
+              onPressed: () => controller.sendMessage(),
             ),
           ),
         ],

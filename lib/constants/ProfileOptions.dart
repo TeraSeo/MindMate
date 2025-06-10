@@ -1,5 +1,6 @@
 class ProfileOptions {
   static const List<String> ageGroups = [
+    'Under 18',
     '18-24',
     '25-34',
     '35-44',
@@ -17,12 +18,8 @@ class ProfileOptions {
       'label': 'Female',
     },
     {
-      'value': 'Non-binary',
-      'label': 'Non-binary',
-    },
-    {
-      'value': 'Prefer not to say',
-      'label': 'Prefer not to say',
-    },
+      'value': 'Unspecified',
+      'label': 'Unspecified',
+    }
   ];
 }

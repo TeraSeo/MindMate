@@ -1,10 +1,13 @@
 import 'dart:async';
+import 'package:ai_chatter/services/UserService.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/ChatSessionService.dart';
 import '../services/MessageService.dart';
 
 class ChatController with ChangeNotifier {
+  final Map<String, dynamic> _character;
+  final UserService _userService;
   final ChatSessionService _chatSessionService;
   final MessageService _messageService;
   final ScrollController scrollController;
@@ -21,8 +24,11 @@ class ChatController with ChangeNotifier {
   bool isFetchingMore = false;
   final List<String> _sentBuffer = [];
   Timer? _typingTimer;
+  int usedToken = 0;
 
   ChatController(
+    this._character,
+    this._userService,
     this._chatSessionService,
     this._messageService,
     this.scrollController,
@@ -48,6 +54,7 @@ class ChatController with ChangeNotifier {
   Future<void> initialize(String characterId) async {
     sessionId = await _chatSessionService.initializeSession(characterId: characterId);
     await loadInitialMessages(characterId);
+    usedToken = await loadUsedToken();
   }
 
   Future<void> loadInitialMessages(String characterId) async {
@@ -69,6 +76,11 @@ class ChatController with ChangeNotifier {
     notifyListeners();
 
     scrollToBottom();
+  }
+
+  Future<int> loadUsedToken() async {
+    int usedToken = await _userService.getUsedToken();
+    return usedToken;
   }
 
   Future<void> fetchMore(String characterId) async {
@@ -105,29 +117,40 @@ class ChatController with ChangeNotifier {
     notifyListeners();
   }
 
-  void sendMessage(String characterId) async {
+  void sendMessage() async {
     final content = messageController.text.trim();
     if (content.isEmpty) return;
+    String characterId = _character['characterId'];
 
-    messageController.clear();
-    _sentBuffer.add(content);
+    int messageLength = messageController.text.length;
+    bool canChat = (usedToken + messageLength) <= 30;
+    if (canChat) {
+      messageController.clear();
+      _sentBuffer.add(content);
 
-    messages.add({
-      'text': content,
-      'isUser': true,
-      'timestamp': DateTime.now()
-    });
-    notifyListeners();
+      messages.add({
+        'text': content,
+        'isUser': true,
+        'timestamp': DateTime.now()
+      });
+      notifyListeners();
 
-    await _messageService.saveMessage(
-      characterId: characterId,
-      sessionId: sessionId!,
-      content: content,
-      role: 'user',
-    );
+      await _messageService.saveMessage(
+        characterId: characterId,
+        sessionId: sessionId!,
+        content: content,
+        role: 'user',
+      );
 
-    _handleTypingFinish(characterId);
-    scrollToBottom();
+      usedToken += messageLength;
+      _userService.increaseUsedToken(messageLength);
+
+      _handleTypingFinish(characterId);
+      scrollToBottom();
+    }
+    else {
+
+    }
   }
 
   void _handleTypingFinish(String characterId) {
@@ -147,7 +170,7 @@ class ChatController with ChangeNotifier {
     notifyListeners();
 
     final replies = await _messageService.generateAIResponse(
-      character: {}, // pass character map here if needed
+      character: _character,
       userMessage: userMessage,
       conversationSummary: _generateSummary(),
     );

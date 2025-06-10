@@ -28,16 +28,23 @@ class PersonalInfoForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
+    String getLocalizedAgeLabel(String value) {
+      switch (value) {
+        case 'Under 18':
+          return l10n.ageGroupUnder18;
+        default:
+          return value;
+      }
+    }
+
     String getLocalizedGenderLabel(String value) {
       switch (value) {
         case 'Male':
           return l10n.male;
         case 'Female':
           return l10n.female;
-        case 'Non-binary':
-          return l10n.nonBinary;
-        case 'Prefer not to say':
-          return l10n.preferNotToSay;
+        case 'Unspecified':
+          return l10n.genderUnspecified;
         default:
           return value;
       }
@@ -91,7 +98,7 @@ class PersonalInfoForm extends StatelessWidget {
           items: ageGroups.map((age) => DropdownMenuItem(
             value: age,
             child: Text(
-              age,
+              getLocalizedAgeLabel(age),
               style: TextStyle(color: ConstantColor.textColor),
             ),
           )).toList(),
