@@ -1,5 +1,5 @@
 import 'package:ai_chatter/constants/ProfileOptions.dart';
-import 'package:ai_chatter/widgets/subscription/SubscriptionPlanDialog.dart';
+import 'package:ai_chatter/widgets/subscription/SubscriptionPage.dart';
 import 'package:ai_chatter/widgets/user/PersonalInfoForm.dart';
 import 'package:ai_chatter/widgets/subscription/SubscriptionCard.dart';
 import 'package:flutter/material.dart';
@@ -99,9 +99,9 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void _showSubscriptionPlans() {
-    showDialog(
-      context: context,
-      builder: (context) => const SubscriptionPlanDialog(),
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SubscriptionPage()),
     );
   }
 

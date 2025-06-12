@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:ai_chatter/constants/Dialogs.dart';
 import 'package:ai_chatter/services/UserService.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -6,6 +7,7 @@ import '../services/ChatSessionService.dart';
 import '../services/MessageService.dart';
 
 class ChatController with ChangeNotifier {
+  final BuildContext context;
   final Map<String, dynamic> _character;
   final UserService _userService;
   final ChatSessionService _chatSessionService;
@@ -25,8 +27,10 @@ class ChatController with ChangeNotifier {
   final List<String> _sentBuffer = [];
   Timer? _typingTimer;
   int usedToken = 0;
+  String chatSummary = "";
 
   ChatController(
+    this.context,
     this._character,
     this._userService,
     this._chatSessionService,
@@ -35,6 +39,9 @@ class ChatController with ChangeNotifier {
     this.messageController,
     this.focusNode,
   );
+
+  String get characterId => _character['characterId'];
+  Timer? get typingTimer => _typingTimer;
 
   void setupScrollListener(String characterId) {
     scrollController.addListener(() {
@@ -55,6 +62,7 @@ class ChatController with ChangeNotifier {
     sessionId = await _chatSessionService.initializeSession(characterId: characterId);
     await loadInitialMessages(characterId);
     usedToken = await loadUsedToken();
+    chatSummary = _generateSummary();
   }
 
   Future<void> loadInitialMessages(String characterId) async {
@@ -123,7 +131,7 @@ class ChatController with ChangeNotifier {
     String characterId = _character['characterId'];
 
     int messageLength = messageController.text.length;
-    bool canChat = (usedToken + messageLength) <= 30;
+    bool canChat = (usedToken + messageLength) <= 350;
     if (canChat) {
       messageController.clear();
       _sentBuffer.add(content);
@@ -145,21 +153,21 @@ class ChatController with ChangeNotifier {
       usedToken += messageLength;
       _userService.increaseUsedToken(messageLength);
 
-      _handleTypingFinish(characterId);
       scrollToBottom();
     }
     else {
-
+      Dialogs.showSubscriptionRequiredDialog(context);
     }
   }
 
-  void _handleTypingFinish(String characterId) {
+  void handleTypingFinish(String characterId) {
     _typingTimer?.cancel();
     _typingTimer = Timer(const Duration(seconds: 3), () async {
       if (_sentBuffer.isEmpty) return;
       final combined = _sentBuffer.join('\n');
       _sentBuffer.clear();
       await generateAIResponse(characterId, combined);
+      chatSummary = _generateSummary();
     });
   }
 
@@ -172,9 +180,9 @@ class ChatController with ChangeNotifier {
     final replies = await _messageService.generateAIResponse(
       character: _character,
       userMessage: userMessage,
-      conversationSummary: _generateSummary(),
+      conversationSummary: chatSummary,
     );
-
+    
     for (final message in replies) {
       messages.add({
         'text': message,
@@ -196,7 +204,7 @@ class ChatController with ChangeNotifier {
   }
 
   String _generateSummary() {
-    final recent = messages.reversed.take(10);
+    final recent = messages.reversed.take(10).toList().reversed;
     return recent.map((m) {
       final role = m['isUser'] ? 'user' : 'ai';
       return '$role: ${m['text']}';

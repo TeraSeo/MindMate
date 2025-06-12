@@ -1,4 +1,5 @@
 import 'package:ai_chatter/providers/LocaleProvider.dart';
+import 'package:ai_chatter/widgets/subscription/SubscriptionPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ai_chatter/screens/setup/user/UserSetupPage.dart';
@@ -142,6 +143,32 @@ class Dialogs {
         ),
         contentPadding: const EdgeInsets.symmetric(vertical: 20),
         titlePadding: const EdgeInsets.fromLTRB(24, 24, 24, 0),
+      ),
+    );
+  }
+
+  static void showSubscriptionRequiredDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Subscription Required'),
+        content: const Text('You have reached your free message limit. Please upgrade to continue chatting.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SubscriptionPage()),
+              );
+            },
+            child: const Text('Upgrade Now'),
+          ),
+        ],
       ),
     );
   }

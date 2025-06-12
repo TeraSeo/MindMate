@@ -4,12 +4,35 @@ import 'package:ai_chatter/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ChatInputBox extends StatelessWidget {
+class ChatInputBox extends StatefulWidget {
   const ChatInputBox({super.key});
 
   @override
+  State<ChatInputBox> createState() => _ChatInputBoxState();
+}
+
+class _ChatInputBoxState extends State<ChatInputBox> {
+  late ChatController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller = Provider.of<ChatController>(context, listen: false);
+      controller.focusNode.addListener(() {
+        if (!controller.focusNode.hasFocus) {
+          controller.handleTypingFinish(controller.characterId);
+        } else {
+          controller.typingTimer?.cancel();
+        }
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<ChatController>(context);
+    controller = Provider.of<ChatController>(context);
 
     return Container(
       padding: const EdgeInsets.all(BoxSize.spacingM),

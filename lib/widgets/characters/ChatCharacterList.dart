@@ -15,7 +15,6 @@ class ChatCharacterList extends StatefulWidget {
 }
 
 class _ChatCharacterListState extends State<ChatCharacterList> {
-  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Map<String, dynamic>>>(
@@ -44,7 +43,7 @@ class _ChatCharacterListState extends State<ChatCharacterList> {
           itemCount: characters.length,
           itemBuilder: (context, index) {
             final character = characters[index];
-            return ChatCharacterBox(character: character);
+            return ChatCharacterBox(character: character, userId: widget.user.uid!);
           },
         );
       },

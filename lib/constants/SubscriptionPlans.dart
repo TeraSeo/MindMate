@@ -3,6 +3,7 @@ import 'package:ai_chatter/models/SubscriptionPlan.dart';
 class SubscriptionPlans {
   static const List<String> featuers = [
     'Smarter, more emotional AI replies',
+    'Create unlimited custom characters',
     'Chat limit: Unlimited messages per day',
     'More options to character creation',
     'Faster response time'

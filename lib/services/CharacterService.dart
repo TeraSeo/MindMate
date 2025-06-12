@@ -40,4 +40,37 @@ class CharacterService {
       'createdAt': FieldValue.serverTimestamp(),
     });
   }
+
+  Future<void> deleteCharacter(String uid, String characterId) async {
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+    try {
+      final characterRef = _firestore
+          .collection('users')
+          .doc(uid)
+          .collection('characters')
+          .doc(characterId);
+
+      // Step 1: Get all chat sessions
+      final chatSessionsSnapshot = await characterRef.collection('chatSessions').get();
+
+      for (var sessionDoc in chatSessionsSnapshot.docs) {
+        final sessionRef = sessionDoc.reference;
+
+        // Step 2: Delete all messages in the session
+        final messagesSnapshot = await sessionRef.collection('messages').get();
+        for (var messageDoc in messagesSnapshot.docs) {
+          await messageDoc.reference.delete();
+        }
+
+        // Step 3: Delete the session itself
+        await sessionRef.delete();
+      }
+
+      // Step 4: Delete the character document
+      await characterRef.delete();
+    } catch (e) {
+      throw Exception('Failed to delete character and its data: $e');
+    }
+  }
 }

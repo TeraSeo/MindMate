@@ -30,6 +30,7 @@ class _ChatPageState extends State<ChatPage> {
     final focusNode = FocusNode();
 
     _chatController = ChatController(
+      context,
       widget.character,
       UserService(),
       ChatSessionService(),
@@ -85,12 +86,16 @@ class _ChatPageState extends State<ChatPage> {
           backgroundColor: ConstantColor.primaryColor,
           foregroundColor: Colors.white,
         ),
-        body: Column(
-          children: const [
-            Expanded(child: ChatMessageList()),
-            ChatInputBox(),
-          ],
-        ),
+        body: GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          behavior: HitTestBehavior.opaque, 
+          child: Column(
+            children: const [
+              Expanded(child: ChatMessageList()),
+              ChatInputBox(),
+            ],
+          )
+        )
       ),
     );
   }
