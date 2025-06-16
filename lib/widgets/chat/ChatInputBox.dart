@@ -3,6 +3,7 @@ import 'package:ai_chatter/constants/BoxSize.dart';
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChatInputBox extends StatefulWidget {
   const ChatInputBox({super.key});
@@ -32,6 +33,7 @@ class _ChatInputBoxState extends State<ChatInputBox> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     controller = Provider.of<ChatController>(context);
 
     return Container(
@@ -58,8 +60,8 @@ class _ChatInputBoxState extends State<ChatInputBox> {
               child: TextField(
                 controller: controller.messageController,
                 focusNode: controller.focusNode,
-                decoration: const InputDecoration(
-                  hintText: 'Type a message...',
+                decoration: InputDecoration(
+                  hintText: l10n.typeAMessage,
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(
                     horizontal: BoxSize.spacingM,

@@ -4,16 +4,19 @@ import 'package:ai_chatter/constants/SubscriptionPlans.dart';
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubscriptionPage extends StatelessWidget {
   const SubscriptionPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Choose Your Plan',
+          l10n.choosePlan,
           style: TextStyle(
             fontSize: FontSize.h6,
             color: Colors.white,
@@ -28,7 +31,7 @@ class SubscriptionPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'All plans include:',
+              l10n.allPlansInclude,
               style: TextStyle(
                 fontSize: FontSize.h5,
                 fontWeight: FontWeight.bold,
@@ -47,7 +50,7 @@ class SubscriptionPage extends StatelessWidget {
                 ),
               ),
               child: Column(
-                children: SubscriptionPlans.featuers.map((f) => Padding(
+                children: SubscriptionPlans.getLocalizedFeatures(context).map((f) => Padding(
                   padding: const EdgeInsets.only(bottom: BoxSize.spacingM),
                   child: Row(
                     children: [
@@ -80,7 +83,7 @@ class SubscriptionPage extends StatelessWidget {
             ),
             const SizedBox(height: BoxSize.spacingXL),
             Text(
-              'Select a plan:',
+              l10n.selectPlan,
               style: TextStyle(
                 fontSize: FontSize.h5,
                 fontWeight: FontWeight.bold,
@@ -88,7 +91,7 @@ class SubscriptionPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: BoxSize.spacingM),
-            ...SubscriptionPlans.subscriptionPlans.map(
+            ...SubscriptionPlans.getLocalizedPlans(context).map(
               (plan) => Padding(
                 padding: const EdgeInsets.only(bottom: BoxSize.spacingM),
                 child: SubscriptionPlanCard(plan: plan),

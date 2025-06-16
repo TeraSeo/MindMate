@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // <-- Add this
 import 'package:ai_chatter/models/SubscriptionPlan.dart';
 import 'package:ai_chatter/constants/Colors.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
@@ -11,6 +12,8 @@ class SubscriptionPlanCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Card(
       margin: const EdgeInsets.only(bottom: BoxSize.spacingM),
       elevation: 2,
@@ -22,11 +25,12 @@ class SubscriptionPlanCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Plan Name and Discount
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  plan.name,
+                  _getLocalizedPlanName(loc),
                   style: TextStyle(
                     fontSize: FontSize.h5,
                     fontWeight: FontWeight.bold,
@@ -44,7 +48,7 @@ class SubscriptionPlanCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(BoxSize.cardRadius),
                     ),
                     child: Text(
-                      '${plan.discount} OFF',
+                      '${plan.discount} ${loc.off}',
                       style: TextStyle(
                         color: ConstantColor.primaryColor,
                         fontWeight: FontWeight.bold,
@@ -54,34 +58,45 @@ class SubscriptionPlanCard extends StatelessWidget {
                   ),
               ],
             ),
+
             const SizedBox(height: BoxSize.spacingM),
+
+            // Price + Period
             Text(
-              '\$${plan.price.toStringAsFixed(2)} / ${plan.period}',
+              '\$${plan.price.toStringAsFixed(2)} / ${_getLocalizedPeriod(loc)}',
               style: TextStyle(
                 fontSize: FontSize.h4,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey[800],
               ),
             ),
+
+            // Monthly price
             if (plan.monthlyPrice != plan.price) ...[
               const SizedBox(height: 4),
               Text(
-                '~ \$${plan.monthlyPrice.toStringAsFixed(2)}/month',
+                '~ \$${plan.monthlyPrice.toStringAsFixed(2)}/${loc.month}',
                 style: TextStyle(
                   fontSize: FontSize.bodyMedium,
                   color: Colors.grey[600],
                 ),
               ),
             ],
+
             const SizedBox(height: BoxSize.spacingS),
+
+            // Description
             Text(
-              plan.description,
+              _getLocalizedPlanDescription(loc),
               style: TextStyle(
                 fontSize: FontSize.bodyMedium,
                 color: Colors.grey[600],
               ),
             ),
+
             const SizedBox(height: BoxSize.spacingL),
+
+            // Upgrade Button
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -105,7 +120,7 @@ class SubscriptionPlanCard extends StatelessWidget {
                       elevation: 0,
                     ),
                     child: Text(
-                      'Upgrade Now',
+                      loc.upgradeNow,
                       style: TextStyle(
                         fontSize: FontSize.bodyMedium,
                         fontWeight: FontWeight.w600,
@@ -113,11 +128,50 @@ class SubscriptionPlanCard extends StatelessWidget {
                     ),
                   ),
                 ),
-              ]
+              ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  String _getLocalizedPlanName(AppLocalizations loc) {
+    switch (plan.name) {
+      case 'Basic Plan':
+        return loc.basicPlanName;
+      case 'Standard Plan':
+        return loc.standardPlanName;
+      case 'Premium Plan':
+        return loc.premiumPlanName;
+      default:
+        return plan.name;
+    }
+  }
+
+  String _getLocalizedPlanDescription(AppLocalizations loc) {
+    switch (plan.name) {
+      case 'Basic Plan':
+        return loc.basicPlanDescription;
+      case 'Standard Plan':
+        return loc.standardPlanDescription;
+      case 'Premium Plan':
+        return loc.premiumPlanDescription;
+      default:
+        return plan.description;
+    }
+  }
+
+  String _getLocalizedPeriod(AppLocalizations loc) {
+    switch (plan.period) {
+      case '1 month':
+        return loc.period1Month;
+      case '3 months':
+        return loc.period3Months;
+      case '1 year':
+        return loc.period1Year;
+      default:
+        return plan.period;
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/constants/Colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubscriptionCard extends StatelessWidget {
   final bool isPremium;
@@ -15,6 +16,8 @@ class SubscriptionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -38,7 +41,7 @@ class SubscriptionCard extends StatelessWidget {
                 ),
                 SizedBox(width: BoxSize.spacingM),
                 Text(
-                  'Subscription',
+                  l10n.subscription,
                   style: TextStyle(
                     fontSize: FontSize.h5,
                     fontWeight: FontWeight.bold,
@@ -49,7 +52,7 @@ class SubscriptionCard extends StatelessWidget {
             ),
             SizedBox(height: BoxSize.spacingM),
             Text(
-              isPremium ? 'Premium Plan' : 'Free Plan',
+              isPremium ? l10n.premiumPlan : l10n.freePlan,
               style: TextStyle(
                 fontSize: FontSize.h6,
                 color: isPremium ? Colors.amber : Colors.grey[600],
@@ -58,9 +61,7 @@ class SubscriptionCard extends StatelessWidget {
             ),
             SizedBox(height: BoxSize.spacingS),
             Text(
-              isPremium
-                  ? 'Enjoy all premium features and unlimited access'
-                  : 'Upgrade to premium for more features',
+              isPremium ? l10n.premiumDescription : l10n.freeDescription,
               style: TextStyle(
                 fontSize: FontSize.bodyMedium,
                 color: ConstantColor.textColor.withOpacity(0.7),
@@ -81,7 +82,7 @@ class SubscriptionCard extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    'Upgrade to Premium',
+                    l10n.upgradeButton,
                     style: TextStyle(fontSize: FontSize.buttonMedium),
                   ),
                 ),

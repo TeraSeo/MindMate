@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ai_chatter/constants/BoxSize.dart';
 import 'package:ai_chatter/constants/FontSize.dart';
 import 'package:ai_chatter/constants/Colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoadingBubble extends StatelessWidget {
   final Animation<double> animation;
@@ -10,6 +11,8 @@ class LoadingBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -53,7 +56,7 @@ class LoadingBubble extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Typing...',
+                  l10n.typing,
                   style: TextStyle(
                     color: Colors.grey[600],
                     fontSize: FontSize.bodyMedium,

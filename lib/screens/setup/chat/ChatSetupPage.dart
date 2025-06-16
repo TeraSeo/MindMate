@@ -150,7 +150,7 @@ class _ChatSetupPageState extends State<ChatSetupPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Chat Setup',
+          l10n.chatSetup,
           style: TextStyle(
             fontSize: isSmallScreen ? FontSize.h5 : FontSize.h4,
           ),

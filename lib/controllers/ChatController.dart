@@ -154,6 +154,7 @@ class ChatController with ChangeNotifier {
       _userService.increaseUsedToken(messageLength);
 
       scrollToBottom();
+      focusNode.unfocus();
     }
     else {
       Dialogs.showSubscriptionRequiredDialog(context);
