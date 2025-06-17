@@ -105,11 +105,20 @@ class _AIPersonalityStepState extends State<AIPersonalityStep> {
             ? BoxSize.iconLarge 
             : BoxSize.iconLarge * 1.2;
 
+    final cardSpacing = isSmallScreen 
+        ? BoxSize.spacingM 
+        : isMediumScreen 
+            ? BoxSize.spacingL 
+            : BoxSize.spacingXL;
+
     return BaseStep(
       onNext: widget.onNext,
       onPrevious: widget.onPrevious,
       canProceed: selectedPersonality != null,
-      child: Column(
+      child: SingleChildScrollView(
+  padding: EdgeInsets.only(bottom: BoxSize.spacingXL),
+      child: 
+      Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -128,110 +137,92 @@ class _AIPersonalityStepState extends State<AIPersonalityStep> {
             ),
           ),
           SizedBox(height: verticalSpacing * 2),
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final crossAxisCount = isSmallScreen 
-                    ? 1 
-                    : isMediumScreen 
-                        ? 2 
-                        : 3;
+          Wrap(
+            spacing: cardSpacing,
+            runSpacing: cardSpacing,
+            children: _personalityOptions.map((option) {
+              final isSelected = selectedPersonality == option['value'];
 
-                final cardSpacing = isSmallScreen 
-                    ? BoxSize.spacingM 
-                    : isMediumScreen 
-                        ? BoxSize.spacingL 
-                        : BoxSize.spacingXL;
-
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    childAspectRatio: isSmallScreen ? 3 : 2.5,
-                    crossAxisSpacing: cardSpacing,
-                    mainAxisSpacing: cardSpacing,
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: isSmallScreen ? double.infinity : (size.width - cardSpacing * 2) / 2,
+                ),
+                child: Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                    side: BorderSide(
+                      color: isSelected
+                          ? Theme.of(context).colorScheme.primary
+                          : Colors.grey[300]!,
+                      width: isSelected ? 2 : 1,
+                    ),
                   ),
-                  itemCount: _personalityOptions.length,
-                  itemBuilder: (context, index) {
-                    final option = _personalityOptions[index];
-                    final isSelected = selectedPersonality == option['value'];
-
-                    return Card(
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                        side: BorderSide(
-                          color: isSelected
-                              ? Theme.of(context).colorScheme.primary
-                              : Colors.grey[300]!,
-                          width: isSelected ? 2 : 1,
-                        ),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            selectedPersonality = option['value'];
-                          });
-                          widget.onUpdateData(option['value']);
-                        },
-                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                        child: Padding(
-                          padding: EdgeInsets.all(cardPadding),
-                          child: Row(
-                            children: [
-                              Icon(
-                                option['icon'],
-                                size: iconSize,
-                                color: isSelected
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Colors.grey[600],
-                              ),
-                              SizedBox(width: cardPadding),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      _getLocalizedPersonalityLabel(option['value'], l10n),
-                                      style: TextStyle(
-                                        fontSize: optionFontSize,
-                                        fontWeight: FontWeight.bold,
-                                        color: isSelected
-                                            ? Theme.of(context).colorScheme.primary
-                                            : null,
-                                      ),
-                                    ),
-                                    SizedBox(height: BoxSize.spacingS),
-                                    Text(
-                                      _getLocalizedPersonalityDescription(option['value'], l10n),
-                                      style: TextStyle(
-                                        fontSize: optionFontSize * 0.9,
-                                        color: Colors.grey[600],
-                                      ),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              if (isSelected)
-                                Icon(
-                                  Icons.check_circle,
-                                  size: iconSize,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                            ],
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        selectedPersonality = option['value'];
+                      });
+                      widget.onUpdateData(option['value']);
+                    },
+                    borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                    child: Padding(
+                      padding: EdgeInsets.all(cardPadding),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            option['icon'],
+                            size: iconSize,
+                            color: isSelected
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.grey[600],
                           ),
-                        ),
+                          SizedBox(width: cardPadding),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _getLocalizedPersonalityLabel(option['value'], l10n),
+                                  style: TextStyle(
+                                    fontSize: optionFontSize,
+                                    fontWeight: FontWeight.bold,
+                                    color: isSelected
+                                        ? Theme.of(context).colorScheme.primary
+                                        : null,
+                                  ),
+                                ),
+                                SizedBox(height: BoxSize.spacingS),
+                                Text(
+                                  _getLocalizedPersonalityDescription(option['value'], l10n),
+                                  style: TextStyle(
+                                    fontSize: optionFontSize * 0.9,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          if (isSelected)
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Icon(
+                                Icons.check_circle,
+                                size: iconSize,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            ),
+                        ],
                       ),
-                    );
-                  },
-                );
-              },
-            ),
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
           ),
         ],
-      ),
+      ),)
     );
   }
 

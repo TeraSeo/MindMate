@@ -65,173 +65,163 @@ class _ChattingStyleStepState extends State<ChattingStyleStep> {
     final size = MediaQuery.of(context).size;
     final isSmallScreen = size.width < 600;
     final isMediumScreen = size.width >= 600 && size.width < 1200;
-    final isLargeScreen = size.width >= 1200;
 
-    // Responsive font sizes
-    final titleFontSize = isSmallScreen 
-        ? FontSize.h5 
-        : isMediumScreen 
-            ? FontSize.h4 
+    final titleFontSize = isSmallScreen
+        ? FontSize.h5
+        : isMediumScreen
+            ? FontSize.h4
             : FontSize.h3;
-    
-    final descriptionFontSize = isSmallScreen 
-        ? FontSize.bodyMedium 
-        : isMediumScreen 
-            ? FontSize.bodyLarge 
+
+    final descriptionFontSize = isSmallScreen
+        ? FontSize.bodyMedium
+        : isMediumScreen
+            ? FontSize.bodyLarge
             : FontSize.h6;
 
-    final optionFontSize = isSmallScreen 
-        ? FontSize.bodyMedium 
-        : isMediumScreen 
-            ? FontSize.bodyLarge 
+    final optionFontSize = isSmallScreen
+        ? FontSize.bodyMedium
+        : isMediumScreen
+            ? FontSize.bodyLarge
             : FontSize.h6;
 
-    // Responsive spacing
-    final verticalSpacing = isSmallScreen 
-        ? BoxSize.spacingM 
-        : isMediumScreen 
-            ? BoxSize.spacingL 
+    final verticalSpacing = isSmallScreen
+        ? BoxSize.spacingM
+        : isMediumScreen
+            ? BoxSize.spacingL
             : BoxSize.spacingXL;
 
-    final cardPadding = isSmallScreen 
-        ? BoxSize.spacingM 
-        : isMediumScreen 
-            ? BoxSize.spacingL 
+    final cardPadding = isSmallScreen
+        ? BoxSize.spacingM
+        : isMediumScreen
+            ? BoxSize.spacingL
             : BoxSize.spacingXL;
 
-    final iconSize = isSmallScreen 
-        ? BoxSize.iconMedium 
-        : isMediumScreen 
-            ? BoxSize.iconLarge 
+    final iconSize = isSmallScreen
+        ? BoxSize.iconMedium
+        : isMediumScreen
+            ? BoxSize.iconLarge
             : BoxSize.iconLarge * 1.2;
+
+    final cardSpacing = isSmallScreen
+        ? BoxSize.spacingM
+        : isMediumScreen
+            ? BoxSize.spacingL
+            : BoxSize.spacingXL;
 
     return BaseStep(
       onNext: widget.onNext,
       onPrevious: widget.onPrevious,
       canProceed: selectedStyle != null,
       isLastStep: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            l10n.chooseChattingStyle,
-            style: TextStyle(
-              fontSize: titleFontSize,
-              fontWeight: FontWeight.bold,
+      child: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: BoxSize.spacingXL),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              l10n.chooseChattingStyle,
+              style: TextStyle(
+                fontSize: titleFontSize,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          SizedBox(height: verticalSpacing),
-          Text(
-            l10n.selectChattingStyleDescription,
-            style: TextStyle(
-              fontSize: descriptionFontSize,
-              color: Colors.grey,
+            SizedBox(height: verticalSpacing),
+            Text(
+              l10n.selectChattingStyleDescription,
+              style: TextStyle(
+                fontSize: descriptionFontSize,
+                color: Colors.grey,
+              ),
             ),
-          ),
-          SizedBox(height: verticalSpacing * 2),
-          Expanded(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                final crossAxisCount = isSmallScreen 
-                    ? 1 
-                    : isMediumScreen 
-                        ? 2 
-                        : 3;
+            SizedBox(height: verticalSpacing * 2),
+            Wrap(
+              spacing: cardSpacing,
+              runSpacing: cardSpacing,
+              children: _styleOptions.map((option) {
+                final isSelected = selectedStyle == option['value'];
 
-                final cardSpacing = isSmallScreen 
-                    ? BoxSize.spacingM 
-                    : isMediumScreen 
-                        ? BoxSize.spacingL 
-                        : BoxSize.spacingXL;
-
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    childAspectRatio: isSmallScreen ? 3 : 2.5,
-                    crossAxisSpacing: cardSpacing,
-                    mainAxisSpacing: cardSpacing,
+                return ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: isSmallScreen
+                        ? double.infinity
+                        : (size.width - cardSpacing * 2) / 2,
                   ),
-                  itemCount: _styleOptions.length,
-                  itemBuilder: (context, index) {
-                    final option = _styleOptions[index];
-                    final isSelected = selectedStyle == option['value'];
-
-                    return Card(
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                        side: BorderSide(
-                          color: isSelected
-                              ? Theme.of(context).colorScheme.primary
-                              : Colors.grey[300]!,
-                          width: isSelected ? 2 : 1,
-                        ),
+                  child: Card(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                      side: BorderSide(
+                        color: isSelected
+                            ? Theme.of(context).colorScheme.primary
+                            : Colors.grey[300]!,
+                        width: isSelected ? 2 : 1,
                       ),
-                      child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            selectedStyle = option['value'];
-                          });
-                          widget.onUpdateData(option['value']);
-                        },
-                        borderRadius: BorderRadius.circular(BoxSize.cardRadius),
-                        child: Padding(
-                          padding: EdgeInsets.all(cardPadding),
-                          child: Row(
-                            children: [
-                              Icon(
-                                option['icon'],
-                                size: iconSize,
-                                color: isSelected
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Colors.grey[600],
-                              ),
-                              SizedBox(width: cardPadding),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      _getLocalizedStyleLabel(option['value'], l10n),
-                                      style: TextStyle(
-                                        fontSize: optionFontSize,
-                                        fontWeight: FontWeight.bold,
-                                        color: isSelected
-                                            ? Theme.of(context).colorScheme.primary
-                                            : null,
-                                      ),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        setState(() {
+                          selectedStyle = option['value'];
+                        });
+                        widget.onUpdateData(option['value']);
+                      },
+                      borderRadius: BorderRadius.circular(BoxSize.cardRadius),
+                      child: Padding(
+                        padding: EdgeInsets.all(cardPadding),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              option['icon'],
+                              size: iconSize,
+                              color: isSelected
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Colors.grey[600],
+                            ),
+                            SizedBox(width: cardPadding),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    _getLocalizedStyleLabel(option['value'], l10n),
+                                    style: TextStyle(
+                                      fontSize: optionFontSize,
+                                      fontWeight: FontWeight.bold,
+                                      color: isSelected
+                                          ? Theme.of(context).colorScheme.primary
+                                          : null,
                                     ),
-                                    SizedBox(height: BoxSize.spacingS),
-                                    Text(
-                                      _getLocalizedStyleDescription(option['value'], l10n),
-                                      style: TextStyle(
-                                        fontSize: optionFontSize * 0.9,
-                                        color: Colors.grey[600],
-                                      ),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
+                                  ),
+                                  SizedBox(height: BoxSize.spacingS),
+                                  Text(
+                                    _getLocalizedStyleDescription(option['value'], l10n),
+                                    style: TextStyle(
+                                      fontSize: optionFontSize * 0.9,
+                                      color: Colors.grey[600],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                              if (isSelected)
-                                Icon(
+                            ),
+                            if (isSelected)
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Icon(
                                   Icons.check_circle,
                                   size: iconSize,
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
-                            ],
-                          ),
+                              ),
+                          ],
                         ),
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 );
-              },
+              }).toList(),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
