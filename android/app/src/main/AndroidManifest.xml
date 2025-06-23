@@ -9,9 +9,9 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     
     <application
-        android:label="ai_chatter"
+        android:label="MindMate"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         
         <!-- Add this meta-data for FCM default channel -->
         <meta-data

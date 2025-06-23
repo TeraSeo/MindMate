@@ -336,5 +336,9 @@
     "upgradeNow": "Jetzt upgraden",
     "month": "Monat",
     "typeAMessage": "Nachricht eingeben...",
-    "typing": "Schreibt......"
+    "typing": "Schreibt......",
+    "watchAdRequiredTitle": "Werbung ansehen, um fortzufahren",
+    "watchAdRequiredMessage": "Du hast das heutige Chat-Limit erreicht. Um weiter zu chatten, sieh dir bitte eine kurze Videoanzeige an.",
+    "watchNow": "Jetzt ansehen",
+    "emptyCharacterSubtitle": "Erstelle jetzt einen Charakter, um mit dem Chatten zu beginnen!"
 } 

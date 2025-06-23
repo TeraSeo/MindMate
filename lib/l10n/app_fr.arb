@@ -336,5 +336,9 @@
     "upgradeNow": "Mettre à niveau",
     "month": "mois",
     "typeAMessage": "Tapez un message...",
-    "typing": "Saisie......"
+    "typing": "Saisie......",
+    "watchAdRequiredTitle": "Regarder une pub pour continuer",
+    "watchAdRequiredMessage": "Vous avez dépassé la limite de chat gratuite d'aujourd'hui. Pour continuer, regardez une courte vidéo publicitaire.",
+    "watchNow": "Regarder",
+    "emptyCharacterSubtitle": "Commencez à discuter en créant un personnage maintenant !"
 } 

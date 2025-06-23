@@ -337,5 +337,9 @@
     "month": "月",
     "zh_hans": "聊天设置",
     "typeAMessage": "输入消息...",
-    "typing": "正在输入......"
+    "typing": "正在输入......",
+    "watchAdRequiredTitle": "观看广告以继续",
+    "watchAdRequiredMessage": "您已超出今日免费聊天次数。请观看一个短视频广告以重置使用次数并继续聊天。",
+    "watchNow": "立即观看",
+    "emptyCharacterSubtitle": "立即创建角色开始聊天吧！"
 } 

@@ -26,13 +26,33 @@ class _ChatCharacterListState extends State<ChatCharacterList> {
 
         if (!snapshot.hasData || snapshot.data!.isEmpty) {
           return Center(
-            child: Text(
-              AppLocalizations.of(context)!.welcomeMessage,
-              style: TextStyle(
-                fontSize: FontSize.h4,
-                color: ConstantColor.textColor,
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.chat_bubble_outline,
+                  size: 80,
+                  color: Colors.grey[400],
+                ),
+                const SizedBox(height: 24),
+                Text(
+                  AppLocalizations.of(context)!.welcomeMessage,
+                  style: TextStyle(
+                    fontSize: FontSize.h4,
+                    color: ConstantColor.textColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                    AppLocalizations.of(context)!.emptyCharacterSubtitle  ,                style: TextStyle(
+                    fontSize: FontSize.bodyMedium,
+                    color: Colors.grey[600],
+                  ),
+                  textAlign: TextAlign.center,
+                )
+              ],
             ),
           );
         }

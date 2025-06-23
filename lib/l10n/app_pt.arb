@@ -336,5 +336,9 @@
     "upgradeNow": "Atualizar agora",
     "month": "mês",
     "typeAMessage": "Digite uma mensagem...",
-    "typing": "Digitando......"
+    "typing": "Digitando......",
+    "watchAdRequiredTitle": "Assistir anúncio para continuar",
+    "watchAdRequiredMessage": "Você excedeu o limite diário de chats gratuitos. Para continuar, assista a um breve vídeo publicitário.",
+    "watchNow": "Assistir agora",
+    "emptyCharacterSubtitle": "Comece a conversar criando um personagem agora!"
 } 

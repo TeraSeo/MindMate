@@ -25,7 +25,8 @@ exports.generateGptResponse = onRequest(async (req, res) => {
 
     const {personality, relationship, chattingStyle, gender, ageGroup,
       replyLanguage, userMessage, conversationSummary,
-      username, userMessages} = req.body;
+      username, userAge, userGender,
+    } = req.body;
 
     const configuration = new Configuration({
       apiKey: openaiKey,
@@ -51,11 +52,10 @@ exports.generateGptResponse = onRequest(async (req, res) => {
       
       ### Conversation Context:
       - Username: ${username}
+      - User Age Group: ${userAge}
+      - User Gender: ${userGender}
       - Chatting Style: ${chattingStyle}
       - Last Conversation Summary: ${conversationSummary}
-      
-      ### User Messages:
-      ${userMessages}
       
       ### Your Task:
       Reply to the most recent user message appropriately.

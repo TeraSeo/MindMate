@@ -78,9 +78,10 @@ class MessageService {
     required Map<String, dynamic> character,
     required String userMessage,
     required String conversationSummary,
+    required String name,
+    required String ageGroup,
+    required String gender
   }) async {
-
-    print(conversationSummary);
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) throw Exception('User not authenticated');
 
@@ -101,6 +102,9 @@ class MessageService {
         'replyLanguage': character['language'],
         'userMessage': userMessage,
         'conversationSummary': conversationSummary,
+        'username': name,
+        'userAge': ageGroup,
+        'userGender': gender
       }),
     );
 

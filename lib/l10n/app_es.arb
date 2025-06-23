@@ -336,5 +336,9 @@
     "upgradeNow": "Actualizar ahora",
     "month": "mes",
     "typeAMessage": "Escribe un mensaje...",
-    "typing": "Escribiendo......"
+    "typing": "Escribiendo......",
+    "watchAdRequiredTitle": "Ver anuncio para continuar",
+    "watchAdRequiredMessage": "Has superado el límite diario de chats. Para restablecer tu uso y continuar chateando, mira un breve anuncio.",
+    "watchNow": "Ver ahora",
+    "emptyCharacterSubtitle": "¡Empieza a chatear creando un personaje ahora!"
 } 

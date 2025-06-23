@@ -337,5 +337,9 @@
     "month": "月",
     "zh": "聊天設定",
     "typeAMessage": "輸入訊息...",
-    "typing": "正在輸入......"
+    "typing": "正在輸入......",
+    "watchAdRequiredTitle": "觀看廣告以繼續",
+    "watchAdRequiredMessage": "您已超過今天的免費聊天限制。請觀看一個短視頻廣告來重置使用次數並繼續聊天。",
+    "watchNow": "立即觀看",
+    "emptyCharacterSubtitle": "立即建立角色開始聊天吧！"
 } 

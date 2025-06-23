@@ -336,5 +336,9 @@
     "upgradeNow": "지금 업그레이드",
     "month": "개월",
     "typeAMessage": "메시지를 입력하세요...",
-    "typing": "입력 중......"
+    "typing": "입력 중......",
+    "watchAdRequiredTitle": "계속하려면 광고 보기",
+    "watchAdRequiredMessage": "오늘의 무료 채팅 횟수를 초과했습니다. 사용량을 초기화하고 계속하려면 짧은 영상 광고를 시청하세요.",
+    "watchNow": "지금 시청",
+    "emptyCharacterSubtitle": "지금 캐릭터를 추가해 대화를 시작해보세요!"
 } 

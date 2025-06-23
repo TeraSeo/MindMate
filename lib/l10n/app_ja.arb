@@ -336,5 +336,9 @@
     "upgradeNow": "今すぐアップグレード",
     "month": "月",
     "typeAMessage": "メッセージを入力...",
-    "typing": "入力中......"
+    "typing": "入力中......",
+    "watchAdRequiredTitle": "続けるには広告を視聴してください",
+    "watchAdRequiredMessage": "本日の無料チャット回数を超えました。利用をリセットして続けるには、短い動画広告をご覧ください。",
+    "watchNow": "今すぐ見る",
+    "emptyCharacterSubtitle": "今すぐキャラクターを作成してチャットを始めましょう！"
 } 

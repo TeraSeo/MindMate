@@ -19,36 +19,45 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
-  late final ChatController _chatController;
+   ChatController? _chatController;
 
   @override
   void initState() {
     super.initState();
+    _initializeChatPage();
+  }
 
+  void _initializeChatPage() async {
     final scrollController = ScrollController();
     final messageController = TextEditingController();
     final focusNode = FocusNode();
+    final userInfo = await UserService().getUserInfo();
 
-    _chatController = ChatController(
-      context,
-      widget.character,
-      UserService(),
-      ChatSessionService(),
-      MessageService(),
-      scrollController,
-      messageController,
-      focusNode,
-    );
+    if (!mounted) return;
 
-    _chatController.initialize(widget.character['characterId']);
-    _chatController.setupScrollListener(widget.character['characterId']);
-  }
+    setState(() {
+      _chatController = ChatController(
+        context,
+        widget.character,
+        UserService(),
+        ChatSessionService(),
+        MessageService(),
+        scrollController,
+        messageController,
+        focusNode,
+        userInfo ?? {},
+      );
+    });
+
+  _chatController!.initialize(widget.character['characterId']);
+  _chatController!.setupScrollListener(widget.character['characterId']);
+}
 
   @override
   void dispose() {
-    _chatController.scrollController.dispose();
-    _chatController.messageController.dispose();
-    _chatController.focusNode.dispose();
+    _chatController!.scrollController.dispose();
+    _chatController!.messageController.dispose();
+    _chatController!.focusNode.dispose();
     super.dispose();
   }
 
@@ -56,8 +65,14 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     final name = widget.character['name'] ?? 'Character';
 
+    if (_chatController == null) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
     return ChangeNotifierProvider<ChatController>.value(
-      value: _chatController,
+      value: _chatController!,
       child: Scaffold(
         appBar: AppBar(
           title: Row(

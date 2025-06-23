@@ -564,5 +564,9 @@
     "upgradeNow": "Upgrade Now",
     "month": "month",
     "typeAMessage": "Type a message...",
-    "typing": "Typing......"
+    "typing": "Typing......",
+    "watchAdRequiredTitle": "Watch Ad to Continue",
+    "watchAdRequiredMessage": "You have exceeded today’s free chat limit. To reset your usage and continue chatting, please watch a short video ad.",
+    "watchNow": "Watch Now",
+    "emptyCharacterSubtitle": "Start chatting by creating a character now!"
 } 

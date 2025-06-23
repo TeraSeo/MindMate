@@ -15,6 +15,7 @@ class ChatController with ChangeNotifier {
   final ScrollController scrollController;
   final TextEditingController messageController;
   final FocusNode focusNode;
+  final Map<String, dynamic> _userInfo;
 
   final List<Map<String, dynamic>> messages = [];
   String? sessionId;
@@ -38,6 +39,7 @@ class ChatController with ChangeNotifier {
     this.scrollController,
     this.messageController,
     this.focusNode,
+    this._userInfo,
   );
 
   String get characterId => _character['characterId'];
@@ -131,7 +133,7 @@ class ChatController with ChangeNotifier {
     String characterId = _character['characterId'];
 
     int messageLength = messageController.text.length;
-    bool canChat = (usedToken + messageLength) <= 350;
+    bool canChat = (usedToken + messageLength) <= 350; // chat limit check
     if (canChat) {
       messageController.clear();
       _sentBuffer.add(content);
@@ -157,7 +159,8 @@ class ChatController with ChangeNotifier {
       focusNode.unfocus();
     }
     else {
-      Dialogs.showSubscriptionRequiredDialog(context);
+      // Dialogs.showSubscriptionRequiredDialog(context);
+      Dialogs.showWatchAdsRequiredDialog(context, () => {});
     }
   }
 
@@ -182,6 +185,9 @@ class ChatController with ChangeNotifier {
       character: _character,
       userMessage: userMessage,
       conversationSummary: chatSummary,
+      name: _userInfo['name'],
+      ageGroup: _userInfo['ageGroup'],
+      gender: _userInfo['gender']
     );
     
     for (final message in replies) {

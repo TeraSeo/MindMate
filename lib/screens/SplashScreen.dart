@@ -141,7 +141,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                       ),
                       SizedBox(height: BoxSize.spacingXL),
                       Text(
-                        l10n.appTitle,
+                        "MindMate",
                         style: TextStyle(
                           fontSize: isSmallScreen ? FontSize.h1 : FontSize.h1 * 1.5,
                           fontWeight: FontWeight.bold,

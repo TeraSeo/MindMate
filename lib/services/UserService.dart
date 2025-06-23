@@ -87,4 +87,12 @@ class UserService {
 
     await userRef.update({'usedToken': updatedUsedToken});
   }
+
+  Future<Map<String, dynamic>?> getUserInfo() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return null;
+
+    final snapshot = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+    return snapshot.data();
+  }
 }
