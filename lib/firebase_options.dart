@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'mindmate-ea623.firebasestorage.app',
     iosBundleId: 'com.example.aiChatter',
   );
+
 }

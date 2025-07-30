@@ -1,10 +1,14 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:ai_chatter/constants/Dialogs.dart';
+import 'package:ai_chatter/services/AdsService.dart';
 import 'package:ai_chatter/services/UserService.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/ChatSessionService.dart';
 import '../services/MessageService.dart';
+import 'package:uuid/uuid.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChatController with ChangeNotifier {
   final BuildContext context;
@@ -29,6 +33,8 @@ class ChatController with ChangeNotifier {
   Timer? _typingTimer;
   int usedToken = 0;
   String chatSummary = "";
+  final Uuid _uuid = const Uuid();
+  final adsService = AdsService();
 
   ChatController(
     this.context,
@@ -65,6 +71,7 @@ class ChatController with ChangeNotifier {
     await loadInitialMessages(characterId);
     usedToken = await loadUsedToken();
     chatSummary = _generateSummary();
+    adsService.loadRewardedInterstitialAd();
   }
 
   Future<void> loadInitialMessages(String characterId) async {
@@ -133,12 +140,15 @@ class ChatController with ChangeNotifier {
     String characterId = _character['characterId'];
 
     int messageLength = messageController.text.length;
-    bool canChat = (usedToken + messageLength) <= 350; // chat limit check
+    bool canChat = (usedToken + messageLength) <= 100; // chat limit check
     if (canChat) {
       messageController.clear();
       _sentBuffer.add(content);
 
+      final messageId = _uuid.v4();
+
       messages.add({
+        'messageId': messageId,
         'text': content,
         'isUser': true,
         'timestamp': DateTime.now()
@@ -146,6 +156,7 @@ class ChatController with ChangeNotifier {
       notifyListeners();
 
       await _messageService.saveMessage(
+        messageId: messageId,
         characterId: characterId,
         sessionId: sessionId!,
         content: content,
@@ -160,7 +171,23 @@ class ChatController with ChangeNotifier {
     }
     else {
       // Dialogs.showSubscriptionRequiredDialog(context);
-      Dialogs.showWatchAdsRequiredDialog(context, () => {});
+      final l10n = AppLocalizations.of(context)!;
+      Dialogs.showWatchAdsRequiredDialog(context, () {
+        adsService.showRewardedInterstitialAd(
+          onUserEarnedReward: () {
+            _userService.resetUserToken();
+            usedToken = 0;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(l10n.rewardChat)),
+            );
+          },
+          onAdNotReady: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(l10n.failChatLoad)),
+            );
+          },
+        );
+      });
     }
   }
 
@@ -189,15 +216,19 @@ class ChatController with ChangeNotifier {
       ageGroup: _userInfo['ageGroup'],
       gender: _userInfo['gender']
     );
+
+    final messageId = _uuid.v4();
     
     for (final message in replies) {
       messages.add({
+        'messageId': messageId,
         'text': message,
         'isUser': false,
         'timestamp': DateTime.now(),
       });
 
       await _messageService.saveMessage(
+        messageId: messageId,
         characterId: characterId,
         sessionId: sessionId!,
         content: message,

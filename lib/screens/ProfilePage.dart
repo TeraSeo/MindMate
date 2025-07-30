@@ -166,8 +166,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildSubscriptionInfo(),
-                    SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
+                    // _buildSubscriptionInfo(),
+                    // SizedBox(height: isSmallScreen ? BoxSize.spacingXL : BoxSize.spacingXXL),
                     Text(
                       l10n.personalInformation,
                       style: TextStyle(

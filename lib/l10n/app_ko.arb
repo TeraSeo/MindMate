@@ -340,5 +340,14 @@
     "watchAdRequiredTitle": "계속하려면 광고 보기",
     "watchAdRequiredMessage": "오늘의 무료 채팅 횟수를 초과했습니다. 사용량을 초기화하고 계속하려면 짧은 영상 광고를 시청하세요.",
     "watchNow": "지금 시청",
-    "emptyCharacterSubtitle": "지금 캐릭터를 추가해 대화를 시작해보세요!"
+    "emptyCharacterSubtitle": "지금 캐릭터를 추가해 대화를 시작해보세요!",
+    "deleteAccount": "계정 삭제",
+    "deleteAccountConfirmation": "계정을 정말로 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "deleteAccountFailed": "계정 삭제 실패",
+    "reportMessageTitle": "메시지 신고",
+    "reportMessageConfirmation": "이 메시지를 신고하시겠습니까?",
+    "reportMessageDone": "신고되었습니다. 감사합니다.",
+    "report": "신고",
+    "rewardChat": "✅ 이제 계속 채팅할 수 있어요!",
+    "failChatLoad": "❌ 광고를 불러오지 못했어요!"
 } 

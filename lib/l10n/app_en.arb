@@ -364,7 +364,16 @@
     "typeAMessage": "Type a message...",
     "typing": "Typing......",
     "watchAdRequiredTitle": "Watch Ad to Continue",
-    "watchAdRequiredMessage": "You have exceeded today’s free chat limit. To reset your usage and continue chatting, please watch a short video ad.",
+    "watchAdRequiredMessage": "You have exceeded today's free chat limit. To reset your usage and continue chatting, please watch a short video ad.",
     "watchNow": "Watch Now",
-    "emptyCharacterSubtitle": "Start chatting by creating a character now!"
+    "emptyCharacterSubtitle": "Start chatting by creating a character now!",
+    "deleteAccount": "Delete Account",
+    "deleteAccountConfirmation": "Are you sure you want to delete your account? This action cannot be undone.",
+    "deleteAccountFailed": "Failed to delete account",
+    "reportMessageTitle": "Report Message",
+    "reportMessageConfirmation": "Do you want to report this message?",
+    "reportMessageDone": "Reported. Thank you.",
+    "report": "Report",
+    "rewardChat": "✅ You can now continue to chat!",
+    "failChatLoad": "❌ Failed to load advertisement!"
 } 

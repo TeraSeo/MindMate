@@ -249,4 +249,34 @@ class Dialogs {
       ),
     );
   }
+
+  static Future<bool> showReviewDialog(BuildContext context) async {
+    return await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              title: const Text(
+                'One quick thing! 😊',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              content: const Text(
+                'If you’ve been enjoying your chat experience,\nwould you mind leaving us a quick review?\nIt really helps us grow and improve!',
+              ),
+              actionsPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text('Maybe Later'),
+                ),
+                ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text('Leave a Review'),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false;
+  }
 } 

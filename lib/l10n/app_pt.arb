@@ -340,5 +340,15 @@
     "watchAdRequiredTitle": "Assistir anúncio para continuar",
     "watchAdRequiredMessage": "Você excedeu o limite diário de chats gratuitos. Para continuar, assista a um breve vídeo publicitário.",
     "watchNow": "Assistir agora",
-    "emptyCharacterSubtitle": "Comece a conversar criando um personagem agora!"
+    "emptyCharacterSubtitle": "Comece a conversar criando um personagem agora!",
+    "deleteAccount": "Excluir conta",
+    "deleteAccountConfirmation": "Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+    "deleteAccountFailed": "Falha ao excluir a conta",
+    "delete": "Excluir",
+    "reportMessageTitle": "Denunciar mensagem",
+    "reportMessageConfirmation": "Você deseja denunciar esta mensagem?",
+    "reportMessageDone": "Denunciado. Obrigado.",
+    "report": "Denunciar",
+    "rewardChat": "✅ Agora você pode continuar a conversar!",
+    "failChatLoad": "❌ Falha ao carregar o anúncio!"
 } 

@@ -341,5 +341,14 @@
     "watchAdRequiredTitle": "观看广告以继续",
     "watchAdRequiredMessage": "您已超出今日免费聊天次数。请观看一个短视频广告以重置使用次数并继续聊天。",
     "watchNow": "立即观看",
-    "emptyCharacterSubtitle": "立即创建角色开始聊天吧！"
+    "emptyCharacterSubtitle": "立即创建角色开始聊天吧！",
+    "deleteAccount": "删除账户",
+    "deleteAccountConfirmation": "您确定要删除账户吗？此操作无法撤销。",
+    "deleteAccountFailed": "删除账户失败",
+    "reportMessageTitle": "举报消息",
+    "reportMessageConfirmation": "您要举报这条消息吗？",
+    "reportMessageDone": "已举报。谢谢。",
+    "report": "举报",
+    "rewardChat": "✅ 你现在可以继续聊天了！",
+    "failChatLoad": "❌ 无法加载广告！"
 } 

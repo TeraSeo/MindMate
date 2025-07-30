@@ -341,5 +341,15 @@
     "watchAdRequiredTitle": "जारी रखने के लिए विज्ञापन देखें",
     "watchAdRequiredMessage": "आपने आज की मुफ्त चैट सीमा पार कर ली है। उपयोग रीसेट करने और जारी रखने के लिए एक छोटा वीडियो विज्ञापन देखें।",
     "watchNow": "अभी देखें",
-    "emptyCharacterSubtitle": "अभी एक कैरेक्टर बनाकर चैटिंग शुरू करें!"
+    "emptyCharacterSubtitle": "अभी एक कैरेक्टर बनाकर चैटिंग शुरू करें!",
+    "deleteAccount": "खाता हटाएं",
+    "deleteAccountConfirmation": "क्या आप वाकई अपना खाता हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
+    "deleteAccountFailed": "खाता हटाने में विफल",
+    "delete": "हटाएं",
+    "reportMessageTitle": "संदेश की रिपोर्ट करें",
+    "reportMessageConfirmation": "क्या आप इस संदेश की रिपोर्ट करना चाहते हैं?",
+    "reportMessageDone": "रिपोर्ट किया गया। धन्यवाद।",
+    "report": "रिपोर्ट करें",
+    "rewardChat": "✅ अब आप चैट करना जारी रख सकते हैं!",
+    "failChatLoad": "❌ विज्ञापन लोड करने में विफल!"
 } 

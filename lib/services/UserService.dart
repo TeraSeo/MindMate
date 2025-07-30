@@ -88,11 +88,38 @@ class UserService {
     await userRef.update({'usedToken': updatedUsedToken});
   }
 
+  Future<void> resetUserToken() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    final userRef = FirebaseFirestore.instance.collection('users').doc(user.uid);
+    final snapshot = await userRef.get();
+    final data = snapshot.data();
+    if (data == null) return;
+
+    await userRef.update({'usedToken': 0});
+  }
+
   Future<Map<String, dynamic>?> getUserInfo() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) return null;
 
     final snapshot = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
     return snapshot.data();
+  }
+
+  Future<void> removeUser() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    try {
+      // 1. Firestore에서 사용자 문서 삭제
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).delete();
+
+      // 2. Firebase Authentication에서 사용자 삭제
+      await user.delete();
+    } catch (e) {
+      rethrow; // 호출하는 쪽에서 에러를 처리하도록 던짐
+    }
   }
 }

@@ -30,6 +30,7 @@ class ChatMessageList extends StatelessWidget {
 
         final message = controller.messages[index];
         return MessageBubble(
+          messageId: message['messageId'],
           text: message['text'],
           isUser: message['isUser'],
           timestamp: message['timestamp'],

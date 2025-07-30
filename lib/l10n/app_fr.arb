@@ -340,5 +340,14 @@
     "watchAdRequiredTitle": "Regarder une pub pour continuer",
     "watchAdRequiredMessage": "Vous avez dépassé la limite de chat gratuite d'aujourd'hui. Pour continuer, regardez une courte vidéo publicitaire.",
     "watchNow": "Regarder",
-    "emptyCharacterSubtitle": "Commencez à discuter en créant un personnage maintenant !"
+    "emptyCharacterSubtitle": "Commencez à discuter en créant un personnage maintenant !",
+    "deleteAccount": "Supprimer le compte",
+    "deleteAccountConfirmation": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.",
+    "deleteAccountFailed": "Échec de la suppression du compte",
+    "reportMessageTitle": "Signaler le message",
+    "reportMessageConfirmation": "Voulez-vous signaler ce message ?",
+    "reportMessageDone": "Signalé. Merci.",
+    "report": "Signaler",
+    "rewardChat": "✅ Vous pouvez maintenant continuer à discuter !",
+    "failChatLoad": "❌ Échec du chargement de la publicité !"
 } 

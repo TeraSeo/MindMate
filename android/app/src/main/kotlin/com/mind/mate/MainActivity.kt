@@ -1,4 +1,4 @@
-package com.example.ai_chatter
+package com.mind.mate
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

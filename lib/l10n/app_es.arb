@@ -340,5 +340,14 @@
     "watchAdRequiredTitle": "Ver anuncio para continuar",
     "watchAdRequiredMessage": "Has superado el límite diario de chats. Para restablecer tu uso y continuar chateando, mira un breve anuncio.",
     "watchNow": "Ver ahora",
-    "emptyCharacterSubtitle": "¡Empieza a chatear creando un personaje ahora!"
+    "emptyCharacterSubtitle": "¡Empieza a chatear creando un personaje ahora!",
+    "deleteAccount": "Eliminar cuenta",
+    "deleteAccountConfirmation": "¿Está seguro de que desea eliminar su cuenta? Esta acción no se puede deshacer.",
+    "deleteAccountFailed": "No se pudo eliminar la cuenta",
+    "reportMessageTitle": "Denunciar mensaje",
+    "reportMessageConfirmation": "¿Desea denunciar este mensaje?",
+    "reportMessageDone": "Denunciado. Gracias.",
+    "report": "Denunciar",
+    "rewardChat": "✅ ¡Ya puedes seguir chateando!",
+    "failChatLoad": "❌ ¡No se pudo cargar el anuncio!"
 } 

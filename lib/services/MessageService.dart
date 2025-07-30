@@ -38,6 +38,7 @@ class MessageService {
       final data = doc.data() as Map<String, dynamic>;
       
       return {
+        'messageId': data['messageId'],
         'text': data['content'],
         'isUser': data['role'] == 'user',
         'timestamp': (data['createdAt'] as Timestamp).toDate(),
@@ -47,16 +48,14 @@ class MessageService {
   }
   
   Future<void> saveMessage({
+    required String messageId,
     required String characterId,
     required String sessionId,
     required String content,
     required String role,
   }) async {
-    final Uuid _uuid = const Uuid();
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) throw Exception("User not authenticated");
-
-    final messageId = _uuid.v4();
 
     await _firestore
         .collection('users')
@@ -68,6 +67,7 @@ class MessageService {
         .collection('messages')
         .doc(messageId)
         .set({
+      'messageId': messageId,
       'role': role,
       'content': content,
       'createdAt': FieldValue.serverTimestamp(),

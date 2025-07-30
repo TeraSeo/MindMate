@@ -340,5 +340,14 @@
     "watchAdRequiredTitle": "Werbung ansehen, um fortzufahren",
     "watchAdRequiredMessage": "Du hast das heutige Chat-Limit erreicht. Um weiter zu chatten, sieh dir bitte eine kurze Videoanzeige an.",
     "watchNow": "Jetzt ansehen",
-    "emptyCharacterSubtitle": "Erstelle jetzt einen Charakter, um mit dem Chatten zu beginnen!"
+    "emptyCharacterSubtitle": "Erstelle jetzt einen Charakter, um mit dem Chatten zu beginnen!",
+    "deleteAccount": "Konto löschen",
+    "deleteAccountConfirmation": "Möchten Sie Ihr Konto wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "deleteAccountFailed": "Konto konnte nicht gelöscht werden",
+    "reportMessageTitle": "Report Message",
+    "reportMessageConfirmation": "Do you want to report this message?",
+    "reportMessageDone": "Reported. Thank you.",
+    "report": "Report",
+    "rewardChat": "✅ Du kannst jetzt weiter chatten!",
+    "failChatLoad": "❌ Anzeige konnte nicht geladen werden!"
 } 

@@ -341,5 +341,15 @@
     "watchAdRequiredTitle": "觀看廣告以繼續",
     "watchAdRequiredMessage": "您已超過今天的免費聊天限制。請觀看一個短視頻廣告來重置使用次數並繼續聊天。",
     "watchNow": "立即觀看",
-    "emptyCharacterSubtitle": "立即建立角色開始聊天吧！"
+    "emptyCharacterSubtitle": "立即建立角色開始聊天吧！",
+    "deleteAccount": "刪除帳戶",
+    "deleteAccountConfirmation": "您確定要刪除帳戶嗎？此操作無法還原。",
+    "deleteAccountFailed": "刪除帳戶失敗",
+    "delete": "刪除",
+    "reportMessageTitle": "檢舉訊息",
+    "reportMessageConfirmation": "您要檢舉這則訊息嗎？",
+    "reportMessageDone": "已檢舉。謝謝。",
+    "report": "檢舉",
+    "rewardChat": "✅ 你現在可以繼續聊天了！",
+    "failChatLoad": "❌ 無法載入廣告！"
 } 

@@ -1,4 +1,5 @@
 import 'package:ai_chatter/screens/auth/LoginPage.dart';
+import 'package:ai_chatter/services/UserService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:ai_chatter/screens/ProfilePage.dart';
@@ -94,6 +95,14 @@ class HomeDrawer extends StatelessWidget {
               _showLogoutDialog(context);
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.delete),
+            title: Text(l10n.delete),
+            onTap: () {
+              Navigator.pop(context);
+              _showDeleteAccountDialog(context);
+            },
+          ),
         ],
       ),
     );
@@ -171,6 +180,52 @@ class HomeDrawer extends StatelessWidget {
               }
             },
             child: Text(l10n.logout),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _showDeleteAccountDialog(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    final l10n = AppLocalizations.of(context)!;
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.deleteAccount),
+        content: Text(l10n.deleteAccountConfirmation),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(l10n.cancel),
+          ),
+          TextButton(
+            onPressed: () async {
+              try {
+                await UserService().removeUser();                
+
+                // Clear local user data
+                userProvider.clearUserData();
+
+                if (context.mounted) {
+                  Navigator.pop(context);
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                    (route) => false,
+                  );
+                }
+              } catch (e) {
+                if (context.mounted) {
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(l10n.deleteAccountFailed)),
+                  );
+                }
+              }
+            },
+            child: Text(l10n.delete, style: TextStyle(color: Colors.red)),
           ),
         ],
       ),

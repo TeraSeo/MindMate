@@ -340,5 +340,14 @@
     "watchAdRequiredTitle": "続けるには広告を視聴してください",
     "watchAdRequiredMessage": "本日の無料チャット回数を超えました。利用をリセットして続けるには、短い動画広告をご覧ください。",
     "watchNow": "今すぐ見る",
-    "emptyCharacterSubtitle": "今すぐキャラクターを作成してチャットを始めましょう！"
+    "emptyCharacterSubtitle": "今すぐキャラクターを作成してチャットを始めましょう！",
+    "deleteAccount": "アカウントを削除",
+    "deleteAccountConfirmation": "アカウントを削除してもよろしいですか？この操作は元に戻せません。",
+    "deleteAccountFailed": "アカウントの削除に失敗しました",
+    "reportMessageTitle": "メッセージを報告",
+    "reportMessageConfirmation": "このメッセージを報告しますか？",
+    "reportMessageDone": "報告しました。ありがとうございます。",
+    "report": "報告",
+    "rewardChat": "✅ チャットを続けられます！",
+    "failChatLoad": "❌ 広告の読み込みに失敗しました！"
 } 

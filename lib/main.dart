@@ -8,12 +8,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   // Ensure platform channels are properly initialized
   WidgetsFlutterBinding.ensureInitialized();
+
+  MobileAds.instance.initialize();
   
   // Wait for a frame to ensure platform channels are ready
   await Future.delayed(const Duration(milliseconds: 100));
