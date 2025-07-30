@@ -1,16 +1,49 @@
-# ai_chatter
+# 🧠 MindMate
 
-A new Flutter project.
+MindMate is a personalized AI chatbot mobile application that allows users to define their ideal conversation partner and engage in custom-tailored interactions powered by the OpenAI GPT API.
 
-## Getting Started
+<table>
+  <tr>
+    <img width="1080" height="2340" alt="Screenshot_1750511642" src="https://github.com/user-attachments/assets/32ddfa20-0d2f-47e8-911b-81665a29cdf6" />
+    <img width="1080" height="2340" alt="Screenshot_1750644033" src="https://github.com/user-attachments/assets/c46acac2-6d4a-4519-8224-73b51152554d" />
+    <img width="1080" height="2340" alt="Screenshot_1750645825" src="https://github.com/user-attachments/assets/010f6598-e5ab-4dcf-a612-39511fd59198" />
+  </tr>
+  <tr>
+    <img width="1080" height="2340" alt="Screenshot_1750511374" src="https://github.com/user-attachments/assets/528c4fc5-8c10-4aa1-98e0-68fb8b75a1ad" />
+  </tr>
+</table>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 💡 Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 🧩 Define a unique relationship role with your AI companion (e.g., friend, advisor, romantic partner)
+- 🎭 Choose from a list of AI personalities, each with distinct tone, age, and interaction style
+- 💬 Engage in natural, expressive conversations using the OpenAI GPT API
+- 📂 Efficient data management using Firestore with document-subcollection structure
+- ⚙️ Responsive and clean UI built with Flutter
+
+---
+
+## 🔧 Built With
+
+- **Flutter** – Cross-platform mobile development  
+- **Dart** – App logic and UI components  
+- **Firebase (Firestore)** – Backend data storage  
+- **OpenAI GPT API** – AI-generated conversations
+
+---
+
+## 📱 Google Play Store
+
+👉 [Download MindMate on Google Play](https://play.google.com/store/apps/details?id=com.mind.mate)
+
+- 1,000+ downloads  
+---
+
+---
+
+## 🛠️ Project Status
+
+MindMate is actively maintained with ongoing improvements in personalization, conversation depth, and performance.
