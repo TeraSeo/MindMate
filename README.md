@@ -4,12 +4,12 @@ MindMate is a personalized AI chatbot mobile application that allows users to de
 
 <table>
   <tr>
-    <img width="1080" height="2340" alt="Screenshot_1750645825" src="https://github.com/user-attachments/assets/010f6598-e5ab-4dcf-a612-39511fd59198" />
-    <img width="1080" height="2340" alt="Screenshot_1750511374" src="https://github.com/user-attachments/assets/528c4fc5-8c10-4aa1-98e0-68fb8b75a1ad" />
-    <img width="1080" height="2340" alt="Screenshot_1750511642" src="https://github.com/user-attachments/assets/32ddfa20-0d2f-47e8-911b-81665a29cdf6" />
+    <img width="1080" width="250" alt="Screenshot_1750645825" src="https://github.com/user-attachments/assets/010f6598-e5ab-4dcf-a612-39511fd59198" />
+    <img width="1080" width="250" alt="Screenshot_1750511374" src="https://github.com/user-attachments/assets/528c4fc5-8c10-4aa1-98e0-68fb8b75a1ad" />
+    <img width="1080" width="250" alt="Screenshot_1750511642" src="https://github.com/user-attachments/assets/32ddfa20-0d2f-47e8-911b-81665a29cdf6" />
   </tr>
   <tr>
-    <img width="1080" height="2340" alt="Screenshot_1750644033" src="https://github.com/user-attachments/assets/c46acac2-6d4a-4519-8224-73b51152554d" />
+    <img width="1080" width="250" alt="Screenshot_1750644033" src="https://github.com/user-attachments/assets/c46acac2-6d4a-4519-8224-73b51152554d" />
   </tr>
 </table>
 
